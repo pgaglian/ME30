@@ -1,0 +1,16 @@
+{
+  "name": "Mi Espacio",
+  "short_name": "Mi Espacio",
+  "start_url": "/pgaglian.github.io/ME30/",
+  "scope": "/pgaglian.github.io/ME30//",
+  "display": "standalone",
+  "background_color": "#111111",
+  "theme_color": "#111111",
+  "icons": [
+    {
+      "src": "/pgaglian.github.io/ME30/Img/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
