@@ -5135,7 +5135,7 @@ const asuntoSoporte = "Consulta - Mi Espacio";
 
 let tipoEnvioCorreo = "soporte";
 
-const vencimiento = "2029-09-20";
+const vencimiento = "2026-12-20";
 
 //=========================================================
 // FIN DATOS DEL CLIENTE
@@ -6335,7 +6335,7 @@ function mostrarPantallaEntrenamiento(
     color:#111;
     padding:30px 20px 20px 20px;
     box-sizing:border-box;
-    overflow:auto;
+    overflow:hidden;
 `;
 
 pantalla.innerHTML = `
@@ -6561,6 +6561,115 @@ function obtenerEventosEntrenamiento(){
     }
 
     return eventos;
+}
+
+
+// ===== ADELANTAR ENTRENAMIENTO =====
+
+function adelantarEntrenamiento(){
+
+    clearInterval(intervaloEntrenamiento);
+
+    entrenamientoPausado = false;
+
+    if(faseEntrenamiento === "preparacion"){
+
+        iniciarTrabajoEntrenamiento();
+        return;
+    }
+
+    if(faseEntrenamiento === "trabajo"){
+
+        iniciarDescansoEntrenamiento();
+        return;
+    }
+
+    if(faseEntrenamiento === "descanso"){
+
+        siguienteCicloEntrenamiento();
+        return;
+    }
+
+    if(faseEntrenamiento === "descansoBloque"){
+
+        siguienteBloqueEntrenamiento();
+        return;
+    }
+}
+
+
+// ===== RETROCEDER ENTRENAMIENTO =====
+
+function retrocederEntrenamiento(){
+
+    clearInterval(intervaloEntrenamiento);
+
+    entrenamientoPausado = false;
+
+    if(faseEntrenamiento === "trabajo"){
+
+        if(cicloActualEntrenamiento > 1){
+
+            cicloActualEntrenamiento--;
+
+            iniciarDescansoEntrenamiento();
+            return;
+
+        }
+
+        if(bloqueActualEntrenamiento > 1){
+
+            bloqueActualEntrenamiento--;
+
+            cicloActualEntrenamiento =
+                obtenerCiclosEntrenamiento();
+
+            iniciarTrabajoEntrenamiento();
+            return;
+        }
+
+        iniciarPreparacionEntrenamiento();
+        return;
+    }
+
+    if(faseEntrenamiento === "descanso"){
+
+        iniciarTrabajoEntrenamiento();
+        return;
+    }
+
+    if(faseEntrenamiento === "descansoBloque"){
+
+        iniciarTrabajoEntrenamiento();
+        return;
+    }
+
+    if(faseEntrenamiento === "preparacion"){
+
+        return;
+    }
+}
+
+
+
+// ===== CANCELAR ENTRENAMIENTO =====
+
+function cancelarEntrenamiento(){
+
+    clearInterval(intervaloEntrenamiento);
+
+    entrenamientoPausado = false;
+
+    let pantalla =
+        document.getElementById("pantallaEntrenamiento");
+
+    if(pantalla){
+        pantalla.remove();
+    }
+
+    document.getElementById(
+        "Entrenamiento"
+    ).style.display = "block";
 }
 
 function finalizarEntrenamiento(){
