@@ -5125,7 +5125,7 @@ const Libros=[
 // MODIFICAR ÚNICAMENTE ESTA SECCIÓN AL INSTALAR EL SISTEMA
 //=========================================================
 
-const nombre = "Fer";
+const nombre = "Fer ❤️ 🥰";
 
 const usuario = "ME30";
 
@@ -5135,7 +5135,7 @@ const asuntoSoporte = "Consulta - Mi Espacio";
 
 let tipoEnvioCorreo = "soporte";
 
-const vencimiento = "2026-12-20";
+const vencimiento = "2026-11-20";
 
 //=========================================================
 // FIN DATOS DEL CLIENTE
@@ -5883,14 +5883,12 @@ if(tipo === "trabajo"){
 
     // 📣 Silbato Tabata
 
-    if(
-        tipo === "inicio" ||
-        tipo === "trabajo"
-    ){
 
-        archivo = "silbatotabata.mp3";
+    if(tipo === "trabajo"){
 
-    }
+    archivo = "silbatotabata.mp3";
+
+}
 
 
     // 🔔 Una campana
@@ -6322,7 +6320,7 @@ function mostrarPantallaEntrenamiento(
 
         pantalla.id = "pantallaEntrenamiento";
 
-    pantalla.style.cssText = `
+pantalla.style.cssText = `
     position:fixed;
     inset:0;
     z-index:9999;
@@ -6333,170 +6331,195 @@ function mostrarPantallaEntrenamiento(
     text-align:center;
     background:${colorFase};
     color:#111;
-    padding:30px 20px 20px 20px;
+    padding:20px 20px 15px 20px;
     box-sizing:border-box;
     overflow:hidden;
 `;
 
 pantalla.innerHTML = `
 
-            <div id="faseActualEntrenamiento"
-                style="
-                    font-size:32px;
-                    font-weight:bold;
-                    margin-bottom:4px;
-                ">
-            </div>
+    <!-- CABECERA FIJA -->
+    <div
+        style="
+            width:100%;
+            max-width:500px;
+            flex-shrink:0;
+            text-align:center;
+        "
+    >
 
-            <div id="contadorEntrenamiento"
-                style="
-                    font-size:120px;
-                    font-weight:bold;
-                    line-height:1;
-                    margin:8px 0 10px 0;
-                ">
-            </div>
+        <div id="faseActualEntrenamiento"
+            style="
+                font-size:32px;
+                font-weight:bold;
+                margin-bottom:4px;
+            ">
+        </div>
 
-            <div id="cicloActualEntrenamiento"
-                style="
-                    font-size:24px;
-                    font-weight:bold;
-                    margin:2px;
-                ">
-            </div>
+        <div id="contadorEntrenamiento"
+            style="
+                font-size:120px;
+                font-weight:bold;
+                line-height:1;
+                margin:8px 0 10px 0;
+            ">
+        </div>
 
-            <div id="bloqueActualEntrenamiento"
-                style="
-                    font-size:20px;
-                    font-weight:bold;
-                    margin:2px 0 8px 0;
-                ">
-            </div>
+        <div id="cicloActualEntrenamiento"
+            style="
+                font-size:24px;
+                font-weight:bold;
+                margin:2px;
+            ">
+        </div>
 
+        <div id="bloqueActualEntrenamiento"
+            style="
+                font-size:20px;
+                font-weight:bold;
+                margin:2px 0 8px 0;
+            ">
+        </div>
+
+    </div>
+
+
+    <!-- ZONA DE PROGRESO CON SCROLL -->
+    <div
+        style="
+            width:100%;
+            max-width:500px;
+            flex:1;
+            min-height:0;
+            display:flex;
+            flex-direction:column;
+            margin:8px 0 10px 0;
+        "
+    >
+
+        <div
+            style="
+                flex-shrink:0;
+                font-size:18px;
+                font-weight:bold;
+                text-align:left;
+                margin-bottom:6px;
+            "
+        >
+            PRÓXIMOS EVENTOS
+        </div>
+
+        <div
+            style="
+                flex:1;
+                min-height:0;
+                overflow-y:auto;
+                overflow-x:hidden;
+                border-top:2px solid rgba(0,0,0,0.25);
+                border-bottom:2px solid rgba(0,0,0,0.25);
+                padding:10px 5px 10px 0;
+                box-sizing:border-box;
+            "
+        >
 
             <div
+                id="listaEventosEntrenamiento"
                 style="
-                    width:100%;
-                    max-width:500px;
-                    margin:8px 0 15px 0;
+                    display:flex;
+                    flex-direction:column;
+                    gap:6px;
+                    text-align:left;
+                    font-size:17px;
+                    font-weight:bold;
                 "
             >
-
-                <div
-                    style="
-                        font-size:18px;
-                        font-weight:bold;
-                        text-align:left;
-                        margin-bottom:6px;
-                    "
-                >
-                    PRÓXIMOS EVENTOS
-                </div>
-
-                <div
-                    style="
-                        border-top:2px solid rgba(0,0,0,0.25);
-                        border-bottom:2px solid rgba(0,0,0,0.25);
-                        padding:10px 0;
-                    "
-                >
-
-                    <div
-                        id="listaEventosEntrenamiento"
-                        style="
-                            display:flex;
-                            flex-direction:column;
-                            gap:6px;
-                            text-align:left;
-                            font-size:17px;
-                            font-weight:bold;
-                        "
-                    >
-                    </div>
-
-                </div>
-
             </div>
 
+        </div>
 
-            <div
-                style="
-                    width:100%;
-                    max-width:500px;
-                    display:grid;
-                    grid-template-columns:1fr 1fr;
-                    gap:8px;
-                    margin-top:5px;
-                "
-            >
+    </div>
 
-                <button
-                    id="btnRetrocederEntrenamiento"
-                    type="button"
-                    onclick="retrocederEntrenamiento()"
-                    style="
-                        padding:12px 8px;
-                        font-size:17px;
-                        font-weight:bold;
-                        border:none;
-                        border-radius:10px;
-                        cursor:pointer;
-                    "
-                >
-                    ◀ Retroceder
-                </button>
 
-                <button
-                    id="btnAdelantarEntrenamiento"
-                    type="button"
-                    onclick="adelantarEntrenamiento()"
-                    style="
-                        padding:12px 8px;
-                        font-size:17px;
-                        font-weight:bold;
-                        border:none;
-                        border-radius:10px;
-                        cursor:pointer;
-                    "
-                >
-                    Adelantar ▶
-                </button>
+    <!-- CONTROLES FIJOS -->
+    <div
+        style="
+            width:100%;
+            max-width:500px;
+            flex-shrink:0;
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:8px;
+            margin-top:5px;
+        "
+    >
 
-                <button
-                    id="btnCancelarEntrenamiento"
-                    type="button"
-                    onclick="cancelarEntrenamiento()"
-                    style="
-                        padding:12px 8px;
-                        font-size:17px;
-                        font-weight:bold;
-                        border:none;
-                        border-radius:10px;
-                        cursor:pointer;
-                    "
-                >
-                    ❌ Cancelar
-                </button>
+        <button
+            id="btnRetrocederEntrenamiento"
+            type="button"
+            onclick="retrocederEntrenamiento()"
+            style="
+                padding:12px 8px;
+                font-size:17px;
+                font-weight:bold;
+                border:none;
+                border-radius:10px;
+                cursor:pointer;
+            "
+        >
+            ◀ Retroceder
+        </button>
 
-                <button
-                    id="btnPausarEntrenamiento"
-                    type="button"
-                    onclick="pausarEntrenamiento()"
-                    style="
-                        padding:12px 8px;
-                        font-size:17px;
-                        font-weight:bold;
-                        border:none;
-                        border-radius:10px;
-                        cursor:pointer;
-                    "
-                >
-                    ⏸ Pausar
-                </button>
+        <button
+            id="btnAdelantarEntrenamiento"
+            type="button"
+            onclick="adelantarEntrenamiento()"
+            style="
+                padding:12px 8px;
+                font-size:17px;
+                font-weight:bold;
+                border:none;
+                border-radius:10px;
+                cursor:pointer;
+            "
+        >
+            Adelantar ▶
+        </button>
 
-            </div>
-        `;
+        <button
+            id="btnCancelarEntrenamiento"
+            type="button"
+            onclick="cancelarEntrenamiento()"
+            style="
+                padding:12px 8px;
+                font-size:17px;
+                font-weight:bold;
+                border:none;
+                border-radius:10px;
+                cursor:pointer;
+            "
+        >
+            ❌ Cancelar
+        </button>
 
+        <button
+            id="btnPausarEntrenamiento"
+            type="button"
+            onclick="pausarEntrenamiento()"
+            style="
+                padding:12px 8px;
+                font-size:17px;
+                font-weight:bold;
+                border:none;
+                border-radius:10px;
+                cursor:pointer;
+            "
+        >
+            ⏸ Pausar
+        </button>
+
+    </div>
+
+`;
         document.body.appendChild(pantalla);
     }
 
@@ -6886,6 +6909,9 @@ if(id=="Musica"){
     cargarAlbumes();
 
 }
+
+    // Registrar la pantalla actual en el historial
+    history.pushState({ pantalla: id }, "", "#" + id);
 
 }
 
@@ -7529,13 +7555,25 @@ function cambiarTema(tema){
     document.body.classList.add(tema);
 
 }
+
 //========================
 // MENÚ ANDROID
 //========================
 
-function mostrarMenuAndroid(seccion){
+function mostrarMenuAndroid(seccion, registrarHistorial = true){
 
     document.getElementById("menuAndroid").style.display="none";
+   if(registrarHistorial){
+
+    history.pushState(
+        { pantalla: seccion },
+        "",
+        "#" + seccion
+    );
+
+}
+
+
     document.getElementById("btnVolverAndroid").style.display="block";
     document.querySelector("header").style.display="none";
     document.getElementById("panelCliente").style.display="none";
@@ -7554,6 +7592,17 @@ function mostrarMenuAndroid(seccion){
 
     if(seccion=="acciones"){
 
+document.getElementById("Libros").style.display="none";
+document.getElementById("Musica").style.display="none";
+document.getElementById("Calendario").style.display="none";
+document.getElementById("album").style.display="none";
+document.getElementById("Clima").style.display="none";
+document.getElementById("Bancos").style.display="none";
+document.getElementById("Billeteras").style.display="none";
+document.getElementById("Radios").style.display="none";
+document.getElementById("Entrenamiento").style.display="none";
+
+
    
     document.getElementById("acciones").style.display="grid";
 
@@ -7567,11 +7616,19 @@ function mostrarMenuAndroid(seccion){
 
     if(seccion=="ambientes"){
 
-        document.getElementById("acciones").style.display="none";
-        document.getElementById("tituloAcciones").style.display="none";
+document.getElementById("Libros").style.display="none";
+document.getElementById("Musica").style.display="none";
+document.getElementById("Calendario").style.display="none";
+document.getElementById("album").style.display="none";
+document.getElementById("Clima").style.display="none";
+document.getElementById("Bancos").style.display="none";
+document.getElementById("Billeteras").style.display="none";
+document.getElementById("Radios").style.display="none";
+document.getElementById("Entrenamiento").style.display="none"; 
 
-        document.getElementById("menu").style.display="grid";
-        document.getElementById("tituloAmbientes").style.display="block";
+document.getElementById("acciones").style.display="none"; document.getElementById("tituloAcciones").style.display="none";
+
+document.getElementById("menu").style.display="grid";       document.getElementById("tituloAmbientes").style.display="block";
 
     }
 
@@ -13587,6 +13644,63 @@ cargarPatrocinadores();
 
 let intervaloPatrocinadores =
     setInterval(mostrarPatrocinadorAleatorio, 3000);
+
+
+// ===== ATRÁS DEL CELULAR =====
+
+window.addEventListener("popstate", function(event){
+
+    // Si hay un popup de salida abierto, primero lo cerramos
+    const popupSalidaPromocion =
+        document.getElementById("popupSalidaPromocion");
+
+    if(popupSalidaPromocion){
+        popupSalidaPromocion.remove();
+        return;
+    }
+
+    const popupSalidaPromocionBilletera =
+        document.getElementById("popupSalidaPromocionBilletera");
+
+    if(popupSalidaPromocionBilletera){
+        popupSalidaPromocionBilletera.remove();
+        return;
+    }
+
+
+    const pantallaEntrenamiento =
+        document.getElementById("pantallaEntrenamiento");
+
+    if(pantallaEntrenamiento){
+
+        pantallaEntrenamiento.style.display="none";
+
+    }
+
+    if(event.state && event.state.pantalla === "acciones"){
+
+        mostrarMenuAndroid("acciones", false);
+        return;
+
+    }
+
+    if(event.state && event.state.pantalla === "ambientes"){
+
+        mostrarMenuAndroid("ambientes", false);
+        return;
+
+    }
+
+    if(event.state && event.state.pantalla === "Entrenamiento"){
+
+        mostrar("Entrenamiento");
+        return;
+
+    }
+
+    inicio();
+
+});
 
 </script>
 
