@@ -3726,6 +3726,890 @@ text-decoration:underline;
 
 </div>
 
+<!-- ===== PERFILES DE ENTRENAMIENTO ===== -->
+
+<div id="popupPerfilesEntrenamiento"
+     style="
+     display:none;
+     position:fixed;
+     inset:0;
+     background:rgba(0,0,0,.75);
+     z-index:1000;
+     align-items:center;
+     justify-content:center;
+     padding:20px;
+     ">
+
+    <div style="
+        width:min(92%,600px);
+        max-height:85vh;
+        overflow-y:auto;
+        background:#1d1d1d;
+        border:1px solid #555;
+        border-radius:20px;
+        padding:20px;
+        box-shadow:0 10px 35px rgba(0,0,0,.7);
+        ">
+
+        <div style="
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:15px;
+            ">
+
+            <h2 style="margin:0;color:#FFD700;">
+                👤 Perfiles de Entrenamiento
+            </h2>
+
+            <button onclick="cerrarPerfilesEntrenamiento()">
+                ✖
+            </button>
+
+        </div>
+
+        <p style="
+            text-align:center;
+            color:#ccc;
+            ">
+            Seleccioná un perfil de entrenamiento.
+        </p>
+
+        <div id="listaPerfilesEntrenamiento">
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ===== FIN PERFILES DE ENTRENAMIENTO ===== -->
+
+
+<!-- ===== CONFIRMAR PERFIL DE ENTRENAMIENTO ===== -->
+
+<div id="popupConfirmarPerfilEntrenamiento"
+     style="
+     display:none;
+     position:fixed;
+     inset:0;
+     background:rgba(0,0,0,.75);
+     z-index:1000;
+     align-items:center;
+     justify-content:center;
+     padding:20px;
+     ">
+
+    <div style="
+        width:min(92%,420px);
+        background:#1d1d1d;
+        border:1px solid #555;
+        border-radius:20px;
+        padding:25px;
+        box-shadow:0 10px 35px rgba(0,0,0,.7);
+        color:white;
+        text-align:center;
+        ">
+
+        <h2 style="
+            margin:0 0 20px;
+            color:#FFD700;
+        ">
+            👤 Guardar perfil
+        </h2>
+
+               <p style="
+            color:#ccc;
+            font-size:16px;
+            line-height:22px;
+        ">
+            Nombre del perfil
+        </p>
+
+        <input
+            id="nombreNuevoPerfilEntrenamiento"
+            type="text"
+            maxlength="20"
+            placeholder="Escribí un nombre"
+            style="
+            width:100%;
+            box-sizing:border-box;
+            padding:12px;
+            margin-top:5px;
+            font-size:16px;
+            border-radius:10px;
+            border:1px solid #666;
+            background:#292929;
+            color:white;
+            text-align:center;
+            ">
+
+        <p id="mensajeNuevoPerfilEntrenamiento"
+           style="
+           display:none;
+           color:#7CFC00;
+           font-size:16px;
+           font-weight:bold;
+           margin:12px 0 0;
+           ">
+            ✅ Perfil guardado correctamente
+        </p>
+
+
+        <div style="
+            display:flex;
+            justify-content:center;
+            gap:12px;
+            margin-top:25px;
+            flex-wrap:wrap;
+        ">
+
+            <button
+                type="button"
+                onclick="guardarNuevoPerfilEntrenamiento()"
+                style="
+                padding:10px 22px;
+                font-size:16px;
+                font-weight:bold;
+                border-radius:10px;
+                ">
+                💾 Guardar
+            </button>
+
+            <button
+                type="button"
+                onclick="cerrarConfirmarPerfilEntrenamiento()"
+                style="
+                padding:10px 22px;
+                font-size:16px;
+                font-weight:bold;
+                border-radius:10px;
+                ">
+                ❌ Cancelar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ===== FIN CONFIRMAR PERFIL DE ENTRENAMIENTO ===== -->
+
+
+
+<!-- ===== CONFIRMAR ELIMINAR PERFIL ===== -->
+
+<div id="popupEliminarPerfilEntrenamiento"
+     style="
+     display:none;
+     position:fixed;
+     inset:0;
+     background:rgba(0,0,0,.75);
+     z-index:1000;
+     align-items:center;
+     justify-content:center;
+     padding:20px;
+     ">
+
+    <div style="
+        width:min(92%,420px);
+        background:#1d1d1d;
+        border:1px solid #555;
+        border-radius:20px;
+        padding:25px;
+        box-shadow:0 10px 35px rgba(0,0,0,.7);
+        color:white;
+        text-align:center;
+        ">
+
+        <h2 style="
+            margin:0 0 20px;
+            color:#FFD700;
+        ">
+            🗑️ Eliminar perfil
+        </h2>
+
+        <p id="mensajeEliminarPerfilEntrenamiento"
+           style="
+           color:#ccc;
+           font-size:16px;
+           line-height:22px;
+           ">
+        </p>
+
+        <div style="
+            display:flex;
+            justify-content:center;
+            gap:12px;
+            margin-top:25px;
+            flex-wrap:wrap;
+        ">
+
+            <button
+                type="button"
+                onclick="confirmarEliminarPerfilEntrenamiento()">
+                🗑️ Sí, eliminar
+            </button>
+
+            <button
+                type="button"
+                onclick="cerrarEliminarPerfilEntrenamiento()">
+                ❌ Cancelar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ===== FIN CONFIRMAR ELIMINAR PERFIL ===== -->
+
+<!-- ===== EDITAR PERFIL DE ENTRENAMIENTO ===== -->
+
+<div id="popupEditarPerfilEntrenamiento"
+     style="
+     display:none;
+     position:fixed;
+     inset:0;
+     background:rgba(0,0,0,.75);
+     z-index:1000;
+     align-items:center;
+     justify-content:center;
+     padding:20px;
+     overflow-y:auto;
+     ">
+
+    <div style="
+        width:min(92%,500px);
+        background:#1d1d1d;
+        border:1px solid #555;
+        border-radius:20px;
+        padding:25px;
+        box-shadow:0 10px 35px rgba(0,0,0,.7);
+        color:white;
+        ">
+
+        <h2 style="
+            margin:0 0 20px;
+            color:#FFD700;
+            text-align:center;
+        ">
+            ✏️ Editar perfil
+        </h2>
+
+
+        <!-- NOMBRE -->
+
+        <label style="
+            display:block;
+            margin-bottom:8px;
+            color:#ccc;
+        ">
+            Nombre del perfil
+        </label>
+
+        <input
+            id="nombreEditarPerfilEntrenamiento"
+            type="text"
+            maxlength="20"
+            placeholder="Nombre del perfil"
+            style="
+            width:100%;
+            box-sizing:border-box;
+            padding:12px;
+            border-radius:10px;
+            border:1px solid #555;
+            background:#292929;
+            color:white;
+            font-size:16px;
+            margin-bottom:18px;
+            ">
+
+
+        <!-- PREPARACIÓN -->
+
+        <div style="
+            margin:7px 0;
+            padding:12px 16px;
+            background:linear-gradient(90deg,#FFD700,#E6B800);
+            color:#111;
+            border-left:7px solid #FFF176;
+            border-radius:10px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+        ">
+
+            <strong>⏳ PREPARACIÓN</strong>
+
+            <div style="
+                display:flex;
+                align-items:center;
+                gap:6px;
+            ">
+
+                <button
+                    type="button"
+                    onclick="cambiarTiempoPerfilEntrenamiento('preparacion',-5)"
+                    style="
+                        padding:4px 9px;
+                        font-size:20px;
+                        line-height:20px;
+                        min-width:32px;
+                    "
+                >
+                    −
+                </button>
+
+                <span
+                    id="editarTiempoPreparacion"
+                    onclick="editarTiempoPerfilEntrenamiento('preparacion')"
+                    style="
+                        width:65px;
+                        font-size:27px;
+                        font-weight:bold;
+                        text-align:center;
+                        color:#111;
+                        cursor:pointer;
+                        user-select:none;
+                    "
+                >
+                    00:00
+                </span>
+
+                <button
+                    type="button"
+                    onclick="cambiarTiempoPerfilEntrenamiento('preparacion',5)"
+                    style="
+                        padding:4px 9px;
+                        font-size:20px;
+                        line-height:20px;
+                        min-width:32px;
+                    "
+                >
+                    +
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- TRABAJO -->
+
+        <div style="
+            margin:7px 0;
+            padding:12px 16px;
+            background:linear-gradient(90deg,#32CD32,#239B23);
+            color:#111;
+            border-left:7px solid #7CFC00;
+            border-radius:10px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+        ">
+
+            <strong>💪 TRABAJO</strong>
+
+            <div style="
+                display:flex;
+                align-items:center;
+                gap:6px;
+            ">
+
+                <button
+                    type="button"
+                    onclick="cambiarTiempoPerfilEntrenamiento('trabajo',-5)"
+                    style="
+                        padding:4px 9px;
+                        font-size:20px;
+                        line-height:20px;
+                        min-width:32px;
+                    "
+                >
+                    −
+                </button>
+
+                <span
+                    id="editarTiempoTrabajo"
+                    onclick="editarTiempoPerfilEntrenamiento('trabajo')"
+                    style="
+                        width:65px;
+                        font-size:27px;
+                        font-weight:bold;
+                        text-align:center;
+                        color:#111;
+                        cursor:pointer;
+                        user-select:none;
+                    "
+                >
+                    00:00
+                </span>
+
+                <button
+                    type="button"
+                    onclick="cambiarTiempoPerfilEntrenamiento('trabajo',5)"
+                    style="
+                        padding:4px 9px;
+                        font-size:20px;
+                        line-height:20px;
+                        min-width:32px;
+                    "
+                >
+                    +
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- DESCANSO -->
+
+        <div style="
+            margin:7px 0;
+            padding:12px 16px;
+            background:linear-gradient(90deg,#4DA6FF,#2878C8);
+            color:#FFF;
+            border-left:7px solid #87CEFA;
+            border-radius:10px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+        ">
+
+            <strong>😮‍💨 DESCANSO</strong>
+
+            <div style="
+                display:flex;
+                align-items:center;
+                gap:6px;
+            ">
+
+                <button
+                    type="button"
+                    onclick="cambiarTiempoPerfilEntrenamiento('descanso',-5)"
+                    style="
+                        padding:4px 9px;
+                        font-size:20px;
+                        line-height:20px;
+                        min-width:32px;
+                    "
+                >
+                    −
+                </button>
+
+                <span
+                    id="editarTiempoDescanso"
+                    onclick="editarTiempoPerfilEntrenamiento('descanso')"
+                    style="
+                        width:65px;
+                        font-size:27px;
+                        font-weight:bold;
+                        text-align:center;
+                        color:#FFF;
+                        cursor:pointer;
+                        user-select:none;
+                    "
+                >
+                    00:00
+                </span>
+
+                <button
+                    type="button"
+                    onclick="cambiarTiempoPerfilEntrenamiento('descanso',5)"
+                    style="
+                        padding:4px 9px;
+                        font-size:20px;
+                        line-height:20px;
+                        min-width:32px;
+                    "
+                >
+                    +
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- CICLOS -->
+
+        <div style="
+            margin:7px 0;
+            padding:12px 16px;
+            background:linear-gradient(90deg,#9B59B6,#71368A);
+            color:#FFF;
+            border-left:7px solid #D7A8E8;
+            border-radius:10px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+        ">
+
+            <strong>🔄 CICLOS</strong>
+
+            <div style="
+                display:flex;
+                align-items:center;
+                gap:6px;
+            ">
+
+                <button
+                    type="button"
+                    onclick="cambiarCiclosPerfilEntrenamiento(-1)"
+                    style="
+                        padding:4px 9px;
+                        font-size:20px;
+                        line-height:20px;
+                        min-width:32px;
+                    "
+                >
+                    −
+                </button>
+
+                <span
+                    id="editarCantidadCiclos"
+                    style="
+                        font-size:27px;
+                        font-weight:bold;
+                        min-width:35px;
+                        text-align:center;
+                    "
+                >
+                    0
+                </span>
+
+                <button
+                    type="button"
+                    onclick="cambiarCiclosPerfilEntrenamiento(1)"
+                    style="
+                        padding:4px 9px;
+                        font-size:20px;
+                        line-height:20px;
+                        min-width:32px;
+                    "
+                >
+                    +
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- BLOQUES -->
+
+        <div style="
+            margin:7px 0;
+            padding:12px 16px;
+            background:linear-gradient(90deg,#F39C12,#C87808);
+            color:#111;
+            border-left:7px solid #FFD27A;
+            border-radius:10px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+        ">
+
+            <strong>🧱 BLOQUES</strong>
+
+            <div style="
+                display:flex;
+                align-items:center;
+                gap:6px;
+            ">
+
+                <button
+                    type="button"
+                    onclick="cambiarBloquesPerfilEntrenamiento(-1)"
+                    style="
+                        padding:4px 9px;
+                        font-size:20px;
+                        line-height:20px;
+                        min-width:32px;
+                    "
+                >
+                    −
+                </button>
+
+                <span
+                    id="editarCantidadBloques"
+                    style="
+                        font-size:27px;
+                        font-weight:bold;
+                        min-width:35px;
+                        text-align:center;
+                    "
+                >
+                    0
+                </span>
+
+                <button
+                    type="button"
+                    onclick="cambiarBloquesPerfilEntrenamiento(1)"
+                    style="
+                        padding:4px 9px;
+                        font-size:20px;
+                        line-height:20px;
+                        min-width:32px;
+                    "
+                >
+                    +
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- DESCANSO ENTRE BLOQUES -->
+
+        <div style="
+            margin:7px 0;
+            padding:12px 16px;
+            background:linear-gradient(90deg,#3498DB,#216A9B);
+            color:#FFF;
+            border-left:7px solid #87CEFA;
+            border-radius:10px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+        ">
+
+            <strong>🛌 DESC. BLOQUE</strong>
+
+            <div style="
+                display:flex;
+                align-items:center;
+                gap:6px;
+            ">
+
+                <button
+                    type="button"
+                    onclick="cambiarTiempoPerfilEntrenamiento('descansoBloque',-5)"
+                    style="
+                        padding:4px 9px;
+                        font-size:20px;
+                        line-height:20px;
+                        min-width:32px;
+                    "
+                >
+                    −
+                </button>
+
+                <span
+                    id="editarTiempoDescansoBloque"
+                    onclick="editarTiempoPerfilEntrenamiento('descansoBloque')"
+                    style="
+                        width:65px;
+                        font-size:27px;
+                        font-weight:bold;
+                        text-align:center;
+                        color:#FFF;
+                        cursor:pointer;
+                        user-select:none;
+                    "
+                >
+                    00:00
+                </span>
+
+                <button
+                    type="button"
+                    onclick="cambiarTiempoPerfilEntrenamiento('descansoBloque',5)"
+                    style="
+                        padding:4px 9px;
+                        font-size:20px;
+                        line-height:20px;
+                        min-width:32px;
+                    "
+                >
+                    +
+                </button>
+
+            </div>
+
+        </div>
+
+
+<!-- TIEMPO TOTAL -->
+<div style="
+    background:linear-gradient(90deg,#16A085,#117A65);
+    color:#FFF;
+    border-left:5px solid #76D7C4;
+    padding:10px 12px;
+    margin-top:8px;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+">
+
+    <strong>⏱️ Tiempo total</strong>
+
+    <span
+        id="editarTiempoTotalEntrenamiento"
+        style="
+            font-size:27px;
+            font-weight:bold;
+        "
+    >00:00</span>
+
+</div>
+
+
+<!-- RESET -->
+<button
+    type="button"
+    onclick="resetearEdicionPerfilEntrenamiento()"
+    style="
+        width:100%;
+        margin-top:10px;
+        padding:10px;
+        font-size:16px;
+        font-weight:bold;
+        border:none;
+        border-radius:8px;
+        cursor:pointer;
+    "
+>
+    🔄 Restablecer valores
+</button>
+
+
+
+        <!-- SONIDO -->
+
+        <div style="
+            margin:7px 0;
+            padding:12px 16px;
+            background:linear-gradient(90deg,#555,#333);
+            color:#FFF;
+            border-left:7px solid #AAA;
+            border-radius:10px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+        ">
+
+            <strong>🔊 SONIDO</strong>
+
+            <select
+                id="editarSonidoEntrenamiento"
+                style="
+                font-size:16px;
+                font-weight:bold;
+                padding:6px 10px;
+                border-radius:6px;
+                max-width:220px;
+                ">
+                <option value="">🔊 Predeterminado</option>
+            </select>
+
+        </div>
+
+
+        <!-- VOZ -->
+
+        <div style="
+            margin:7px 0;
+            padding:12px 16px;
+            background:linear-gradient(90deg,#555,#333);
+            color:#FFF;
+            border-left:7px solid #AAA;
+            border-radius:10px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+        ">
+
+            <strong>🗣️ VOZ</strong>
+
+            <select
+                id="editarVozEntrenamiento"
+                style="
+                font-size:16px;
+                font-weight:bold;
+                padding:6px 10px;
+                border-radius:6px;
+                max-width:220px;
+                ">
+                <option value="">🔇 Sin voz</option>
+            </select>
+
+        </div>
+
+
+        <!-- MENSAJE -->
+
+        <p
+            id="mensajeEditarPerfilEntrenamiento"
+            style="
+            display:none;
+            color:#7CFC00;
+            font-size:16px;
+            font-weight:bold;
+            text-align:center;
+            margin:15px 0 0;
+            ">
+        </p>
+
+
+        <!-- BOTONES -->
+
+        <div style="
+            display:flex;
+            justify-content:center;
+            gap:12px;
+            margin-top:25px;
+            flex-wrap:wrap;
+        ">
+
+            <button
+                type="button"
+                onclick="guardarEdicionPerfilEntrenamiento()"
+                style="
+                padding:10px 18px;
+                font-size:16px;
+                font-weight:bold;
+                border-radius:10px;
+                ">
+                💾 Guardar
+            </button>
+
+            <button
+                type="button"
+                onclick="guardarComoPerfilEntrenamiento()"
+                style="
+                padding:10px 18px;
+                font-size:16px;
+                font-weight:bold;
+                border-radius:10px;
+                ">
+                💾 Guardar como
+            </button>
+
+            <button
+                type="button"
+                onclick="cerrarEditarPerfilEntrenamiento()"
+                style="
+                padding:10px 18px;
+                font-size:16px;
+                font-weight:bold;
+                border-radius:10px;
+                ">
+                ❌ Cancelar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ===== FIN EDITAR PERFIL DE ENTRENAMIENTO ===== -->
+
 <!-- ===== MODULO ENTRENAMIENTO ===== -->
 
 <div id="Entrenamiento" style="display:none; min-height:100vh;">
@@ -3741,9 +4625,9 @@ text-decoration:underline;
             ⬅ Volver
         </button>
 
-        <button>
-            👤 Perfil
-        </button>
+     <button onclick="abrirPerfilesEntrenamiento()">
+    👤 Perfil
+</button>
 
     </div>
 
@@ -5214,7 +6098,6 @@ function cargarAlbumes(){
 }
 
 
-
 // ===== CONFIGURACION TIEMPOS ENTRENAMIENTO =====
 
 
@@ -5223,6 +6106,147 @@ let tiempoTrabajoEntrenamiento = 20;
 let tiempoDescansoEntrenamiento = 10;
 let tiempoDescansoBloqueEntrenamiento = 0;
 
+function cambiarTiempoPerfilEntrenamiento(tipo, cambio){
+
+    if(
+        tipo !== "preparacion" &&
+        tipo !== "trabajo" &&
+        tipo !== "descanso" &&
+        tipo !== "descansoBloque"
+    ){
+        return;
+    }
+
+    let idCampo =
+        tipo === "preparacion"
+        ? "editarTiempoPreparacion"
+        : tipo === "trabajo"
+        ? "editarTiempoTrabajo"
+        : tipo === "descanso"
+        ? "editarTiempoDescanso"
+        : "editarTiempoDescansoBloque";
+
+    let campo = document.getElementById(idCampo);
+
+    if(!campo){
+        return;
+    }
+
+    let valor = campo.textContent || "00:00";
+
+    valor = valor.replace(/\D/g,"");
+    valor = valor.padStart(4,"0");
+
+    let minutos = parseInt(valor.substring(0,2)) || 0;
+    let segundos = parseInt(valor.substring(2,4)) || 0;
+
+    let total = (minutos * 60) + segundos;
+
+    total += cambio;
+
+    if(total < 0){
+        total = 0;
+    }
+
+    campo.textContent =
+        formatearTiempoEntrenamiento(total);
+
+}
+
+
+function editarTiempoPerfilEntrenamiento(tipo){
+
+    if(
+        tipo !== "preparacion" &&
+        tipo !== "trabajo" &&
+        tipo !== "descanso" &&
+        tipo !== "descansoBloque"
+    ){
+        return;
+    }
+
+    let idCampo =
+        tipo === "preparacion"
+        ? "editarTiempoPreparacion"
+        : tipo === "trabajo"
+        ? "editarTiempoTrabajo"
+        : tipo === "descanso"
+        ? "editarTiempoDescanso"
+        : "editarTiempoDescansoBloque";
+
+    let campo = document.getElementById(idCampo);
+
+    if(!campo){
+        return;
+    }
+
+    let valorActual = campo.textContent || "00:00";
+
+    let valor = prompt(
+        "Ingresá los 4 números del tiempo:\n\nEjemplo: 0015 = 00:15",
+        valorActual.replace(":","")
+    );
+
+    if(valor === null){
+        return;
+    }
+
+    valor = valor.replace(/\D/g,"");
+    valor = valor.padStart(4,"0");
+
+    let minutos = parseInt(valor.substring(0,2)) || 0;
+    let segundos = parseInt(valor.substring(2,4)) || 0;
+
+    if(segundos > 59){
+        segundos = 59;
+    }
+
+    campo.textContent =
+        String(minutos).padStart(2,"0") + ":" +
+        String(segundos).padStart(2,"0");
+
+}
+
+
+function cambiarCiclosPerfilEntrenamiento(cambio){
+
+    let campo = document.getElementById("editarCantidadCiclos");
+
+    if(!campo){
+        return;
+    }
+
+    let ciclos = parseInt(campo.textContent) || 1;
+
+    ciclos += cambio;
+
+    if(ciclos < 1){
+        ciclos = 1;
+    }
+
+    campo.textContent = ciclos;
+
+}
+
+function cambiarBloquesPerfilEntrenamiento(cambio){
+
+    let campo = document.getElementById("editarCantidadBloques");
+
+    if(!campo){
+        return;
+    }
+
+    let bloques = parseInt(campo.textContent) || 1;
+
+    bloques += cambio;
+
+    if(bloques < 1){
+        bloques = 1;
+    }
+
+    campo.textContent = bloques;
+
+}
 
 function formatearTiempoEntrenamiento(segundos){
 
@@ -5505,6 +6529,26 @@ function calcularTiempoTotalEntrenamiento(){
         formatearTiempoEntrenamiento(tiempoTotal);
 }
 
+// =====================================================
+// COMPARAR CONFIGURACION CON PERFILES
+// =====================================================
+
+function configuracionYaEsPerfil(configuracion){
+
+    const perfiles = JSON.parse(
+        localStorage.getItem("perfilesEntrenamiento") || "[]"
+    );
+
+    return perfiles.some(function(perfil){
+
+        return JSON.stringify(perfil.configuracion) ===
+               JSON.stringify(configuracion);
+
+    });
+
+}
+
+
 
 function guardarConfiguracionEntrenamiento(){
 
@@ -5528,9 +6572,17 @@ function guardarConfiguracionEntrenamiento(){
 
         sonido: document.getElementById(
             "sonidoEntrenamiento"
+        ).value,
+
+        voz: document.getElementById(
+            "vozEntrenamiento"
         ).value
 
     };
+
+    // =====================================================
+    // GUARDAR CONFIGURACION NORMAL
+    // =====================================================
 
     localStorage.setItem(
         "configuracionEntrenamiento",
@@ -5548,7 +6600,66 @@ function guardarConfiguracionEntrenamiento(){
 
     },1200);
 
+
+    // =====================================================
+    // VERIFICAR LIMITE DE PERFILES
+    // =====================================================
+
+    const perfiles =
+        JSON.parse(
+            localStorage.getItem("perfilesEntrenamiento") || "[]"
+        );
+
+   if(perfiles.length >= 10){
+
+    const popup =
+        document.getElementById(
+            "popupConfirmarPerfilEntrenamiento"
+        );
+
+    const mensaje =
+        document.getElementById(
+            "mensajeNuevoPerfilEntrenamiento"
+        );
+
+    if(popup){
+
+        popup.style.display = "flex";
+
+    }
+
+    if(mensaje){
+
+        mensaje.textContent =
+            "⚠️ Ya tenés 10 perfiles guardados. No se pueden guardar más.";
+
+        mensaje.style.color = "#FFD700";
+
+        mensaje.style.display = "block";
+
+    }
+
+    return;
+
 }
+
+// =====================================================
+// ABRIR POPUP
+// =====================================================
+
+    const popup =
+        document.getElementById(
+            "popupConfirmarPerfilEntrenamiento"
+        );
+
+    if(popup){
+
+        popup.style.display = "flex";
+
+    }
+
+}
+
 
 function resetearConfiguracionEntrenamiento(){
 
@@ -5832,6 +6943,8 @@ function reproducirVozEntrenamiento(fase){
 
 // ===== SONIDO TABATA =====
 
+let audioContextEntrenamiento = null;
+
 function sonidoTabata(tipo){
 
     // ===== SONIDO MANUAL =====
@@ -5902,44 +7015,54 @@ if(tipo === "trabajo"){
     // 🔢 Cuenta regresiva Tabata: 3 - 2 - 1
     // Se mantiene el sonido electrónico actual
 
-    if(tipo === "cuenta"){
+if(tipo === "cuenta"){
 
-        const audioContext =
+    if(!audioContextEntrenamiento){
+
+        audioContextEntrenamiento =
             new (window.AudioContext ||
                  window.webkitAudioContext)();
-
-        const ahora =
-            audioContext.currentTime;
-
-        const oscilador =
-            audioContext.createOscillator();
-
-        const ganancia =
-            audioContext.createGain();
-
-        oscilador.frequency.value = 880;
-        oscilador.type = "sine";
-
-        ganancia.gain.setValueAtTime(
-            0.50,
-            ahora
-        );
-
-        ganancia.gain.exponentialRampToValueAtTime(
-            0.001,
-            ahora + 0.12
-        );
-
-        oscilador.connect(ganancia);
-        ganancia.connect(
-            audioContext.destination
-        );
-
-        oscilador.start(ahora);
-        oscilador.stop(ahora + 0.12);
-
-        return;
     }
+
+    if(
+        audioContextEntrenamiento.state === "suspended"
+    ){
+        audioContextEntrenamiento.resume();
+    }
+
+    const ahora =
+        audioContextEntrenamiento.currentTime;
+
+    const oscilador =
+        audioContextEntrenamiento.createOscillator();
+
+    const ganancia =
+        audioContextEntrenamiento.createGain();
+
+    oscilador.frequency.value = 880;
+    oscilador.type = "sine";
+
+    ganancia.gain.setValueAtTime(
+        0.50,
+        ahora
+    );
+
+    ganancia.gain.exponentialRampToValueAtTime(
+        0.001,
+        ahora + 0.12
+    );
+
+    oscilador.connect(ganancia);
+
+    ganancia.connect(
+        audioContextEntrenamiento.destination
+    );
+
+    oscilador.start(ahora);
+    oscilador.stop(ahora + 0.12);
+
+    return;
+}
 
 
     // 🔔🔔🔔 Tres campanas - final
@@ -5975,6 +7098,861 @@ if(tipo === "trabajo"){
     });
 
 }
+
+// =====================================================
+// PERFILES DE ENTRENAMIENTO
+// =====================================================
+
+function abrirPerfilesEntrenamiento(){
+
+    const popup =
+        document.getElementById("popupPerfilesEntrenamiento");
+
+    const lista =
+        document.getElementById("listaPerfilesEntrenamiento");
+
+    if(!popup || !lista){
+        return;
+    }
+
+    let perfiles =
+        JSON.parse(
+            localStorage.getItem("perfilesEntrenamiento") || "[]"
+        );
+
+
+    // =====================================================
+    // ELIMINAR DUPLICADOS
+    // =====================================================
+
+    const perfilesUnicos = [];
+
+    perfiles.forEach(function(perfil){
+
+        const existe =
+            perfilesUnicos.some(function(p){
+
+                return JSON.stringify(p.configuracion) ===
+                       JSON.stringify(perfil.configuracion);
+
+            });
+
+        if(!existe){
+
+            perfilesUnicos.push(perfil);
+
+        }
+
+    });
+
+    perfiles = perfilesUnicos;
+
+
+    // Guardar la lista limpia
+
+    localStorage.setItem(
+        "perfilesEntrenamiento",
+        JSON.stringify(perfiles)
+    );
+
+
+    // =====================================================
+    // MOSTRAR PERFILES
+    // =====================================================
+
+    lista.innerHTML = "";
+
+
+    if(perfiles.length === 0){
+
+        const mensaje =
+            document.createElement("div");
+
+        mensaje.style.textAlign = "center";
+        mensaje.style.color = "#aaa";
+        mensaje.style.padding = "20px 5px";
+
+        mensaje.textContent =
+            "Todavía no tenés perfiles guardados.";
+
+        lista.appendChild(mensaje);
+
+    }
+
+
+    perfiles.forEach(function(perfil, indice){
+
+        const tarjeta =
+            document.createElement("div");
+
+        tarjeta.style.display = "flex";
+        tarjeta.style.alignItems = "center";
+        tarjeta.style.justifyContent = "space-between";
+        tarjeta.style.gap = "10px";
+        tarjeta.style.padding = "12px";
+        tarjeta.style.marginBottom = "10px";
+        tarjeta.style.background = "#292929";
+        tarjeta.style.border = "1px solid #555";
+        tarjeta.style.borderRadius = "12px";
+        tarjeta.style.flexWrap = "wrap";
+
+
+        // =================================================
+        // NOMBRE
+        // =================================================
+
+        const nombre =
+            document.createElement("span");
+
+        nombre.textContent =
+            "🏋️ " + perfil.nombre;
+
+        nombre.style.color = "#fff";
+        nombre.style.fontWeight = "bold";
+        nombre.style.flex = "1";
+
+
+        tarjeta.appendChild(nombre);
+
+
+        // =================================================
+        // CONTENEDOR BOTONES
+        // =================================================
+
+        const botones =
+            document.createElement("div");
+
+        botones.style.display = "flex";
+        botones.style.gap = "6px";
+        botones.style.flexWrap = "wrap";
+
+
+        // =================================================
+        // USAR
+        // =================================================
+
+        const botonUsar =
+            document.createElement("button");
+
+        botonUsar.type = "button";
+        botonUsar.textContent = "▶ Usar";
+
+        botonUsar.onclick = function(){
+
+            seleccionarPerfilEntrenamiento(indice);
+
+        };
+
+        botones.appendChild(botonUsar);
+
+
+        // =================================================
+        // EDITAR
+        // =================================================
+
+        const botonEditar =
+            document.createElement("button");
+
+        botonEditar.type = "button";
+        botonEditar.textContent = "✏️ Editar";
+
+        botonEditar.onclick = function(){
+
+            editarPerfilEntrenamiento(indice);
+
+        };
+
+        botones.appendChild(botonEditar);
+
+
+        // =================================================
+        // ELIMINAR
+        // =================================================
+
+        const botonEliminar =
+            document.createElement("button");
+
+        botonEliminar.type = "button";
+        botonEliminar.textContent = "🗑️ Eliminar";
+
+        botonEliminar.onclick = function(){
+
+            eliminarPerfilEntrenamiento(indice);
+
+        };
+
+        botones.appendChild(botonEliminar);
+
+
+        tarjeta.appendChild(botones);
+
+        lista.appendChild(tarjeta);
+
+    });
+
+
+    popup.style.display = "flex";
+
+}
+
+
+// =====================================================
+// CERRAR PERFILES
+// =====================================================
+
+function cerrarPerfilesEntrenamiento(){
+
+    const popup =
+        document.getElementById("popupPerfilesEntrenamiento");
+
+    if(popup){
+        popup.style.display = "none";
+    }
+
+}
+
+// =====================================================
+// ELIMINAR PERFIL DE ENTRENAMIENTO
+// =====================================================
+
+// =====================================================
+// ELIMINAR PERFIL DE ENTRENAMIENTO
+// =====================================================
+
+let indicePerfilEliminar = null;
+
+
+function eliminarPerfilEntrenamiento(indice){
+
+    const perfiles =
+        JSON.parse(
+            localStorage.getItem("perfilesEntrenamiento") || "[]"
+        );
+
+
+    if(!perfiles[indice]){
+        return;
+    }
+
+
+    indicePerfilEliminar = indice;
+
+
+    const mensaje =
+        document.getElementById(
+            "mensajeEliminarPerfilEntrenamiento"
+        );
+
+
+    if(mensaje){
+
+        mensaje.textContent =
+            '¿Querés eliminar el perfil "' +
+            perfiles[indice].nombre +
+            '"?';
+
+    }
+
+
+    const popup =
+        document.getElementById(
+            "popupEliminarPerfilEntrenamiento"
+        );
+
+
+    if(popup){
+
+        popup.style.display = "flex";
+
+    }
+
+}
+
+
+// =====================================================
+// CONFIRMAR ELIMINACION
+// =====================================================
+
+function confirmarEliminarPerfilEntrenamiento(){
+
+    if(indicePerfilEliminar === null){
+        return;
+    }
+
+
+    const perfiles =
+        JSON.parse(
+            localStorage.getItem("perfilesEntrenamiento") || "[]"
+        );
+
+
+    if(!perfiles[indicePerfilEliminar]){
+        cerrarEliminarPerfilEntrenamiento();
+        return;
+    }
+
+
+    perfiles.splice(indicePerfilEliminar, 1);
+
+
+    localStorage.setItem(
+        "perfilesEntrenamiento",
+        JSON.stringify(perfiles)
+    );
+
+
+    indicePerfilEliminar = null;
+
+
+    cerrarEliminarPerfilEntrenamiento();
+
+
+    abrirPerfilesEntrenamiento();
+
+}
+
+
+// =====================================================
+// CERRAR CONFIRMACION DE ELIMINAR
+// =====================================================
+
+function cerrarEliminarPerfilEntrenamiento(){
+
+    const popup =
+        document.getElementById(
+            "popupEliminarPerfilEntrenamiento"
+        );
+
+
+    if(popup){
+
+        popup.style.display = "none";
+
+    }
+
+
+    indicePerfilEliminar = null;
+
+}
+
+// =====================================================
+// EDITAR PERFIL DE ENTRENAMIENTO
+// =====================================================
+
+let indicePerfilEditar = null;
+
+
+function editarPerfilEntrenamiento(indice){
+
+    const perfiles =
+        JSON.parse(
+            localStorage.getItem("perfilesEntrenamiento") || "[]"
+        );
+
+
+    if(!perfiles[indice]){
+        return;
+    }
+
+
+    indicePerfilEditar = indice;
+
+
+    const perfil =
+        perfiles[indice];
+
+
+    const configuracion =
+        perfil.configuracion || {};
+
+
+    // =====================================================
+    // NOMBRE
+    // =====================================================
+
+    const campoNombre =
+        document.getElementById(
+            "nombreEditarPerfilEntrenamiento"
+        );
+
+
+    if(campoNombre){
+
+        campoNombre.value =
+            perfil.nombre || "";
+
+    }
+
+
+    // =====================================================
+    // TIEMPOS
+    // =====================================================
+
+    const campoPreparacion =
+        document.getElementById(
+            "editarTiempoPreparacion"
+        );
+
+    if(campoPreparacion){
+
+        campoPreparacion.textContent =
+            formatearTiempoEntrenamiento(
+                parseInt(configuracion.preparacion) || 0
+            );
+
+    }
+
+
+    const campoTrabajo =
+        document.getElementById(
+            "editarTiempoTrabajo"
+        );
+
+    if(campoTrabajo){
+
+        campoTrabajo.textContent =
+            formatearTiempoEntrenamiento(
+                parseInt(configuracion.trabajo) || 0
+            );
+
+    }
+
+
+    const campoDescanso =
+        document.getElementById(
+            "editarTiempoDescanso"
+        );
+
+    if(campoDescanso){
+
+        campoDescanso.textContent =
+            formatearTiempoEntrenamiento(
+                parseInt(configuracion.descanso) || 0
+            );
+
+    }
+
+
+    const campoDescansoBloque =
+        document.getElementById(
+            "editarTiempoDescansoBloque"
+        );
+
+    if(campoDescansoBloque){
+
+        campoDescansoBloque.textContent =
+            formatearTiempoEntrenamiento(
+                parseInt(configuracion.descansoBloque) || 0
+            );
+
+    }
+
+
+    // =====================================================
+    // CICLOS
+    // =====================================================
+
+    const campoCiclos =
+        document.getElementById(
+            "editarCantidadCiclos"
+        );
+
+    if(campoCiclos){
+
+        campoCiclos.textContent =
+            parseInt(configuracion.ciclos) || 1;
+
+    }
+
+
+    // =====================================================
+    // BLOQUES
+    // =====================================================
+
+    const campoBloques =
+        document.getElementById(
+            "editarCantidadBloques"
+        );
+
+    if(campoBloques){
+
+        campoBloques.textContent =
+            parseInt(configuracion.bloques) || 1;
+
+    }
+
+// =====================================================
+// SONIDO
+// =====================================================
+
+const campoSonido =
+    document.getElementById(
+        "editarSonidoEntrenamiento"
+    );
+
+if(campoSonido){
+
+    campoSonido.innerHTML =
+        '<option value="">🔊 Predeterminado</option>';
+
+    if(
+        typeof sonidosEntrenamiento !== "undefined" &&
+        Array.isArray(sonidosEntrenamiento)
+    ){
+
+        sonidosEntrenamiento.forEach(function(sonido){
+
+            const opcion =
+                document.createElement("option");
+
+            opcion.value =
+                sonido.id;
+
+            opcion.textContent =
+                sonido.nombre;
+
+            campoSonido.appendChild(opcion);
+
+        });
+
+    }
+
+    campoSonido.value =
+        configuracion.sonido || "";
+
+}
+
+// =====================================================
+// VOZ
+// =====================================================
+
+const campoVoz =
+    document.getElementById(
+        "editarVozEntrenamiento"
+    );
+
+if(campoVoz){
+
+    campoVoz.innerHTML =
+        '<option value="">🔇 Sin voz</option>';
+
+    if(
+        typeof vocesEntrenamiento !== "undefined" &&
+        Array.isArray(vocesEntrenamiento)
+    ){
+
+        vocesEntrenamiento.forEach(function(voz){
+
+            const opcion =
+                document.createElement("option");
+
+            opcion.value =
+                voz.id;
+
+            opcion.textContent =
+                voz.nombre;
+
+            campoVoz.appendChild(opcion);
+
+        });
+
+    }
+
+    campoVoz.value =
+        configuracion.voz || "";
+
+}
+
+    // =====================================================
+    // ABRIR POPUP
+    // =====================================================
+
+    const popup =
+        document.getElementById(
+            "popupEditarPerfilEntrenamiento"
+        );
+
+
+    if(popup){
+
+        popup.style.display = "flex";
+
+    }
+
+}
+
+
+// =====================================================
+// CERRAR EDICION
+// =====================================================
+
+function cerrarEditarPerfilEntrenamiento(){
+
+    const popup =
+        document.getElementById(
+            "popupEditarPerfilEntrenamiento"
+        );
+
+
+    if(popup){
+
+        popup.style.display = "none";
+
+    }
+
+
+    indicePerfilEditar = null;
+
+}
+
+// =====================================================
+// GUARDAR CAMBIO DE NOMBRE DEL PERFIL
+// =====================================================
+
+function guardarEdicionPerfilEntrenamiento(){
+
+    if(indicePerfilEditar === null){
+        return;
+    }
+
+
+    const campo =
+        document.getElementById(
+            "nombreEditarPerfilEntrenamiento"
+        );
+
+
+    if(!campo){
+        return;
+    }
+
+
+    const nuevoNombre =
+        campo.value.trim();
+
+
+    if(nuevoNombre === ""){
+        return;
+    }
+
+
+    const perfiles =
+        JSON.parse(
+            localStorage.getItem("perfilesEntrenamiento") || "[]"
+        );
+
+
+    if(!perfiles[indicePerfilEditar]){
+        return;
+    }
+
+
+    perfiles[indicePerfilEditar].nombre =
+        nuevoNombre.substring(0,20);
+
+
+    localStorage.setItem(
+        "perfilesEntrenamiento",
+        JSON.stringify(perfiles)
+    );
+
+
+    cerrarEditarPerfilEntrenamiento();
+
+
+    abrirPerfilesEntrenamiento();
+
+}
+
+
+// =====================================================
+// CERRAR POPUP CONFIRMAR PERFIL
+// =====================================================
+
+function cerrarConfirmarPerfilEntrenamiento(){
+
+    const popup =
+        document.getElementById(
+            "popupConfirmarPerfilEntrenamiento"
+        );
+
+    if(popup){
+
+        popup.style.display = "none";
+
+    }
+
+}
+
+
+// =====================================================
+// CREAR PERFIL — POR AHORA SOLO AVISO
+// =====================================================
+
+function crearPerfilEntrenamiento(){
+
+    alert("Acá vamos a crear el perfil.");
+}
+
+
+
+
+// =====================================================
+// GUARDAR NUEVO PERFIL DE ENTRENAMIENTO
+// =====================================================
+
+function guardarNuevoPerfilEntrenamiento(){
+
+    const campo =
+        document.getElementById(
+            "nombreNuevoPerfilEntrenamiento"
+        );
+
+    if(!campo){
+        return;
+    }
+
+
+    const nombre =
+        campo.value.trim();
+
+
+    if(nombre === ""){
+
+        return;
+    }
+
+
+    if(nombre.length > 20){
+
+        return;
+    }
+
+
+    const perfiles =
+        JSON.parse(
+            localStorage.getItem("perfilesEntrenamiento") || "[]"
+        );
+
+
+    if(perfiles.length >= 10){
+
+        return;
+    }
+
+
+    const nombreRepetido =
+        perfiles.some(function(perfil){
+
+            return (
+                (perfil.nombre || "")
+                .trim()
+                .toLowerCase()
+            ) === nombre.toLowerCase();
+
+        });
+
+
+  if(nombreRepetido){
+
+    const mensaje =
+        document.getElementById(
+            "mensajeNuevoPerfilEntrenamiento"
+        );
+
+    if(mensaje){
+
+        mensaje.textContent =
+            "⚠️ Ya existe un perfil con ese nombre";
+
+        mensaje.style.color = "#FFD700";
+        mensaje.style.display = "block";
+
+    }
+
+    return;
+}
+
+
+    const configuracion =
+        JSON.parse(
+            localStorage.getItem("configuracionEntrenamiento") || "null"
+        );
+
+
+    if(!configuracion){
+
+        return;
+    }
+
+
+    const nuevoPerfil = {
+
+        nombre: nombre,
+
+        configuracion: configuracion
+
+    };
+
+
+    perfiles.push(nuevoPerfil);
+
+
+    localStorage.setItem(
+        "perfilesEntrenamiento",
+        JSON.stringify(perfiles)
+    );
+
+
+    // =================================================
+    // MENSAJE DENTRO DEL POPUP
+    // =================================================
+
+ const mensaje =
+    document.getElementById("mensajeNuevoPerfilEntrenamiento");
+
+    const popup =
+        document.getElementById(
+            "popupConfirmarPerfilEntrenamiento"
+        );
+
+
+    if(mensaje){
+
+        mensaje.textContent =
+            "✅ Perfil guardado correctamente";
+
+        mensaje.style.display = "block";
+
+    }
+
+
+    // =================================================
+    // CERRAR POPUP DESPUÉS DEL MENSAJE
+    // =================================================
+
+    setTimeout(function(){
+
+        if(mensaje){
+
+            mensaje.style.display = "none";
+
+        }
+
+        if(popup){
+
+            popup.style.display = "none";
+
+        }
+
+        campo.value = "";
+
+    },1200);
+
+
+
+}
+
 
 // ===== MOTOR ENTRENAMIENTO =====
 
@@ -6698,6 +8676,7 @@ function cancelarEntrenamiento(){
 function finalizarEntrenamiento(){
 
 sonidoTabata("final");
+  reproducirVozEntrenamiento("final");
 
     clearInterval(intervaloEntrenamiento);
 
@@ -8102,14 +10081,22 @@ function filtrarRadios(tipo){
                 '<input type="checkbox" value="' +
                 radio.id + '"' +
                 (seleccionadas.includes(radio.id) ? " checked" : "") +
-                '> 📻 ' +
-                radio.nombre;
+                '>' +
+
+                '<img src="' + (radio.logo || '') +
+                '" alt="' + (radio.nombre || '') +
+                '" style="width:45px;height:45px;border-radius:8px;object-fit:cover;">' +
+
+                '<span>' +
+                radio.nombre +
+                '</span>';
 
             contenedor.appendChild(label);
 
         });
 
 }
+
 function abrirConfiguracionRadios(){
 
     const popup = document.getElementById("popupConfiguracionRadios");
@@ -8147,24 +10134,37 @@ function cerrarConfiguracionRadios(){
     popup.style.display = "none";
 
 }
-
 function guardarConfiguracionRadios(){
 
-    const radios = [];
+    // Recuperar las radios que ya estaban guardadas
+    const radiosGuardadas = JSON.parse(
+        localStorage.getItem("RadiosSeleccionadas")
+    ) || [];
 
+    // Convertirlas en Set para evitar duplicados
+    const radios = new Set(radiosGuardadas);
+
+    // Actualizar solamente las radios que pertenecen al filtro actual
     document.querySelectorAll(
         "#configuracionRadios input[type='checkbox']"
     ).forEach(function(checkbox){
 
         if(checkbox.checked){
-            radios.push(checkbox.value);
+
+            radios.add(checkbox.value);
+
+        }else{
+
+            radios.delete(checkbox.value);
+
         }
 
     });
 
+    // Guardar nuevamente todas las radios
     localStorage.setItem(
         "RadiosSeleccionadas",
-        JSON.stringify(radios)
+        JSON.stringify(Array.from(radios))
     );
 
     const mensaje = document.getElementById("mensajeRadios");
@@ -8186,6 +10186,8 @@ function guardarConfiguracionRadios(){
     mostrarRadiosSeleccionadas();
 
 }
+
+
 function mostrarRadiosSeleccionadas(){
 
     const contenedor = document.getElementById(
@@ -8246,37 +10248,1812 @@ function mostrarRadiosSeleccionadas(){
 
         card.onclick = function(){
 
-            // Cerrar reproductores anteriores
-            document.querySelectorAll(
-                "#RadiosSeleccionadas audio"
-            ).forEach(function(audio){
+    // Cancelar cualquier reproductor anterior
+    document.querySelectorAll(
+        "#RadiosSeleccionadas audio"
+    ).forEach(function(audio){
 
-                audio.pause();
-                audio.remove();
+        audio.pause();
+        audio.src = "";
+        audio.load();
+        audio.remove();
 
-            });
+    });
 
-            const audio = document.createElement("audio");
+    // Cancelar temporizadores anteriores
+    if(window.temporizadorRadioActivo){
+        clearTimeout(window.temporizadorRadioActivo);
+        window.temporizadorRadioActivo = null;
+    }
 
-            audio.controls = true;
-            audio.src = radioInfo.urlStream || "";
-            audio.style.width = "100%";
-            audio.style.maxWidth = "200px";
-            audio.style.height = "30px";
-            audio.style.marginTop = "12px";
+let reproductorRadio = document.getElementById("reproductorRadioFijo");
 
-            card.appendChild(audio);
 
-            audio.play().catch(function(){
+if(reproductorRadio){
 
-                console.log(
-                    "El navegador requiere iniciar la reproducción manualmente."
+    reproductorRadio.audio.__radioCerrada = true;
+
+    reproductorRadio.audio.pause();
+    reproductorRadio.audio.removeAttribute("src");
+    reproductorRadio.audio.load();
+
+    reproductorRadio.remove();
+
+    reproductorRadio = null;
+
+}
+
+
+let audioNuevo = null;
+
+if (!reproductorRadio) {
+
+    const contenedorReproductor =
+        document.createElement("div");
+
+    contenedorReproductor.id =
+        "reproductorRadioFijo";
+
+
+    /* =====================================================
+       ESTILO BASE — CYBERPUNK / RETRO 80s
+       ===================================================== */
+
+    contenedorReproductor.style.position = "fixed";
+    contenedorReproductor.style.bottom = "20px";
+    contenedorReproductor.style.left = "50%";
+    contenedorReproductor.style.transform =
+        "translateX(-50%)";
+
+    contenedorReproductor.style.zIndex = "9999";
+
+    contenedorReproductor.style.width = "720px";
+    contenedorReproductor.style.maxWidth = "95vw";
+
+    contenedorReproductor.style.boxSizing =
+        "border-box";
+
+    contenedorReproductor.style.padding =
+        "10px 16px 16px 16px";
+
+    contenedorReproductor.style.borderRadius =
+        "20px";
+
+    contenedorReproductor.style.border =
+        "1px solid rgba(0,240,255,.4)";
+
+    contenedorReproductor.style.background =
+        "linear-gradient(180deg,#0d0f1d 0%,#05060b 100%)";
+
+    contenedorReproductor.style.boxShadow =
+        "0 15px 40px rgba(0,0,0,.9)," +
+        "0 0 20px rgba(0,240,255,.25)";
+
+    contenedorReproductor.style.fontFamily =
+        "'Segoe UI',Roboto,Helvetica,Arial,sans-serif";
+
+    contenedorReproductor.style.color =
+        "#fff";
+
+
+    /* =====================================================
+       ASA SUPERIOR DE ARRASTRE
+       ===================================================== */
+
+    const asaArrastre =
+        document.createElement("div");
+
+    asaArrastre.style.width = "50px";
+    asaArrastre.style.height = "18px";
+
+    asaArrastre.style.margin =
+        "0 auto 8px auto";
+
+    asaArrastre.style.background =
+        "rgba(255,255,255,.08)";
+
+    asaArrastre.style.border =
+        "1px solid rgba(0,240,255,.3)";
+
+    asaArrastre.style.borderRadius =
+        "10px";
+
+    asaArrastre.style.display = "flex";
+
+    asaArrastre.style.justifyContent =
+        "center";
+
+    asaArrastre.style.alignItems =
+        "center";
+
+    asaArrastre.style.cursor =
+        "grab";
+
+    asaArrastre.title =
+        "Arrastrá para mover";
+
+    asaArrastre.innerHTML =
+        "<div style='" +
+        "width:18px;" +
+        "height:2px;" +
+        "background:#00f0ff;" +
+        "box-shadow:0 2px 0 #00f0ff;" +
+        "'></div>";
+
+    contenedorReproductor.appendChild(
+        asaArrastre
+    );
+
+
+    /* =====================================================
+       CUERPO PRINCIPAL
+       ===================================================== */
+
+    const cuerpo =
+        document.createElement("div");
+
+    cuerpo.style.display = "flex";
+
+    cuerpo.style.flexDirection =
+        "column";
+
+    cuerpo.style.gap = "12px";
+
+
+    /* =====================================================
+       PANEL SUPERIOR
+       ===================================================== */
+
+    const panelSuperior =
+        document.createElement("div");
+
+    panelSuperior.style.display = "flex";
+
+    panelSuperior.style.alignItems =
+        "center";
+
+    panelSuperior.style.justifyContent =
+        "space-between";
+
+    panelSuperior.style.background =
+        "rgba(10,15,30,.7)";
+
+    panelSuperior.style.border =
+        "1px solid rgba(0,240,255,.3)";
+
+    panelSuperior.style.borderRadius =
+        "14px";
+
+    panelSuperior.style.padding =
+        "10px 14px";
+
+    panelSuperior.style.gap =
+        "12px";
+
+
+    /* =====================================================
+       EMISORA
+       ===================================================== */
+
+    const boxEmisora =
+        document.createElement("div");
+
+    boxEmisora.style.display =
+        "flex";
+
+    boxEmisora.style.alignItems =
+        "center";
+
+    boxEmisora.style.gap =
+        "10px";
+
+    boxEmisora.style.minWidth =
+        "0";
+
+
+    const logo =
+        document.createElement("div");
+
+    logo.style.width = "46px";
+    logo.style.height = "46px";
+
+    logo.style.borderRadius =
+        "10px";
+
+    logo.style.background =
+        "linear-gradient(135deg,#180036,#41006f)";
+
+    logo.style.border =
+        "1px solid #ff007f";
+
+    logo.style.boxShadow =
+        "0 0 10px rgba(255,0,127,.5)";
+
+    logo.style.display =
+        "flex";
+
+    logo.style.flexDirection =
+        "column";
+
+    logo.style.justifyContent =
+        "center";
+
+    logo.style.alignItems =
+        "center";
+
+    logo.style.lineHeight =
+        "1";
+
+    logo.style.flexShrink =
+        "0";
+
+
+    const nombreRadio =
+        (typeof radioInfo !== "undefined" &&
+         radioInfo.nombre)
+            ? radioInfo.nombre
+            : "RADIO";
+
+
+    const frecuenciaRadio =
+        (typeof radioInfo !== "undefined" &&
+         radioInfo.frecuencia)
+            ? radioInfo.frecuencia
+            : "";
+
+
+    logo.innerHTML =
+        "<span style='" +
+        "font-weight:900;" +
+        "font-size:13px;" +
+        "color:#ff007f;" +
+        "text-shadow:0 0 5px #ff007f;" +
+        "'>FM</span>" +
+
+        "<span style='" +
+        "font-size:9px;" +
+        "color:#fff;" +
+        "font-weight:bold;" +
+        "'>RADIO</span>";
+
+
+    const infoTexto =
+        document.createElement("div");
+
+    infoTexto.style.minWidth =
+        "0";
+
+
+    infoTexto.innerHTML =
+        "<div style='" +
+        "display:flex;" +
+        "align-items:center;" +
+        "gap:8px;" +
+        "min-width:0;" +
+        "'>" +
+
+        "<span style='" +
+        "font-weight:bold;" +
+        "font-size:14px;" +
+        "color:#00f0ff;" +
+        "text-shadow:0 0 8px rgba(0,240,255,.6);" +
+        "white-space:nowrap;" +
+        "overflow:hidden;" +
+        "text-overflow:ellipsis;" +
+        "'>" +
+
+        nombreRadio +
+
+        "</span>" +
+
+        "</div>" +
+
+        "<div style='" +
+        "font-size:10px;" +
+        "color:#8fa0b5;" +
+        "margin-top:3px;" +
+        "'>" +
+
+        frecuenciaRadio +
+
+        "</div>";
+
+
+    boxEmisora.appendChild(
+        logo
+    );
+
+    boxEmisora.appendChild(
+        infoTexto
+    );
+
+
+    /* =====================================================
+       VU / ECUALIZADOR VISUAL
+       ===================================================== */
+
+    const zonaVU =
+        document.createElement("div");
+
+    zonaVU.style.display =
+        "flex";
+
+    zonaVU.style.alignItems =
+        "flex-end";
+
+    zonaVU.style.justifyContent =
+        "center";
+
+    zonaVU.style.gap =
+        "4px";
+
+    zonaVU.style.height =
+        "30px";
+
+    zonaVU.style.width =
+        "150px";
+
+    zonaVU.style.margin =
+        "0 5px";
+
+zonaVU.style.transform =
+    "translateX(18px)";
+
+    zonaVU.style.padding =
+        "3px 4px";
+
+    zonaVU.style.boxSizing =
+        "border-box";
+
+   zonaVU.style.background =
+    "linear-gradient(to bottom,#02070b,#000000)";
+
+  zonaVU.style.border =
+    "1px solid rgba(0,240,255,.45)";
+
+zonaVU.style.borderBottom =
+    "2px solid rgba(0,240,255,.45)";
+
+    zonaVU.style.borderRadius =
+        "5px";
+
+
+    const barrasVU = [];
+
+
+    for(let i = 0; i < 20; i++){
+
+        const barra =
+            document.createElement("div");
+
+        barra.style.width =
+            "5px";
+
+        barra.style.height =
+            "25%";
+
+        barra.style.minHeight =
+            "3px";
+
+        barra.style.borderRadius =
+            "2px";
+
+     barra.style.background =
+    "linear-gradient(to top," +
+    "#00ff66 0%," +
+    "#00f0ff 50%," +
+    "#ff003c 100%)";
+
+barra.style.boxShadow =
+    "0 0 4px rgba(0,240,255,.8)";
+
+        barra.style.opacity =
+            "0.35";
+
+        barra.style.transition =
+            "height .05s linear,opacity .08s linear";
+
+        zonaVU.appendChild(
+            barra
+        );
+
+        barrasVU.push(
+            barra
+        );
+
+    }
+
+
+/* =====================================================
+   AJUSTE VU PARA CELULAR
+   ===================================================== */
+
+if(
+    window.innerWidth <= 600
+){
+
+    zonaVU.style.width =
+        "95px";
+
+    
+    zonaVU.style.gap =
+        "1px";
+
+    barrasVU.forEach(
+        function(barra){
+
+            barra.style.width =
+                "2px";
+
+        }
+    );
+
+}
+
+
+    /* =====================================================
+       CONTROLES
+       ===================================================== */
+
+ const cajaControles =
+    document.createElement("div");
+
+cajaControles.style.display =
+    "flex";
+
+cajaControles.style.alignItems =
+    "center";
+
+cajaControles.style.gap =
+    "10px";
+
+cajaControles.style.flexShrink =
+    "0";
+
+
+/* =====================================================
+   ESTADO EN VIVO + PLAY
+   ===================================================== */
+
+const bloquePlay =
+    document.createElement("div");
+
+bloquePlay.style.display =
+    "flex";
+
+bloquePlay.style.flexDirection =
+    "column";
+
+bloquePlay.style.alignItems =
+    "flex-end";
+
+bloquePlay.style.justifyContent =
+    "center";
+
+bloquePlay.style.gap =
+    "5px";
+
+bloquePlay.style.flexShrink =
+    "0";
+
+
+const indicadorEnVivo =
+    document.createElement("div");
+
+indicadorEnVivo.innerHTML =
+    "● En vivo";
+
+indicadorEnVivo.style.fontSize =
+    "8px";
+
+indicadorEnVivo.style.color =
+    "#00ff66";
+
+indicadorEnVivo.style.whiteSpace =
+    "nowrap";
+
+indicadorEnVivo.style.lineHeight =
+    "1";
+
+
+bloquePlay.appendChild(
+    indicadorEnVivo
+);
+
+
+    /* ===== PLAY / PAUSE ===== */
+
+    const btnPlayPause =
+        document.createElement("button");
+
+    btnPlayPause.type =
+        "button";
+
+    btnPlayPause.innerHTML =
+        "▶";
+
+    btnPlayPause.title =
+        "Reproducir / Pausar";
+
+    btnPlayPause.style.width =
+        "36px";
+
+    btnPlayPause.style.height =
+        "36px";
+
+    btnPlayPause.style.padding =
+        "0";
+
+    btnPlayPause.style.borderRadius =
+        "50%";
+
+    btnPlayPause.style.border =
+        "1px solid #00f0ff";
+
+    btnPlayPause.style.background =
+        "radial-gradient(circle,#0a2540,#020b14)";
+
+    btnPlayPause.style.color =
+        "#00f0ff";
+
+    btnPlayPause.style.cursor =
+        "pointer";
+
+    btnPlayPause.style.display =
+        "flex";
+
+    btnPlayPause.style.justifyContent =
+        "center";
+
+    btnPlayPause.style.alignItems =
+        "center";
+
+    btnPlayPause.style.boxShadow =
+        "0 0 10px rgba(0,240,255,.4)";
+
+    btnPlayPause.style.fontSize =
+        "12px";
+
+btnPlayPause.style.transform =
+    "translateX(20px)";
+    
+bloquePlay.appendChild(
+    btnPlayPause
+);
+
+
+cajaControles.appendChild(
+    bloquePlay
+);
+
+    /* ===== VOLUMEN ===== */
+
+    const boxVolumen =
+        document.createElement("div");
+
+    boxVolumen.style.display =
+        "flex";
+
+    boxVolumen.style.alignItems =
+        "center";
+
+    boxVolumen.style.gap =
+        "5px";
+
+    boxVolumen.style.transform =
+    "translateX(20px)";
+
+if(window.innerWidth <= 600){
+
+    boxVolumen.style.transform =
+        "translateX(15px)";
+
+}
+
+    const iconoVolumen =
+        document.createElement("span");
+
+    iconoVolumen.innerHTML =
+        "🔊";
+
+    iconoVolumen.style.fontSize =
+        "11px";
+
+
+    const sliderVolumen =
+        document.createElement("input");
+
+    sliderVolumen.type =
+        "range";
+
+    sliderVolumen.min =
+        "0";
+
+    sliderVolumen.max =
+        "1";
+
+    sliderVolumen.step =
+        "0.01";
+
+    sliderVolumen.value =
+        "0.8";
+
+    sliderVolumen.style.width =
+        "65px";
+
+    sliderVolumen.style.accentColor =
+        "#00f0ff";
+
+
+    boxVolumen.appendChild(
+        iconoVolumen
+    );
+
+    boxVolumen.appendChild(
+        sliderVolumen
+    );
+
+cajaControles.appendChild(
+    boxVolumen
+);
+
+
+    /* =====================================================
+       BOTÓN CERRAR
+       ===================================================== */
+
+    const botonCerrar =
+        document.createElement("button");
+
+    botonCerrar.type =
+        "button";
+
+    botonCerrar.innerHTML =
+        "✕";
+
+    botonCerrar.title =
+        "Cerrar reproductor";
+
+    botonCerrar.style.cursor =
+        "pointer";
+
+    botonCerrar.style.width =
+        "26px";
+
+    botonCerrar.style.height =
+        "26px";
+
+    botonCerrar.style.padding =
+        "0";
+
+    botonCerrar.style.borderRadius =
+        "50%";
+
+    botonCerrar.style.border =
+        "1px solid #ff0055";
+
+    botonCerrar.style.background =
+        "rgba(255,0,85,.15)";
+
+    botonCerrar.style.color =
+        "#ff0055";
+
+    botonCerrar.style.fontWeight =
+        "bold";
+
+    botonCerrar.style.fontSize =
+        "11px";
+
+    botonCerrar.style.boxShadow =
+        "0 0 8px rgba(255,0,85,.4)";
+
+    botonCerrar.style.flexShrink =
+        "0";
+
+botonCerrar.style.transform =
+    "translateY(-12px)";
+
+    panelSuperior.appendChild(
+        boxEmisora
+    );
+
+    panelSuperior.appendChild(
+        zonaVU
+    );
+
+    panelSuperior.appendChild(
+        cajaControles
+    );
+
+    panelSuperior.appendChild(
+        botonCerrar
+    );
+
+
+
+
+    /* =====================================================
+       PANEL INFERIOR
+       ===================================================== */
+
+    const panelInferior =
+        document.createElement("div");
+
+    panelInferior.style.display =
+        "grid";
+
+    panelInferior.style.gridTemplateColumns =
+        "72px 1fr 72px";
+
+    panelInferior.style.gap =
+        "14px";
+
+    panelInferior.style.alignItems =
+        "center";
+
+    panelInferior.style.background =
+        "#040508";
+
+    panelInferior.style.border =
+        "1px solid rgba(255,255,255,.1)";
+
+    panelInferior.style.borderRadius =
+        "14px";
+
+    panelInferior.style.padding =
+        "10px 14px";
+
+
+    /* =====================================================
+       PARLANTES
+       ===================================================== */
+
+    function crearParlanteNeon(){
+
+        const p =
+            document.createElement("div");
+
+        p.style.width =
+            "58px";
+
+        p.style.height =
+            "58px";
+
+        p.style.borderRadius =
+            "50%";
+
+        p.style.border =
+            "2px solid #ff00a0";
+
+        p.style.background =
+            "radial-gradient(" +
+            "circle," +
+            "#351035 0%," +
+            "#160016 35%," +
+            "#030003 70%," +
+            "#000 100%" +
+            ")";
+
+        p.style.boxShadow =
+            "0 0 12px rgba(255,0,160,.5)," +
+            "inset 0 0 10px #000";
+
+        p.style.position =
+            "relative";
+
+        p.style.margin =
+            "auto";
+
+
+        const cono =
+            document.createElement("div");
+
+        cono.style.position =
+            "absolute";
+
+        cono.style.left =
+            "50%";
+
+        cono.style.top =
+            "50%";
+
+        cono.style.transform =
+            "translate(-50%,-50%)";
+
+        cono.style.width =
+            "32px";
+
+        cono.style.height =
+            "32px";
+
+        cono.style.borderRadius =
+            "50%";
+
+        cono.style.border =
+            "1px solid rgba(255,0,160,.45)";
+
+        cono.style.boxShadow =
+            "inset 0 0 7px #000";
+
+
+        const centro =
+            document.createElement("div");
+
+        centro.style.position =
+            "absolute";
+
+        centro.style.left =
+            "50%";
+
+        centro.style.top =
+            "50%";
+
+        centro.style.transform =
+            "translate(-50%,-50%)";
+
+        centro.style.width =
+            "8px";
+
+        centro.style.height =
+            "8px";
+
+        centro.style.borderRadius =
+            "50%";
+
+        centro.style.background =
+            "#ff00a0";
+
+        centro.style.boxShadow =
+            "0 0 8px #ff00a0";
+
+
+        p.appendChild(
+            cono
+        );
+
+        p.appendChild(
+            centro
+        );
+
+        return p;
+
+    }
+
+
+    /* =====================================================
+       DIAL
+       ===================================================== */
+
+    const dial =
+        document.createElement("div");
+
+    dial.style.position =
+        "relative";
+
+    dial.style.height =
+        "62px";
+
+    dial.style.background =
+        "linear-gradient(180deg,#101522,#05070c)";
+
+    dial.style.border =
+        "1px solid rgba(255,255,255,.15)";
+
+    dial.style.borderRadius =
+        "8px";
+
+    dial.style.overflow =
+        "hidden";
+
+    dial.style.display =
+        "flex";
+
+    dial.style.flexDirection =
+        "column";
+
+    dial.style.justifyContent =
+        "center";
+
+    dial.style.padding =
+        "0 12px";
+
+
+    const numerosDial =
+        document.createElement("div");
+
+    numerosDial.style.display =
+        "flex";
+
+    numerosDial.style.justifyContent =
+        "space-between";
+
+    numerosDial.style.alignItems =
+        "center";
+
+    numerosDial.style.color =
+        "#8a99ad";
+
+    numerosDial.style.fontFamily =
+        "monospace";
+
+    numerosDial.style.fontSize =
+        "10px";
+
+    numerosDial.innerHTML =
+        "<span style='color:#ff00a0'>AM</span>" +
+        "<span>88</span>" +
+        "<span>92</span>" +
+        "<span>96</span>" +
+        "<span>100</span>" +
+        "<span>104</span>" +
+        "<span>108</span>" +
+        "<span style='color:#00f0ff'>FM</span>";
+
+const frecuenciaDial =
+    document.createElement("div");
+
+frecuenciaDial.innerHTML =
+    radioInfo.frecuencia || "";
+
+frecuenciaDial.style.position =
+    "absolute";
+
+frecuenciaDial.style.top =
+    "4px";
+
+frecuenciaDial.style.left =
+    "50%";
+
+frecuenciaDial.style.transform =
+    "translateX(-50%)";
+
+frecuenciaDial.style.color =
+    "#00f0ff";
+
+frecuenciaDial.style.fontFamily =
+    "monospace";
+
+frecuenciaDial.style.fontSize =
+    "11px";
+
+frecuenciaDial.style.fontWeight =
+    "bold";
+
+frecuenciaDial.style.textShadow =
+    "0 0 6px #00f0ff";
+
+frecuenciaDial.style.whiteSpace =
+    "nowrap";
+
+dial.appendChild(
+    frecuenciaDial
+);
+
+
+    const escala =
+        document.createElement("div");
+
+    escala.style.height =
+        "12px";
+
+    escala.style.marginTop =
+        "4px";
+
+    escala.style.background =
+        "repeating-linear-gradient(" +
+        "90deg," +
+        "transparent 0px," +
+        "transparent 5px," +
+        "#4a5a70 6px," +
+        "#4a5a70 7px" +
+        ")";
+
+    escala.style.borderTop =
+        "1px solid #4a5a70";
+
+
+    const aguja =
+        document.createElement("div");
+
+    aguja.style.position =
+        "absolute";
+
+    aguja.style.top =
+        "0";
+
+    aguja.style.bottom =
+        "0";
+
+ let frecuenciaNumero =
+    parseFloat(
+        String(
+            radioInfo.frecuencia || ""
+        )
+        .replace(",", ".")
+        .match(/[\d.]+/)
+    );
+
+if(
+    !isNaN(frecuenciaNumero)
+){
+
+    let posicionAguja =
+        ((frecuenciaNumero - 88) /
+         (108 - 88)) * 100;
+
+    posicionAguja =
+        Math.max(
+            0,
+            Math.min(
+                100,
+                posicionAguja
+            )
+        );
+
+   aguja.style.left =
+    "25%";
+
+}else{
+
+    aguja.style.left =
+        "50%";
+
+}
+
+    aguja.style.width =
+        "2px";
+
+    aguja.style.background =
+        "#ff3300";
+
+    aguja.style.boxShadow =
+        "0 0 8px #ff3300";
+
+
+    dial.appendChild(
+        numerosDial
+    );
+
+    dial.appendChild(
+        escala
+    );
+
+    dial.appendChild(
+        aguja
+    );
+
+
+    panelInferior.appendChild(
+        crearParlanteNeon()
+    );
+
+    panelInferior.appendChild(
+        dial
+    );
+
+    panelInferior.appendChild(
+        crearParlanteNeon()
+    );
+
+
+    cuerpo.appendChild(
+        panelSuperior
+    );
+
+    cuerpo.appendChild(
+        panelInferior
+    );
+
+    contenedorReproductor.appendChild(
+        cuerpo
+    );
+
+
+    /* =====================================================
+       AUDIO REAL
+       IMPORTANTE: SIN "const"
+       ===================================================== */
+
+    audioNuevo =
+        document.createElement("audio");
+
+    audioNuevo.controls =
+        false;
+
+    audioNuevo.autoplay =
+        false;
+
+    audioNuevo.volume =
+        0.8;
+
+
+audioNuevo.crossOrigin =
+    "anonymous";
+
+const contextoAudio =
+    new (window.AudioContext ||
+         window.webkitAudioContext)();
+
+const analizadorAudio =
+    contextoAudio.createAnalyser();
+
+analizadorAudio.fftSize =
+    64;
+
+const fuenteAudio =
+    contextoAudio.createMediaElementSource(
+        audioNuevo
+    );
+
+fuenteAudio.connect(
+    analizadorAudio
+);
+
+analizadorAudio.connect(
+    contextoAudio.destination
+);
+
+const datosVU =
+    new Uint8Array(
+        analizadorAudio.frequencyBinCount
+    );
+
+
+    /* =====================================================
+       VOLUMEN
+       ===================================================== */
+
+    sliderVolumen.addEventListener(
+        "input",
+        function(){
+
+            audioNuevo.volume =
+                parseFloat(
+                    this.value
                 );
 
-            });
+        }
+    );
+
+
+    /* =====================================================
+       PLAY / PAUSE
+       ===================================================== */
+
+    btnPlayPause.onclick =
+        function(){
+
+            if(
+                audioNuevo.paused
+            ){
+
+                audioNuevo.play()
+                    .catch(
+                        function(){}
+                    );
+
+            }else{
+
+                audioNuevo.pause();
+
+            }
 
         };
 
+
+    /* =====================================================
+       CERRAR
+       ===================================================== */
+
+    botonCerrar.onclick =
+        function(){
+
+            if(
+                window.temporizadorRadioActivo
+            ){
+
+                clearTimeout(
+                    window.temporizadorRadioActivo
+                );
+
+                window.temporizadorRadioActivo =
+                    null;
+
+            }
+
+
+            audioNuevo.__radioCerrada =
+                true;
+
+
+            audioNuevo.pause();
+
+            audioNuevo.removeAttribute(
+                "src"
+            );
+
+            audioNuevo.load();
+
+            audioNuevo.currentTime =
+                0;
+
+            audioNuevo.src =
+                "";
+
+            audioNuevo.load();
+
+
+            contenedorReproductor.remove();
+
+            reproductorRadio =
+                null;
+
+        };
+
+
+    /* =====================================================
+       INSERTAR EN PANTALLA
+       ===================================================== */
+
+    document.body.appendChild(
+        contenedorReproductor
+    );
+
+
+    /* =====================================================
+       SISTEMA DE ARRASTRE
+       ===================================================== */
+
+    let moviendo =
+        false;
+
+    let offsetX =
+        0;
+
+    let offsetY =
+        0;
+
+
+asaArrastre.style.touchAction =
+    "none";
+
+
+asaArrastre.addEventListener(
+    "pointerdown",
+    function(e){
+
+        e.preventDefault();
+
+        moviendo =
+            true;
+
+        const rect =
+            contenedorReproductor
+                .getBoundingClientRect();
+
+        offsetX =
+            e.clientX -
+            rect.left;
+
+        offsetY =
+            e.clientY -
+            rect.top;
+
+        contenedorReproductor.style.bottom =
+            "auto";
+
+        contenedorReproductor.style.left =
+            rect.left + "px";
+
+        contenedorReproductor.style.top =
+            rect.top + "px";
+
+        contenedorReproductor.style.transform =
+            "none";
+
+        asaArrastre.setPointerCapture(
+            e.pointerId
+        );
+
+    }
+);
+
+
+asaArrastre.addEventListener(
+    "pointermove",
+    function(e){
+
+        if(!moviendo){
+            return;
+        }
+
+        e.preventDefault();
+
+        contenedorReproductor.style.left =
+            (e.clientX - offsetX) +
+            "px";
+
+        contenedorReproductor.style.top =
+            (e.clientY - offsetY) +
+            "px";
+
+    }
+);
+
+
+asaArrastre.addEventListener(
+    "pointerup",
+    function(e){
+
+        moviendo =
+            false;
+
+        if(
+            asaArrastre.hasPointerCapture(
+                e.pointerId
+            )
+        ){
+
+            asaArrastre.releasePointerCapture(
+                e.pointerId
+            );
+
+        }
+
+    }
+);
+
+
+asaArrastre.addEventListener(
+    "pointercancel",
+    function(){
+
+        moviendo =
+            false;
+
+    }
+);
+
+
+/* =====================================================
+   ARRASTRE DESDE ZONAS LIBRES DEL CHASIS
+   ===================================================== */
+
+contenedorReproductor.style.touchAction =
+    "none";
+
+contenedorReproductor.addEventListener(
+    "pointerdown",
+
+
+    function(e){
+
+        /* La asa ya tiene su propio sistema */
+        if(
+            e.target === asaArrastre ||
+            asaArrastre.contains(e.target)
+        ){
+            return;
+        }
+
+        /* Los controles no arrastran */
+        if(
+            e.target.closest("button") ||
+            e.target.closest("input") ||
+            e.target.closest("audio")
+        ){
+            return;
+        }
+
+        e.preventDefault();
+
+        moviendo =
+            true;
+
+        const rect =
+            contenedorReproductor
+                .getBoundingClientRect();
+
+        offsetX =
+            e.clientX -
+            rect.left;
+
+        offsetY =
+            e.clientY -
+            rect.top;
+
+        contenedorReproductor.style.bottom =
+            "auto";
+
+        contenedorReproductor.style.left =
+            rect.left + "px";
+
+        contenedorReproductor.style.top =
+            rect.top + "px";
+
+        contenedorReproductor.style.transform =
+            "none";
+
+    }
+);
+
+
+document.addEventListener(
+    "pointermove",
+    function(e){
+
+        if(!moviendo){
+            return;
+        }
+
+        e.preventDefault();
+
+        contenedorReproductor.style.left =
+            (e.clientX - offsetX) +
+            "px";
+
+        contenedorReproductor.style.top =
+            (e.clientY - offsetY) +
+            "px";
+
+    }
+);
+
+
+document.addEventListener(
+    "pointerup",
+    function(){
+
+        moviendo =
+            false;
+
+    }
+);
+
+
+document.addEventListener(
+    "pointercancel",
+    function(){
+
+        moviendo =
+            false;
+
+    }
+);
+
+
+    /* =====================================================
+       REFERENCIA DEL REPRODUCTOR
+       ===================================================== */
+
+    reproductorRadio =
+        contenedorReproductor;
+
+    reproductorRadio.audio =
+        audioNuevo;
+
+/* =====================================================
+   POSICIÓN AUTOMÁTICA DE LA AGUJA
+   ===================================================== */
+
+const textoFrecuencia =
+    String(
+        radioInfo.frecuencia || ""
+    ).replace(",", ".");
+
+const coincidenciaFrecuencia =
+    textoFrecuencia.match(
+        /[\d]+(?:\.[\d]+)?/
+    );
+
+if(coincidenciaFrecuencia){
+
+    const numeroFrecuencia =
+        parseFloat(
+            coincidenciaFrecuencia[0]
+        );
+
+    const tipoRadio =
+        String(
+            radioInfo.tipo ||
+            radioInfo.frecuencia ||
+            ""
+        ).toUpperCase();
+
+    let posicionAguja =
+        50;
+
+    if(tipoRadio.includes("AM")){
+
+        posicionAguja =
+            ((numeroFrecuencia - 530) /
+             (1710 - 530)) * 100;
+
+    }else{
+
+  posicionAguja =
+    14.3 +
+    (
+        (numeroFrecuencia - 88) /
+        (108 - 88)
+    ) * 71.4;
+
+    }
+
+    posicionAguja =
+        Math.max(
+            5,
+            Math.min(
+                95,
+                posicionAguja
+            )
+        );
+
+    aguja.style.left =
+        posicionAguja + "%";
+}
+
+
+    /* =====================================================
+       ANIMACIÓN VU
+       ===================================================== */
+
+    let animacionVU =
+        null;
+
+function moverVU(){
+
+    if(
+        audioNuevo.paused ||
+        audioNuevo.ended ||
+        audioNuevo.__radioCerrada
+    ){
+
+        barrasVU.forEach(
+            function(barra){
+
+                barra.style.opacity =
+                    "0.20";
+
+                barra.style.height =
+                    "25%";
+
+            }
+        );
+
+        animacionVU =
+            null;
+
+        return;
+
+    }
+
+
+    analizadorAudio.getByteFrequencyData(
+        datosVU
+    );
+
+
+    barrasVU.forEach(
+        function(barra,index){
+
+            
+
+     const nivel =
+    datosVU[
+        Math.min(
+            datosVU.length - 1,
+          Math.floor(
+   index *
+(datosVU.length * 0.65) /
+(barrasVU.length - 1)
+
+
+)
+        )
+
+
+    ] /
+    255;
+
+            const altura =
+                Math.max(
+                    0.08,
+                    nivel
+                );
+
+
+            barra.style.height =
+                (altura * 100) +
+                "%";
+
+
+barra.style.opacity =
+    Math.max(
+        0.45,
+        altura * 1.15
+    );
+
+        }
+    );
+
+
+    animacionVU =
+        requestAnimationFrame(
+            moverVU
+        );
+
+}
+
+    audioNuevo.addEventListener(
+        "play",
+        function(){
+
+            btnPlayPause.innerHTML =
+                "❚❚";
+
+
+            if(
+                animacionVU === null
+            ){
+
+                moverVU();
+
+            }
+
+        }
+    );
+
+
+    audioNuevo.addEventListener(
+        "pause",
+        function(){
+
+            btnPlayPause.innerHTML =
+                "▶";
+
+
+            if(
+                animacionVU
+            ){
+
+                cancelAnimationFrame(
+                    animacionVU
+                );
+
+                animacionVU =
+                    null;
+
+            }
+
+
+            barrasVU.forEach(
+                function(barra){
+
+                    barra.style.opacity =
+                        "0.35";
+
+                    barra.style.height =
+                        "25%";
+
+                }
+            );
+
+        }
+    );
+
+
+}
+
+    const streams = Array.isArray(radioInfo.streams) &&
+                    radioInfo.streams.length
+        ? radioInfo.streams
+        : [radioInfo.urlStream];
+
+    let indiceStream = 0;
+    let intentos = 0;
+    const maxIntentosPorStream = 3;
+
+    function reproducirStream(){
+
+        if(indiceStream >= streams.length){
+
+            console.log(
+                "No se pudo reproducir " +
+                radioInfo.nombre +
+                " después de probar todos los streams."
+            );
+
+            return;
+        }
+
+        const url = streams[indiceStream];
+
+        if(!url){
+
+            indiceStream++;
+            intentos = 0;
+            reproducirStream();
+            return;
+
+        }
+
+        intentos++;
+
+        console.log(
+            "Intentando " +
+            radioInfo.nombre +
+            " - stream " +
+            (indiceStream + 1) +
+            "/" +
+            streams.length +
+            " - intento " +
+            intentos
+        );
+
+       audioNuevo.src = url;
+      audioNuevo.load();
+
+     audioNuevo.play().catch(function(){
+
+            siguienteIntento();
+
+        });
+
+    }
+
+   function siguienteIntento(){
+
+    if(audioNuevo.__radioCerrada){
+        return;
+    }
+
+    if(audioNuevo.paused === false){
+        return;
+    }
+
+        if(window.temporizadorRadioActivo){
+            clearTimeout(window.temporizadorRadioActivo);
+        }
+
+        if(intentos < maxIntentosPorStream){
+
+            window.temporizadorRadioActivo = setTimeout(function(){
+
+                reproducirStream();
+
+            }, 3000);
+
+        }else{
+
+            indiceStream++;
+            intentos = 0;
+
+            window.temporizadorRadioActivo = setTimeout(function(){
+
+                reproducirStream();
+
+            }, 1000);
+
+        }
+
+    }
+
+ audioNuevo.addEventListener("error", function(){
+
+        siguienteIntento();
+
+    });
+
+   audioNuevo.addEventListener("stalled", function(){
+
+        siguienteIntento();
+
+    });
+
+    reproducirStream();
+
+};
         contenedor.appendChild(card);
 
     });
