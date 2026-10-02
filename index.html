@@ -3498,24 +3498,68 @@ box-shadow:0 4px 10px rgba(0,0,0,0.3);
              ">
         </div>
 
-        <!-- ===== GUARDAR ===== -->
+
+        <!-- ===== MIS PLATAFORMAS PERSONALIZADAS ===== -->
+
+        <p style="
+            text-align:center;
+            color:#ccc;
+            ">
+            👤 Mis plataformas personalizadas
+        </p>
+
+        <div id="plataformasCinePersonalizadasConfiguracion"
+             style="
+             display:grid;
+             grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+             gap:10px;
+             max-height:35vh;
+             overflow-y:auto;
+             padding-right:5px;
+             ">
+        </div>
+
+          
+
+        <!-- ===== GUARDAR /AGREGAR  ===== -->
 
         <div style="
             text-align:center;
             margin-top:20px;
         ">
 
-            <button
-                type="button"
-                onclick="guardarConfiguracionCine()"
-                style="
-                padding:10px 22px;
-                font-size:16px;
-                font-weight:bold;
-                border-radius:10px;
-                ">
-                💾 Guardar Cine
-            </button>
+           <div style="
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+">
+
+    <button
+        type="button"
+        onclick="guardarConfiguracionCine()"
+        style="
+        padding:10px 22px;
+        font-size:16px;
+        font-weight:bold;
+        border-radius:10px;
+        ">
+        💾 Guardar Cine
+    </button>
+
+    <button
+        type="button"
+        onclick="abrirAgregarPlataformaCine()"
+        style="
+        padding:10px 22px;
+        font-size:16px;
+        font-weight:bold;
+        border-radius:10px;
+        ">
+        👤 Agregar plataforma
+    </button>
+
+</div>
 
             <div id="mensajeCine"
                  style="
@@ -3531,38 +3575,7 @@ box-shadow:0 4px 10px rgba(0,0,0,0.3);
         </div>
 
   
-<!-- ===== BUSQUEDA ===== -->
 
-<div style="
-    margin-top:25px;
-    padding-top:20px;
-    border-top:1px solid #555;
-    text-align:center;
-">
-
-    <h3 style="
-        margin-top:0;
-        color:#FFD700;
-    ">
-        🔎 ¿No encontrás la que buscás?
-    </h3>
-
-    <button
-        type="button"
-        onclick="abrirBusquedaPlataformaCine()"
-        style="
-        display:block;
-        width:100%;
-        margin:8px 0;
-        padding:10px;
-        font-size:16px;
-        font-weight:bold;
-        border-radius:10px;
-        ">
-        🔎 Buscar otra plataforma
-    </button>
-
-</div>
 
 </div>
 
@@ -3570,24 +3583,22 @@ box-shadow:0 4px 10px rgba(0,0,0,0.3);
 
 <!-- ===== FIN CONFIGURACION CINE ===== -->
 
+<!-- ===== AGREGAR PLATAFORMA CINE ===== -->
 
-
-<!-- ===== BUSQUEDA DE PLATAFORMAS CINE ===== -->
-
-<div id="popupBusquedaPlataformaCine"
+<div id="popupAgregarPlataformaCine"
      style="
      display:none;
      position:fixed;
      inset:0;
      background:rgba(0,0,0,.75);
-     z-index:1100;
+     z-index:1200;
      align-items:center;
      justify-content:center;
      padding:20px;
      ">
 
     <div style="
-        width:min(92%,600px);
+        width:min(92%,450px);
         background:#1d1d1d;
         border:1px solid #555;
         border-radius:20px;
@@ -3602,34 +3613,87 @@ box-shadow:0 4px 10px rgba(0,0,0,0.3);
             margin-bottom:15px;
             ">
 
-        <h2 style="
-           margin:0;
-          color:#FFD700;
-        ">
-         🔎 ¿No encontrás la que buscás?
-        </h2>
+            <h2 style="
+                margin:0;
+                color:#FFD700;
+            ">
+                👤 Agregar plataforma
+            </h2>
 
-            <button onclick="cerrarBusquedaPlataformaCine()">
+            <button onclick="cerrarAgregarPlataformaCine()">
                 ✖
             </button>
 
         </div>
 
-        <p style="
-   	 text-align:center;
-    	 color:#ccc;
-  	 line-height:1.5;
-	 ">
-    	 ✏️ Escribí el nombre de la plataforma:
-	</p>
+<p style="
+    text-align:center;
+    color:#ccc;
+    line-height:1.5;
+">
+    ✏️ <strong>Escribí el nombre exacto de la aplicación</strong>
+    tal como aparece en tu dispositivo.
+    <br><br>
 
+    ⚠️ Vas a salir de Mi Espacio para comprobar
+    la aplicación en Google Play y poder compartirla con Mi Espacio.
+    <br><br>
+
+    📖 <strong>¿No sabés cómo compartirla?</strong>
+    <br>
+    👉 <button
+        type="button"
+        onclick="abrirInstructivoCompartirApp()"
+        style="
+        border:none;
+        background:none;
+        color:#FFD700;
+        font-size:16px;
+        font-weight:bold;
+        cursor:pointer;
+        padding:0;
+        ">
+        Ver instructivo
+    </button>
+    <br><br>
+
+    ↩️ <strong>Después volvé a Mi Espacio para confirmar.</strong>
+    <br><br>
+
+    ❗ <strong>Si no volvés a Mi Espacio,
+    la aplicación no se guardará.</strong>
+    <br><br>
+
+    🔐 <strong>Esta comprobación se hace una sola vez.</strong>
+
+<br><br>
+
+😎 <strong>¿Alguna duda?</strong>
+<br>
+
+Enviános un correo a
+🛠️ <strong>Soporte:</strong>
+
+<span
+    onclick="document.getElementById('btnSoporte').click();"
+    style="
+    color:#FFD700;
+    font-weight:bold;
+    cursor:pointer;
+    text-decoration:underline;
+    "
+>
+    ✉️ Enviar consulta
+</span>
+
+y la revisamos. 🛠️🔧
+</p>
 
         <input
-            id="nombreBusquedaPlataformaCine"
-
+            id="nombreAgregarPlataformaCine"
             type="text"
-            placeholder="Ejemplo: Netflix"
             maxlength="100"
+            placeholder="Nombre exacto de la aplicación"
             style="
             width:100%;
             box-sizing:border-box;
@@ -3640,17 +3704,9 @@ box-shadow:0 4px 10px rgba(0,0,0,0.3);
             margin-bottom:15px;
             ">
 
-	<p style="
-          text-align:center;
-          color:#ccc;
-          margin:5px 0 15px 0;
-          ">
-         👇 Elegí dónde querés buscarla:
-        </p>
-
         <button
             type="button"
-            onclick="dispositivoBusquedaCine='pc'; 			    buscarPlataformaCineWeb()"
+            onclick="validarNuevaPlataformaCine()"
             style="
             display:block;
             width:100%;
@@ -3660,12 +3716,12 @@ box-shadow:0 4px 10px rgba(0,0,0,0.3);
             font-weight:bold;
             border-radius:10px;
             ">
-            🌐 Buscar en la web
+            🔎 Validar plataforma
         </button>
 
         <button
             type="button"
-            onclick="dispositivoBusquedaCine='android';     	  	    buscarPlataformaCineGooglePlay()"
+            onclick="cerrarAgregarPlataformaCine()"
             style="
             display:block;
             width:100%;
@@ -3675,29 +3731,143 @@ box-shadow:0 4px 10px rgba(0,0,0,0.3);
             font-weight:bold;
             border-radius:10px;
             ">
-            ▶️ Buscar en Google Play
-        </button>
-
-        <button
-            type="button"
-            onclick="dispositivoBusquedaCine='ios';   		   	    buscarPlataformaCineAppStore()"
-            style="
-            display:block;
-            width:100%;
-            margin:8px 0;
-            padding:10px;
-            font-size:16px;
-            font-weight:bold;
-            border-radius:10px;
-            ">
-             Buscar en App Store
+            Cancelar
         </button>
 
     </div>
 
 </div>
 
-<!-- ===== FIN BUSQUEDA DE PLATAFORMAS CINE ===== -->
+<!-- ===== POPUP CONFIRMAR PLATAFORMA CINE ===== -->
+
+<div id="popupConfirmarPlataformaCine"
+     style="
+     display:none;
+     position:fixed;
+     inset:0;
+     background:rgba(0,0,0,.75);
+     z-index:1300;
+     align-items:center;
+     justify-content:center;
+     padding:20px;
+     ">
+
+    <div style="
+        width:min(92%,450px);
+        background:#1d1d1d;
+        border:1px solid #555;
+        border-radius:20px;
+        padding:20px;
+        box-shadow:0 10px 35px rgba(0,0,0,.7);
+        ">
+
+        <h2 style="
+            margin-top:0;
+            text-align:center;
+            color:#FFD700;
+        ">
+            🎬 Confirmar plataforma
+        </h2>
+
+        <p id="mensajeConfirmarPlataformaCine"
+           style="
+           text-align:center;
+           color:#ccc;
+           line-height:1.5;
+           ">
+        </p>
+
+        <button
+            type="button"
+            onclick="confirmarPlataformaCine()"
+            style="
+            display:block;
+            width:100%;
+            margin:10px 0;
+            padding:12px;
+            font-size:16px;
+            font-weight:bold;
+            border-radius:10px;
+            ">
+            ✅ Sí, guardar
+        </button>
+
+        <button
+            type="button"
+            onclick="cancelarConfirmacionPlataformaCine()"
+            style="
+            display:block;
+            width:100%;
+            margin:10px 0;
+            padding:12px;
+            font-size:16px;
+            font-weight:bold;
+            border-radius:10px;
+            ">
+            ↩️ No, volver a intentar
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ===== POPUP INSTRUCTIVO COMPARTIR APP ===== -->
+
+<div id="popupInstructivoCompartirApp"
+     style="
+     display:none;
+     position:fixed;
+     inset:0;
+     background:rgba(0,0,0,.75);
+     z-index:1400;
+     align-items:center;
+     justify-content:center;
+     padding:20px;
+     ">
+
+    <div style="
+        width:min(92%,600px);
+        max-height:90vh;
+        overflow-y:auto;
+        background:#1d1d1d;
+        border:1px solid #555;
+        border-radius:20px;
+        padding:20px;
+        box-shadow:0 10px 35px rgba(0,0,0,.7);
+        ">
+
+        <div style="
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:15px;
+            ">
+
+            <h2 id="tituloInstructivoCompartirApp"
+                style="
+                margin:0;
+                color:#FFD700;
+                ">
+            </h2>
+
+            <button
+                type="button"
+                onclick="cerrarInstructivoCompartirApp()">
+                ✖
+            </button>
+
+        </div>
+
+        <div id="contenidoInstructivoCompartirApp">
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ===== FIN POPUP INSTRUCTIVO ===== -->
+
+<!-- ===== FIN AGREGAR PLATAFORMA CINE ===== -->
 
 
 <!-- ===== MODULO RADIOS ===== -->
@@ -9979,6 +10149,175 @@ function cargarConfiguracionCine(){
         }
     );
 
+// ========================
+// MOSTRAR PLATAFORMAS PERSONALIZADAS
+// ========================
+
+const contenedorPersonalizadas =
+    document.getElementById(
+        "plataformasCinePersonalizadasConfiguracion"
+    );
+
+if(!contenedorPersonalizadas){
+    return;
+}
+
+contenedorPersonalizadas.innerHTML = "";
+
+const personalizadas =
+    JSON.parse(
+        localStorage.getItem(
+            "PlataformasCinePersonalizadas"
+        )
+    ) || [];
+
+const seleccionadasPersonalizadas =
+    JSON.parse(
+        localStorage.getItem(
+            "PlataformasCinePersonalizadasSeleccionadas"
+        )
+    ) || [];
+
+personalizadas.forEach(
+    function(plataforma){
+
+        const fila =
+            document.createElement("div");
+
+        fila.style.display = "flex";
+        fila.style.alignItems = "center";
+        fila.style.justifyContent = "space-between";
+        fila.style.gap = "10px";
+
+        const label =
+            document.createElement("label");
+
+        label.style.display = "flex";
+        label.style.alignItems = "center";
+        label.style.gap = "8px";
+        label.style.cursor = "pointer";
+        label.style.flex = "1";
+
+        const checkbox =
+            document.createElement("input");
+
+        checkbox.type = "checkbox";
+
+        checkbox.value =
+            plataforma.nombre;
+
+        checkbox.checked =
+            seleccionadasPersonalizadas.includes(
+                plataforma.nombre
+            );
+
+        label.appendChild(
+            checkbox
+        );
+
+        const icono =
+            document.createElement("span");
+
+        icono.textContent = "🎬";
+
+        label.appendChild(
+            icono
+        );
+
+        const nombre =
+            document.createElement("span");
+
+        nombre.textContent =
+            plataforma.nombre;
+
+        label.appendChild(
+            nombre
+        );
+
+        fila.appendChild(
+            label
+        );
+
+        const botonEliminar =
+            document.createElement("button");
+
+        botonEliminar.type = "button";
+
+        botonEliminar.textContent = "🗑️";
+
+        botonEliminar.onclick =
+            function(){
+
+                eliminarPlataformaCinePersonalizada(
+                    plataforma.nombre
+                );
+
+            };
+
+        fila.appendChild(
+            botonEliminar
+        );
+
+        contenedorPersonalizadas.appendChild(
+            fila
+        );
+
+       }
+    );
+
+}
+
+
+function eliminarPlataformaCinePersonalizada(nombre){
+
+    const personalizadas =
+        JSON.parse(
+            localStorage.getItem(
+                "PlataformasCinePersonalizadas"
+            )
+        ) || [];
+
+    const nuevasPersonalizadas =
+        personalizadas.filter(
+            function(plataforma){
+
+                return plataforma.nombre !== nombre;
+
+            }
+        );
+
+    localStorage.setItem(
+        "PlataformasCinePersonalizadas",
+        JSON.stringify(
+            nuevasPersonalizadas
+        )
+    );
+
+    const seleccionadas =
+        JSON.parse(
+            localStorage.getItem(
+                "PlataformasCinePersonalizadasSeleccionadas"
+            )
+        ) || [];
+
+    const nuevasSeleccionadas =
+        seleccionadas.filter(
+            function(plataforma){
+
+                return plataforma !== nombre;
+
+            }
+        );
+
+    localStorage.setItem(
+        "PlataformasCinePersonalizadasSeleccionadas",
+        JSON.stringify(
+            nuevasSeleccionadas
+        )
+    );
+
+cargarConfiguracionCine();
+
 }
 
 
@@ -11197,6 +11536,33 @@ function guardarConfiguracionCine(){
 
     });
 
+// ========================
+// GUARDAR PLATAFORMAS PERSONALIZADAS SELECCIONADAS
+// ========================
+
+const personalizadasSeleccionadas = [];
+
+document.querySelectorAll(
+    "#plataformasCinePersonalizadasConfiguracion input[type='checkbox']"
+).forEach(function(checkbox){
+
+    if(checkbox.checked){
+
+        personalizadasSeleccionadas.push(
+            checkbox.value
+        );
+
+    }
+
+});
+
+localStorage.setItem(
+    "PlataformasCinePersonalizadasSeleccionadas",
+    JSON.stringify(
+        personalizadasSeleccionadas
+    )
+);
+
     localStorage.setItem(
         "PlataformasCineSeleccionadas",
         JSON.stringify(
@@ -11227,50 +11593,16 @@ function guardarConfiguracionCine(){
 
 }
 
-let dispositivoBusquedaCine = "";
 
 // ========================
-// ABRIR BUSQUEDA DE PLATAFORMA CINE
+// VALIDAR NUEVA PLATAFORMA CINE
 // ========================
 
-function abrirBusquedaPlataformaCine(){
-
-
-
-    const popup =
-        document.getElementById(
-            "popupBusquedaPlataformaCine"
-        );
-
-           
-
-    if(!popup){
-        return;
-    }
+function validarNuevaPlataformaCine(){
 
     const campo =
         document.getElementById(
-            "nombreBusquedaPlataformaCine"
-        );
-
-    if(campo){
-        campo.value = "";
-    }
-
-popup.style.display = "flex";
-
-
-}
-
-// ========================
-// BUSCAR PLATAFORMA CINE EN GOOGLE
-// ========================
-
-function buscarPlataformaCineWeb(){
-
-    const campo =
-        document.getElementById(
-            "nombreBusquedaPlataformaCine"
+            "nombreAgregarPlataformaCine"
         );
 
     if(!campo){
@@ -11283,41 +11615,18 @@ function buscarPlataformaCineWeb(){
     if(!nombre){
         return;
     }
+
+   localStorage.setItem(
+    "nombrePlataformaCinePendiente",
+    nombre
+);
+
+localStorage.setItem(
+    "validacionPlataformaCineActiva",
+    "true"
+);
 
 const url =
-    "https://www.google.com/search?q=" +
-    encodeURIComponent(nombre + " sitio oficial");
-
-    window.open(
-        url,
-        "_blank"
-    );
-
-}
-
-// ========================
-// BUSCAR PLATAFORMA CINE EN GOOGLE PLAY STORE
-// ========================
-
-function buscarPlataformaCineGooglePlay(){
-
-    const campo =
-        document.getElementById(
-            "nombreBusquedaPlataformaCine"
-        );
-
-    if(!campo){
-        return;
-    }
-
-    const nombre =
-        campo.value.trim();
-
-    if(!nombre){
-        return;
-    }
-
-    const url =
         "https://play.google.com/store/search?q=" +
         encodeURIComponent(nombre) +
         "&c=apps";
@@ -11329,16 +11638,96 @@ function buscarPlataformaCineGooglePlay(){
 
 }
 
-
 // ========================
-// BUSCAR PLATAFORMA CINE EN APP STORE
+// DETECTAR REGRESO DE GOOGLE PLAY
 // ========================
 
-function buscarPlataformaCineAppStore(){
+
+document.addEventListener(
+    "visibilitychange",
+    function(){
+
+        if(
+            document.visibilityState !== "visible"
+        ){
+            return;
+        }
+
+        const pendiente =
+            localStorage.getItem(
+                "nombrePlataformaCinePendiente"
+            );
+
+        const activa =
+            localStorage.getItem(
+                "validacionPlataformaCineActiva"
+            );
+
+        if(
+            !pendiente ||
+            activa !== "true"
+        ){
+            return;
+        }
+
+        const popup =
+    document.getElementById(
+        "popupConfirmarPlataformaCine"
+    );
+
+const mensaje =
+    document.getElementById(
+        "mensajeConfirmarPlataformaCine"
+    );
+
+if(popup && mensaje){
+
+    mensaje.innerHTML =
+        "¿La aplicación que comprobaste en Google Play es la correcta?";
+
+    popup.style.display = "flex";
+
+}
+
+    }
+);
+
+
+
+function confirmarPlataformaCine(){
+
+    const pendiente =
+        localStorage.getItem(
+            "nombrePlataformaCinePendiente"
+        );
+
+    if(!pendiente){
+        return;
+    }
 
     const campo =
         document.getElementById(
-            "nombreBusquedaPlataformaCine"
+            "nombreAgregarPlataformaCine"
+        );
+
+    if(campo){
+        campo.value = pendiente;
+    }
+
+    guardarNuevaPlataformaCine();
+
+}
+
+
+// ========================
+// GUARDAR NUEVA PLATAFORMA CINE
+// ========================
+
+function guardarNuevaPlataformaCine(){
+
+    const campo =
+        document.getElementById(
+            "nombreAgregarPlataformaCine"
         );
 
     if(!campo){
@@ -11352,29 +11741,288 @@ function buscarPlataformaCineAppStore(){
         return;
     }
 
-    const url =
-        "https://www.apple.com/la/search/" +
-        "?q=" +
-        encodeURIComponent(nombre);
+    const guardadas =
+        JSON.parse(
+            localStorage.getItem(
+                "PlataformasCinePersonalizadas"
+            )
+        ) || [];
 
-    window.open(
-        url,
-        "_blank"
+    const existe =
+        guardadas.some(function(plataforma){
+
+            return plataforma.nombre.toLowerCase() ===
+                   nombre.toLowerCase();
+
+        });
+
+    if(existe){
+        return;
+    }
+
+ const urlRecibida =
+    localStorage.getItem(
+        "appCompartidaUrl"
+    ) || "";
+
+guardadas.push({
+
+    nombre: nombre,
+    url: urlRecibida
+
+});
+
+    localStorage.setItem(
+        "PlataformasCinePersonalizadas",
+        JSON.stringify(guardadas)
     );
+
+cargarConfiguracionCine();
+
+  const mensajeConfirmacion =
+    document.getElementById(
+        "mensajeConfirmarPlataformaCine"
+    );
+
+if(mensajeConfirmacion){
+
+    mensajeConfirmacion.innerHTML =
+        "✔ Plataforma guardada";
+
+    mensajeConfirmacion.style.color =
+        "#32CD32";
 
 }
 
+mostrarPlataformasCineSeleccionadas();
 
+setTimeout(function(){
+
+    localStorage.removeItem(
+        "validacionPlataformaCineActiva"
+    );
+
+    localStorage.removeItem(
+        "nombrePlataformaCinePendiente"
+    );
+
+    const popupConfirmacion =
+        document.getElementById(
+            "popupConfirmarPlataformaCine"
+        );
+
+    if(popupConfirmacion){
+
+        popupConfirmacion.style.display =
+            "none";
+
+    }
+
+    cerrarAgregarPlataformaCine();
+
+    abrirConfiguracionCine();
+
+},1000);
+
+}
 
 // ========================
-// CERRAR BUSQUEDA DE PLATAFORMA CINE
+// ABRIR AGREGAR PLATAFORMA CINE
 // ========================
 
-function cerrarBusquedaPlataformaCine(){
+function abrirAgregarPlataformaCine(){
 
-    document.getElementById(
-        "popupBusquedaPlataformaCine"
-    ).style.display = "none";
+    const popup =
+        document.getElementById(
+            "popupAgregarPlataformaCine"
+        );
+
+    if(!popup){
+        return;
+    }
+
+    popup.style.display = "flex";
+
+    const nombreRecibido =
+        localStorage.getItem(
+            "appCompartidaTitulo"
+        );
+
+   const nombrePlataforma =
+    nombreRecibido.replace(
+        /^[ÉE]chale un vistazo a\s+/i,
+        ""
+    );
+
+    const campo =
+        document.getElementById(
+            "nombreAgregarPlataformaCine"
+        );
+
+    if(
+        campo &&
+        nombrePlataforma
+    ){
+
+        campo.value =
+            nombrePlataforma;
+
+    }
+
+}
+
+// ========================
+// CERRAR AGREGAR PLATAFORMA CINE
+// ========================
+
+function cerrarAgregarPlataformaCine(){
+
+    const popup =
+        document.getElementById(
+            "popupAgregarPlataformaCine"
+        );
+
+    if(!popup){
+        return;
+    }
+
+    popup.style.display = "none";
+
+}
+
+function abrirInstructivoCompartirApp(){
+
+    const popup =
+        document.getElementById(
+            "popupInstructivoCompartirApp"
+        );
+
+    const titulo =
+        document.getElementById(
+            "tituloInstructivoCompartirApp"
+        );
+
+    const contenido =
+        document.getElementById(
+            "contenidoInstructivoCompartirApp"
+        );
+
+    if(!popup || !titulo || !contenido){
+        return;
+    }
+
+    contenido.innerHTML =
+        "<p style='text-align:center;color:#ccc;'>Cargando instructivo...</p>";
+
+    popup.style.display = "flex";
+
+    fetch(
+        "https://raw.githubusercontent.com/pgaglian/Mi-Espacio-Datos/main/InstructivoCompartirApp.json"
+    )
+
+    .then(function(res){
+
+        return res.json();
+
+    })
+
+    .then(function(datos){
+
+        titulo.textContent =
+            datos.titulo || "📲 Compartí tu app con Mi Espacio";
+
+        contenido.innerHTML = "";
+
+        if(datos.descripcion){
+
+            const descripcion =
+                document.createElement("p");
+
+            descripcion.textContent =
+                datos.descripcion;
+
+            descripcion.style.textAlign =
+                "center";
+
+            descripcion.style.color =
+                "#ccc";
+
+            contenido.appendChild(
+                descripcion
+            );
+
+        }
+
+        datos.pasos.forEach(
+            function(paso){
+
+                const bloque =
+                    document.createElement("div");
+
+                bloque.style.margin =
+                    "18px 0";
+
+                bloque.style.padding =
+                    "12px";
+
+                bloque.style.borderRadius =
+                    "14px";
+
+                bloque.style.background =
+                    "rgba(255,255,255,.05)";
+
+                const tituloPaso =
+                    document.createElement("h3");
+
+                tituloPaso.textContent =
+                    paso.titulo;
+
+                tituloPaso.style.color =
+                    "#FFD700";
+
+                tituloPaso.style.marginTop =
+                    "0";
+
+                bloque.appendChild(
+                    tituloPaso
+                );
+
+                const texto =
+                    document.createElement("p");
+
+                texto.textContent =
+                    paso.texto;
+
+                texto.style.color =
+                    "#ccc";
+
+                texto.style.lineHeight =
+                    "1.5";
+
+                bloque.appendChild(
+                    texto
+                );
+
+                contenido.appendChild(
+                    bloque
+                );
+
+            }
+        );
+
+    })
+
+    .catch(function(err){
+
+        console.warn(
+            "No se pudo cargar InstructivoCompartirApp.json",
+            err
+        );
+
+        contenido.innerHTML =
+            "<p style='text-align:center;color:#ff8080;'>No se pudo cargar el instructivo.</p>";
+
+    });
 
 }
 
@@ -14504,7 +15152,104 @@ boton.style.width = "100%";
 
     });
 
+// ========================
+// MOSTRAR PLATAFORMAS CINE PERSONALIZADAS
+// ========================
+
+const personalizadas =
+    JSON.parse(
+        localStorage.getItem(
+            "PlataformasCinePersonalizadas"
+        )
+    ) || [];
+
+const seleccionadasPersonalizadas =
+    JSON.parse(
+        localStorage.getItem(
+            "PlataformasCinePersonalizadasSeleccionadas"
+        )
+    ) || [];
+
+personalizadas.forEach(function(plataforma){
+
+    if(
+        !seleccionadasPersonalizadas.includes(
+            plataforma.nombre
+        )
+    ){
+        return;
+    }
+
+        const tarjeta =
+            document.createElement("div");
+
+        tarjeta.className = "card";
+
+        tarjeta.style.padding = "12px";
+        tarjeta.style.borderRadius = "16px";
+
+        const boton =
+            document.createElement("button");
+
+        boton.type = "button";
+
+       boton.onclick =
+    function(){
+
+        abrirPlataformaCine(
+            {
+                nombre: plataforma.nombre,
+                sitioOficial: plataforma.url,
+                android: plataforma.url,
+                ios: plataforma.url
+            }
+        );
+
+    };
+
+        boton.style.width = "100%";
+        boton.style.background = "none";
+        boton.style.border = "none";
+        boton.style.color = "inherit";
+        boton.style.font = "inherit";
+        boton.style.cursor = "pointer";
+
+        boton.style.display = "flex";
+        boton.style.alignItems = "center";
+        boton.style.justifyContent = "center";
+        boton.style.gap = "10px";
+
+        const respaldo =
+            document.createElement("span");
+
+        respaldo.textContent = "🎬";
+
+        respaldo.style.fontSize = "38px";
+
+        boton.appendChild(respaldo);
+
+        const nombre =
+            document.createElement("span");
+
+        nombre.textContent =
+            plataforma.nombre;
+
+        nombre.style.fontWeight = "bold";
+        nombre.style.fontSize = "16px";
+
+        boton.appendChild(nombre);
+
+        tarjeta.appendChild(boton);
+
+        contenedor.appendChild(tarjeta);
+
+    });
+
+
+
 }
+
+
 
 // ========================
 // SALIDA A PLATAFORMA CINE
@@ -20312,6 +21057,120 @@ window.addEventListener("popstate", function(event){
     inicio();
 
 });
+
+// ========================
+// RECIBIR APP COMPARTIDA
+// ========================
+
+function recibirAppCompartida(){
+
+    const parametros =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    const titulo =
+        parametros.get("title") || "";
+
+    const texto =
+        parametros.get("text") || "";
+
+   const url =
+    parametros.get("url") ||
+    parametros.get("text") ||
+    "";
+
+    if(
+        !titulo &&
+        !texto &&
+        !url
+    ){
+        return;
+    }
+
+    localStorage.setItem(
+        "appCompartidaTitulo",
+        titulo
+    );
+
+    localStorage.setItem(
+        "appCompartidaTexto",
+        texto
+    );
+
+  localStorage.setItem(
+    "appCompartidaUrl",
+    url
+);
+
+localStorage.setItem(
+    "nombrePlataformaCinePendiente",
+    titulo.replace(
+        /^[ÉE]chale un vistazo a\s+/i,
+        ""
+    )
+);
+
+localStorage.setItem(
+    "validacionPlataformaCineActiva",
+    "true"
+);
+
+const popupConfirmacion =
+    document.getElementById(
+        "popupConfirmarPlataformaCine"
+    );
+
+const mensajeConfirmacion =
+    document.getElementById(
+        "mensajeConfirmarPlataformaCine"
+    );
+
+if(
+    popupConfirmacion &&
+    mensajeConfirmacion
+){
+
+    mensajeConfirmacion.innerHTML =
+        "¿La aplicación que compartiste desde Google Play es la correcta?";
+
+    mensajeConfirmacion.style.color =
+        "";
+
+    popupConfirmacion.style.display =
+        "flex";
+
+}
+
+const campo =
+    document.getElementById(
+        "nombreAgregarPlataformaCine"
+    );
+
+if(campo && titulo){
+
+    campo.value = titulo;
+
+}
+
+    console.log(
+        "APP COMPARTIDA - TITULO:",
+        titulo
+    );
+
+    console.log(
+        "APP COMPARTIDA - TEXTO:",
+        texto
+    );
+
+    console.log(
+        "APP COMPARTIDA - URL:",
+        url
+    );
+
+}
+
+recibirAppCompartida();
 
 </script>
 
