@@ -10092,10 +10092,22 @@ function cargarConfiguracionCine(){
 
             checkbox.type = "checkbox";
 
-            checkbox.value =
-               plataforma.id; 
+checkbox.value =
+   plataforma.id;
 
-            label.appendChild(checkbox);
+const plataformasSeleccionadas =
+    JSON.parse(
+        localStorage.getItem(
+            "PlataformasCineSeleccionadas"
+        )
+    ) || [];
+
+checkbox.checked =
+    plataformasSeleccionadas.includes(
+        plataforma.id
+    );
+
+label.appendChild(checkbox);
 
            if(plataforma.logo){
 
@@ -11718,7 +11730,66 @@ function confirmarPlataformaCine(){
 
 }
 
+/// ========================
+// CANCELAR CONFIRMACION PLATAFORMA CINE
+// ========================
 
+function cancelarConfirmacionPlataformaCine(){
+
+    localStorage.removeItem(
+        "validacionPlataformaCineActiva"
+    );
+
+    localStorage.removeItem(
+        "nombrePlataformaCinePendiente"
+    );
+
+    localStorage.removeItem(
+        "appCompartidaTitulo"
+    );
+
+    localStorage.removeItem(
+        "appCompartidaTexto"
+    );
+
+    localStorage.removeItem(
+        "appCompartidaUrl"
+    );
+
+    const campo =
+        document.getElementById(
+            "nombreAgregarPlataformaCine"
+        );
+
+    if(campo){
+
+        campo.value = "";
+
+    }
+
+    const urlLimpia =
+        window.location.pathname +
+        window.location.hash;
+
+    window.history.replaceState(
+        {},
+        document.title,
+        urlLimpia
+    );
+
+    const popupConfirmacion =
+        document.getElementById(
+            "popupConfirmarPlataformaCine"
+        );
+
+    if(popupConfirmacion){
+
+        popupConfirmacion.style.display =
+            "none";
+
+    }
+
+}
 // ========================
 // GUARDAR NUEVA PLATAFORMA CINE
 // ========================
@@ -11804,6 +11875,30 @@ setTimeout(function(){
 
     localStorage.removeItem(
         "nombrePlataformaCinePendiente"
+    );
+
+localStorage.removeItem(
+    "appCompartidaTitulo"
+);
+
+localStorage.removeItem(
+    "appCompartidaTexto"
+);
+
+localStorage.removeItem(
+    "appCompartidaUrl"
+);
+
+    campo.value = "";
+
+    const urlLimpia =
+        window.location.pathname +
+        window.location.hash;
+
+    window.history.replaceState(
+        {},
+        document.title,
+        urlLimpia
     );
 
     const popupConfirmacion =
@@ -15500,6 +15595,7 @@ function abrirPlataformaCine(datosPlataforma){
         function(){
 
             fondo.remove();
+
 
             window.open(
                 destino,
