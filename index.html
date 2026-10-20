@@ -257,6 +257,19 @@ padding:20px
 }
 
 
+/* ===== OPCIONES PRINCIPALES DE MÚSICA ===== */
+
+#opcionesMenuMusica{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+}
+
+@media (max-width:600px){
+    #opcionesMenuMusica{
+        grid-template-columns:1fr;
+    }
+}
+
+
 .card{
 
 background:linear-gradient(180deg,#353535,#1d1d1d);
@@ -450,74 +463,6 @@ box-shadow:0 10px 25px rgba(0,0,0,.55);
 
 }
 
-/* ===== REPRODUCTOR V3 ===== */
-
-.containerAlbum{
-    display:flex;
-    gap:20px;
-    padding:20px;
-}
-
-.listaCanciones{
-    width:40%;
-    max-height:70vh;
-    overflow-y:auto;
-}
-
-.cancion{
-    background:#222;
-    margin-bottom:8px;
-    padding:12px;
-    border-radius:8px;
-    cursor:pointer;
-    transition:0.2s;
-}
-
-.cancion:hover{
-    background:#333;
-}
-
-.reproductor{
-    width:60%;
-    text-align:center;
-}
-
-.reproductor img{
-    width:260px;
-    border-radius:12px;
-    margin-bottom:15px;
-}
-
-.reproductor h2{
-    color:#FFD700;
-}
-
-.reproductor audio{
-    width:90%;
-}
-
-#playerPersonal{
-    margin-top:12px;
-    display:flex;
-    justify-content:center;
-    gap:12px;
-}
-
-#playerPersonal button{
-    width:48px;
-    height:48px;
-    border:none;
-    border-radius:50%;
-    background:#FFD700;
-    color:#000;
-    font-size:22px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-#playerPersonal button:hover{
-    transform:scale(1.08);
-}
 /* ===== PANEL APARIENCIA ===== */
 
 #panelTema{
@@ -1800,6 +1745,16 @@ body.eclipse header{
   color: #f1f5f9;
 }
 
+
+/* Espacio inferior del menú móvil para el chat de IA */
+@media screen and (max-width: 768px) {
+    .modoMovil #menuAndroid,
+    .modoApple #menuAndroid {
+        padding-bottom: 100px !important;
+    }
+}
+
+
 /* =========================================================
    AVISO INICIAL - MI ESPACIO
    ========================================================= */
@@ -1897,6 +1852,131 @@ body.eclipse header{
     }
 
 }
+
+/* ===== ACCESO FLOTANTE MI ESPACIO IA ===== */
+
+#btnMiEspacioIA{
+    position:fixed !important;
+    right:20px !important;
+    bottom:20px !important;
+
+    width:76px !important;
+    height:76px !important;
+    min-width:76px !important;
+    min-height:76px !important;
+
+    padding:0 !important;
+    border:2px solid #D4AF37;
+    border-radius:50%;
+    background:linear-gradient(145deg,#252525,#101010);
+    box-shadow:0 4px 18px rgba(0,0,0,.55);
+
+    display:flex !important;
+    align-items:center;
+    justify-content:center;
+
+    flex-shrink:0;
+    cursor:pointer;
+    z-index:1000000 !important;
+    overflow:hidden;
+}
+
+#btnMiEspacioIA img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    border-radius:50%;
+}
+
+
+#btnMiEspacioIA{
+    transition:width .2s ease,
+               height .2s ease,
+               min-width .2s ease,
+               min-height .2s ease;
+}
+
+#btnMiEspacioIA.agrandada{
+    width:88px !important;
+    height:88px !important;
+    min-width:88px !important;
+    min-height:88px !important;
+}
+
+@media (max-width:768px){
+    #btnMiEspacioIA{
+        right:14px !important;
+        bottom:14px !important;
+        width:48px !important;
+        height:48px !important;
+        min-width:48px !important;
+        min-height:48px !important;
+    }
+
+    #btnMiEspacioIA.agrandada{
+        width:64px !important;
+        height:64px !important;
+        min-width:64px !important;
+        min-height:64px !important;
+    }
+}
+
+
+
+/* ===== PANEL MI ESPACIO IA ===== */
+
+#panelMiEspacioIA{
+    position:fixed;
+    right:20px;
+    bottom:110px;
+    width:340px;
+    max-width:calc(100vw - 28px);
+    max-height:70vh;
+    overflow-y:auto;
+    box-sizing:border-box;
+    padding:18px;
+    background:linear-gradient(145deg,#252525,#101010);
+    color:#fff;
+    border:1px solid #D4AF37;
+    border-radius:18px;
+    box-shadow:0 8px 30px rgba(0,0,0,.65);
+    z-index:999999;
+    display:none;
+}
+
+#panelMiEspacioIA h2{
+    margin:0 0 12px;
+    color:#D4AF37;
+    font-size:20px;
+    text-align:center;
+}
+
+#panelMiEspacioIA .iaSubtitulo{
+    margin:0 0 14px;
+    color:#ddd;
+    font-size:14px;
+    text-align:center;
+}
+
+@media (max-width:768px){
+    #panelMiEspacioIA{
+        right:12px;
+        bottom:88px;
+        width:340px;
+        max-width:calc(100vw - 24px);
+        max-height:65vh;
+        padding:15px;
+    }
+}
+/* Solo tarjetas de perfiles de Juegos */
+@media screen and (max-width: 600px) {
+    #contenedorPerfilesJuego {
+        grid-template-columns: minmax(0, 1fr) !important;
+    }
+}
+
+
 
 </style>
 </head>
@@ -2660,6 +2740,15 @@ onclick="mostrar('Redes')">
 <p>Comunicación Digital</p>
 </div>
 
+
+<div class="card" id="ambienteJuegos" data-titulo="🎮 Juegos"
+onclick="mostrar('Juegos')">
+
+<h2>🎮 Juegos</h2>
+<p>Entretenimiento</p>
+</div>
+
+
 </div>
 
 <!-- =====================================
@@ -2673,7 +2762,7 @@ onclick="mostrar('Redes')">
         <div>⚡ ACCIONES</div>
 
         <div style="font-size:24px;margin-top:10px;">
-            📅 🌤 📝 💬 📧 🏦 💳
+            📅 🌤 📝 📧 🏦 💳
         </div>
 
     </button>
@@ -2684,7 +2773,7 @@ onclick="mostrar('Redes')">
         <div>🌎 AMBIENTES</div>
 
         <div style="font-size:24px;margin-top:10px;">
-            📚 🎵 📻 🏋️ 🎬 📸 ▶️ 🌐
+            📚 🎵 📻 🏋️ 🎬 📸 🌐 🎮
         </div>
 
     </button>
@@ -3439,6 +3528,653 @@ box-shadow:0 4px 10px rgba(0,0,0,0.3);
 <!-- ===== FIN MODULO CINE ===== -->
 
 
+<!-- ===== MODULO JUEGOS: PERFILES ===== -->
+
+<div id="Juegos" style="display:none; min-height:100vh;">
+
+    <div style="
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        padding:15px;
+    ">
+        <button onclick="inicio()">
+            ⬅ Volver
+        </button>
+    </div>
+
+    <h2 style="
+        text-align:center;
+        color:#FFD700;
+        margin:10px 0 20px;
+    ">
+        🎮 Juegos
+    </h2>
+
+   <div id="contenedorPerfilesJuego" style="
+    width:min(96%,800px);
+    margin:20px auto;
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:15px;
+">
+
+<div class="card" style="padding:18px;text-align:center;">
+    <div style="display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:nowrap;white-space:nowrap;">
+    <h3 id="nombrePerfilJuego1" style="margin:0;cursor:pointer;" onclick="abrirPerfilJuego(1)">👑 Perfil1</h3>
+       <button style="margin-left:8px;" onclick="editarNombrePerfilJuego(1)">✏️</button>
+        <button onclick="confirmarBorrarPerfilJuego(1)">🗑️</button>
+    </div>
+</div>
+
+
+<div class="card" style="padding:18px;text-align:center;">
+    <div style="display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:nowrap;white-space:nowrap;">
+        <h3 id="nombrePerfilJuego2" style="margin:0;cursor:pointer;" onclick="abrirPerfilJuego(2)">🕹️ Perfil2</h3>
+       <button style="margin-left:8px;" onclick="editarNombrePerfilJuego(2)">✏️</button>
+        <button onclick="confirmarBorrarPerfilJuego(2)">🗑️</button>
+    </div>
+</div>
+
+
+<div class="card" style="padding:18px;text-align:center;">
+    <div style="display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:nowrap;white-space:nowrap;">
+         <h3 id="nombrePerfilJuego3" style="margin:0;cursor:pointer;" onclick="abrirPerfilJuego(3)">🎯 Perfil3</h3>
+        <button style="margin-left:8px;" onclick="editarNombrePerfilJuego(3)">✏️</button>
+        <button onclick="confirmarBorrarPerfilJuego(3)">🗑️</button>
+    </div>
+</div>
+
+<div class="card" style="padding:18px;text-align:center;">
+  <div style="display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:nowrap;white-space:nowrap;">
+        <h3 id="nombrePerfilJuego4" style="margin:0;cursor:pointer;" onclick="abrirPerfilJuego(4)">🏆 Perfil4</h3>
+        <button style="margin-left:8px;" onclick="editarNombrePerfilJuego(4)">✏️</button>
+        <button onclick="confirmarBorrarPerfilJuego(4)">🗑️</button>
+    </div>
+</div>
+
+
+    </div>
+
+</div>
+
+<!-- ===== FIN MODULO JUEGOS: PERFILES ===== -->
+
+<!-- ===== PANTALLA PERFIL JUEGOS ===== -->
+
+<div id="pantallaPerfilJuego" style="display:none; min-height:100vh;">
+
+    <div style="
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        padding:15px;
+    ">
+        <button type="button" onclick="volverPerfilesJuego()">
+            ⬅ Volver
+        </button>
+
+        <button type="button" onclick="abrirConfiguracionPerfilJuego()">
+            ⚙ Configurar
+        </button>
+    </div>
+
+    <h2 id="tituloPerfilJuego" style="
+        text-align:center;
+        color:#FFD700;
+        margin:10px 0 20px;
+    ">
+        🎮 Juegos
+    </h2>
+
+    <div class="card" style="
+        width:min(92%,700px);
+        margin:20px auto;
+        padding:20px;
+        border-radius:22px;
+    ">
+        <h3 style="margin-top:0;text-align:center;">
+            🪙 Mis juegos
+        </h3>
+
+        <div id="listaJuegosPerfilSeleccionado" style="
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+            gap:12px;
+        "></div>
+    </div>
+
+</div>
+
+<!-- ===== FIN PANTALLA PERFIL JUEGOS ===== -->
+
+<!-- ===== POPUP AVISO PERFIL JUEGOS ===== -->
+
+<div id="popupAvisoPerfilJuego"
+     style="
+     display:none;
+     position:fixed;
+     inset:0;
+     background:rgba(0,0,0,.75);
+     z-index:1200;
+     align-items:center;
+     justify-content:center;
+     padding:20px;
+     ">
+
+    <div style="
+        width:min(92%,450px);
+        background:#1d1d1d;
+        border:1px solid #555;
+        border-radius:20px;
+        padding:20px;
+        box-shadow:0 10px 35px rgba(0,0,0,.7);
+        text-align:center;
+        ">
+
+        <h2 style="margin-top:0;color:#FFD700;">
+            🎮 Nombre del perfil
+        </h2>
+
+        <p style="color:#ccc;">
+            El nombre está vacío. ¿Querés volver a editarlo
+            o restaurar el nombre predeterminado?
+        </p>
+
+        <div style="
+            display:flex;
+            justify-content:center;
+            gap:10px;
+            flex-wrap:wrap;
+            margin-top:20px;
+            ">
+
+            <button type="button"
+                    onclick="cerrarAvisoPerfilJuego()">
+                ✏️ Volver a editar
+            </button>
+
+            <button type="button"
+                    onclick="restaurarNombrePerfilJuego()">
+                ↩️ Restaurar nombre
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ===== FIN POPUP AVISO PERFIL JUEGOS ===== -->
+
+<!-- ===== POPUP EDITAR NOMBRE PERFIL JUEGOS ===== -->
+
+<div id="popupEditarNombrePerfilJuego"
+     style="
+     display:none;
+     position:fixed;
+     inset:0;
+     background:rgba(0,0,0,.75);
+     z-index:1300;
+     align-items:center;
+     justify-content:center;
+     padding:20px;
+     ">
+
+    <div style="
+        width:min(92%,450px);
+        background:#1d1d1d;
+        border:1px solid #555;
+        border-radius:20px;
+        padding:20px;
+        box-shadow:0 10px 35px rgba(0,0,0,.7);
+        text-align:center;
+        ">
+
+        <h2 style="margin-top:0;color:#FFD700;">
+            🎮 Editar perfil
+        </h2>
+
+        <input id="inputNombrePerfilJuego"
+               type="text"
+               maxlength="10"
+               autocomplete="off"
+               placeholder="Nombre del perfil"
+               style="
+               box-sizing:border-box;
+               width:100%;
+               padding:12px;
+               font-size:18px;
+               border-radius:10px;
+               margin:10px 0 20px;
+               ">
+
+        <div style="
+            display:flex;
+            justify-content:center;
+            gap:10px;
+            flex-wrap:wrap;
+            ">
+
+            <button type="button"
+                    onclick="guardarNombrePerfilJuego()"
+                    style="padding:10px 18px;border-radius:10px;">
+                💾 Guardar
+            </button>
+
+            <button type="button"
+                    onclick="cerrarEditarNombrePerfilJuego()"
+                    style="padding:10px 18px;border-radius:10px;">
+                ✖ Cancelar
+            </button>
+
+        </div>
+
+<div id="mensajeNombrePerfilJuego"
+     style="
+     display:none;
+     margin-top:15px;
+     color:#7CFC00;
+     font-weight:bold;
+     font-size:16px;
+     ">
+    ✔ Nombre del perfil guardado
+</div>
+
+<div id="mensajeErrorNombrePerfilJuego"
+     style="
+     display:none;
+     margin-top:10px;
+     color:#FF4444;
+     font-weight:bold;
+     font-size:15px;
+     ">
+</div>
+
+    </div>
+
+</div>
+
+<!-- ===== FIN POPUP EDITAR NOMBRE PERFIL JUEGOS ===== -->
+
+<!-- ===== POPUPS JUEGOS POR PERFIL ===== -->
+
+<!-- POPUP AGREGAR JUEGO -->
+
+<div id="popupAgregarJuegoPerfil"
+     style="
+     display:none;
+     position:fixed;
+     inset:0;
+     background:rgba(0,0,0,.75);
+     z-index:1200;
+     align-items:center;
+     justify-content:center;
+     padding:20px;
+     ">
+
+    <div style="
+        width:min(92%,450px);
+        max-height:85vh;
+        overflow-y:auto;
+        background:#1d1d1d;
+        border:1px solid #555;
+        border-radius:20px;
+        padding:20px;
+        box-shadow:0 10px 35px rgba(0,0,0,.7);
+        ">
+
+        <div style="
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:15px;
+            ">
+
+            <h2 style="margin:0;color:#FFD700;">
+                👾 Agregar juego
+            </h2>
+
+            <button type="button"
+                    onclick="cerrarAgregarJuegoPerfil()">
+                ✖
+            </button>
+
+        </div>
+
+        <p style="text-align:center;color:#ccc;line-height:1.5;">
+            ✏️ <strong>Escribí el nombre exacto del juego.</strong>
+            <br><br>
+            Comprobaremos el juego en la tienda correspondiente.
+            <br><br>
+            📖 <strong>¿No sabés cómo compartirlo?</strong>
+            <br>
+            <button
+                type="button"
+                onclick="abrirInstructivoCompartirApp()"
+                style="
+                border:none;
+                background:none;
+                color:#FFD700;
+                font-size:16px;
+                font-weight:bold;
+                cursor:pointer;
+                padding:0;
+                ">
+                Ver instructivo
+            </button>
+            <br><br>
+            ↩️ Después volvé a Mi Espacio para completar el proceso.
+        </p>
+
+        <input
+            id="nombreAgregarJuegoPerfil"
+            type="text"
+            maxlength="100"
+            placeholder="Nombre exacto del juego"
+            style="
+            width:100%;
+            box-sizing:border-box;
+            padding:12px;
+            font-size:16px;
+            border-radius:10px;
+            border:1px solid #666;
+            margin-bottom:15px;
+            ">
+
+        <button
+            type="button"
+            onclick="validarNuevoJuegoPerfil()"
+            style="
+            display:block;
+            width:100%;
+            margin:8px 0;
+            padding:10px;
+            font-size:16px;
+            font-weight:bold;
+            border-radius:10px;
+            ">
+            🔎 Validar juego
+        </button>
+
+        <button
+            type="button"
+            onclick="cerrarAgregarJuegoPerfil()"
+            style="
+            display:block;
+            width:100%;
+            margin:8px 0;
+            padding:10px;
+            font-size:16px;
+            font-weight:bold;
+            border-radius:10px;
+            ">
+            Cancelar
+        </button>
+
+    </div>
+
+</div>
+
+<!-- POPUP INGRESAR ENLACE DEL JUEGO -->
+
+<div id="popupLinkJuegoPerfil"
+     style="
+     display:none;
+     position:fixed;
+     inset:0;
+     background:rgba(0,0,0,.75);
+     z-index:1300;
+     align-items:center;
+     justify-content:center;
+     padding:20px;
+     ">
+
+    <div style="
+        width:min(92%,450px);
+        background:#1d1d1d;
+        border:1px solid #555;
+        border-radius:20px;
+        padding:20px;
+        box-shadow:0 10px 35px rgba(0,0,0,.7);
+        ">
+
+        <h2 style="margin-top:0;text-align:center;color:#FFD700;">
+            🔗 Ingresar enlace del juego
+        </h2>
+
+        <p style="text-align:center;color:#ccc;line-height:1.5;">
+            Pegá aquí el enlace del juego que copiaste del navegador.
+        </p>
+
+        <input
+            id="urlAgregarJuegoPerfil"
+            type="url"
+            placeholder="https://..."
+            style="
+            width:100%;
+            box-sizing:border-box;
+            padding:12px;
+            font-size:16px;
+            border-radius:10px;
+            border:1px solid #666;
+            margin-bottom:15px;
+            ">
+
+        <button
+            type="button"
+            onclick="guardarLinkJuegoPerfil()"
+            style="
+            display:block;
+            width:100%;
+            margin:8px 0;
+            padding:12px;
+            font-size:16px;
+            font-weight:bold;
+            border-radius:10px;
+            ">
+            ✅ Guardar enlace
+        </button>
+
+        <button
+            type="button"
+            onclick="cerrarLinkJuegoPerfil()"
+            style="
+            display:block;
+            width:100%;
+            margin:8px 0;
+            padding:12px;
+            font-size:16px;
+            font-weight:bold;
+            border-radius:10px;
+            ">
+            ↩️ Cancelar
+        </button>
+
+    </div>
+
+</div>
+
+<!-- POPUP CONFIRMAR JUEGO -->
+
+<div id="popupConfirmarJuegoPerfil"
+     style="
+     display:none;
+     position:fixed;
+     inset:0;
+     background:rgba(0,0,0,.75);
+     z-index:1300;
+     align-items:center;
+     justify-content:center;
+     padding:20px;
+     ">
+
+    <div style="
+        width:min(92%,450px);
+        background:#1d1d1d;
+        border:1px solid #555;
+        border-radius:20px;
+        padding:20px;
+        box-shadow:0 10px 35px rgba(0,0,0,.7);
+        ">
+
+        <h2 style="margin-top:0;text-align:center;color:#FFD700;">
+            👾 Confirmar juego
+        </h2>
+
+        <p id="mensajeConfirmarJuegoPerfil"
+           style="text-align:center;color:#ccc;line-height:1.5;">
+        </p>
+
+        <button
+            type="button"
+            onclick="confirmarJuegoPerfil()"
+            style="
+            display:block;
+            width:100%;
+            margin:10px 0;
+            padding:12px;
+            font-size:16px;
+            font-weight:bold;
+            border-radius:10px;
+            ">
+            ✅ Sí, guardar
+        </button>
+
+        <button
+            type="button"
+            onclick="cancelarConfirmacionJuegoPerfil()"
+            style="
+            display:block;
+            width:100%;
+            margin:10px 0;
+            padding:12px;
+            font-size:16px;
+            font-weight:bold;
+            border-radius:10px;
+            ">
+            ↩️ No, volver a intentar
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ===== FIN POPUPS JUEGOS POR PERFIL ===== -->
+
+
+<!-- ===== CONFIGURACION JUEGOS DEL PERFIL ===== -->
+
+<div id="popupConfiguracionPerfilJuego"
+     style="
+     display:none;
+     position:fixed;
+     inset:0;
+     background:rgba(0,0,0,.75);
+     z-index:1100;
+     align-items:center;
+     justify-content:center;
+     padding:20px;
+     ">
+
+    <div style="
+        width:min(92%,450px);
+        max-height:85vh;
+        overflow-y:auto;
+        background:#1d1d1d;
+        border:1px solid #555;
+        border-radius:20px;
+        padding:20px;
+        box-shadow:0 10px 35px rgba(0,0,0,.7);
+        ">
+
+        <div style="
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:15px;
+            ">
+
+            <h2 style="margin:0;color:#FFD700;">
+                👾 Configurar juegos
+            </h2>
+
+            <button type="button"
+                    onclick="cerrarConfiguracionPerfilJuego()">
+                ✖
+            </button>
+
+        </div>
+
+        <p style="
+            text-align:center;
+            color:#ccc;
+            line-height:1.5;
+            ">
+            Administrá los juegos de este perfil.
+        </p>
+
+        <button
+            type="button"
+            onclick="abrirAgregarJuegoPerfil()"
+            style="
+            display:block;
+            width:100%;
+            margin:15px 0;
+            padding:12px;
+            font-size:16px;
+            font-weight:bold;
+            border-radius:10px;
+            ">
+            ➕ Agregar juego
+        </button>
+
+        <div id="listaConfiguracionJuegosPerfil"
+             style="
+             display:grid;
+             gap:10px;
+             margin-top:15px;
+             "></div>
+
+
+
+<button
+    type="button"
+    onclick="cerrarConfiguracionPerfilJuego()"
+    style="
+    display:block;
+    width:100%;
+    margin-top:20px;
+    padding:12px;
+    font-size:16px;
+    font-weight:bold;
+    border-radius:10px;
+    text-align:center;
+    ">
+    💾 Guardar Juego
+</button>
+
+
+<div id="mensajeJuego"
+     style="
+     display:none;
+     margin-top:12px;
+     color:#7CFC00;
+     font-weight:bold;
+     font-size:16px;
+     ">
+    ✅ Juegos guardados correctamente
+</div>
+
+    </div>
+
+</div>
+
+<!-- ===== FIN CONFIGURACION JUEGOS DEL PERFIL ===== -->
+
+
+
 <!-- ===== CONFIGURACION DE CINE ===== -->
 
 <div id="popupConfiguracionCine"
@@ -3586,6 +4322,341 @@ box-shadow:0 4px 10px rgba(0,0,0,0.3);
 </div>
 
 <!-- ===== FIN CONFIGURACION CINE ===== -->
+
+<!-- ===== CONFIGURACION DE MUSICA ===== -->
+
+<div id="popupConfiguracionMusica"
+     style="
+     display:none;
+     position:fixed;
+     inset:0;
+     background:rgba(0,0,0,.75);
+     z-index:1000;
+     align-items:center;
+     justify-content:center;
+     padding:20px;
+     ">
+
+    <div style="
+        width:min(92%,600px);
+        max-height:85vh;
+        overflow-y:auto;
+        background:#1d1d1d;
+        border:1px solid #555;
+        border-radius:20px;
+        padding:20px;
+        box-shadow:0 10px 35px rgba(0,0,0,.7);
+        ">
+
+        <div style="
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:15px;
+            ">
+
+            <h2 style="margin:0;color:#FFD700;">
+                🎵 Configurar Música
+            </h2>
+
+            <button onclick="cerrarConfiguracionMusica()">
+                ✖
+            </button>
+
+        </div>
+
+        <p style="text-align:center;color:#ccc;">
+            ⭐ Más utilizadas
+        </p>
+
+        <div id="configuracionMusica"
+             style="
+             display:grid;
+             position:relative;
+             grid-template-columns:1fr;
+             gap:10px;
+             max-height:35vh;
+             overflow-y:auto;
+             padding-right:5px;
+             ">
+        </div>
+
+        <!-- ===== MIS PLATAFORMAS PERSONALIZADAS DE MUSICA ===== -->
+
+        <p style="text-align:center;color:#ccc;">
+            👤 Mis plataformas personalizadas
+        </p>
+
+        <div id="plataformasMusicaPersonalizadasConfiguracion"
+             style="
+             display:grid;
+             position:relative;
+             grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+             gap:10px;
+             max-height:120px;
+             overflow-y:auto;
+             padding-right:5px;
+             ">
+        </div>
+
+        <!-- ===== GUARDAR / AGREGAR ===== -->
+
+        <div style="text-align:center;margin-top:20px;">
+
+            <div style="
+                display:flex;
+                justify-content:center;
+                gap:10px;
+                flex-wrap:wrap;
+                ">
+
+                <button
+                    type="button"
+                    onclick="guardarConfiguracionMusica()"
+                    style="
+                    padding:10px 22px;
+                    font-size:16px;
+                    font-weight:bold;
+                    border-radius:10px;
+                    ">
+                    💾 Guardar Música
+                </button>
+
+                <button
+                    type="button"
+                    onclick="abrirAgregarPlataformaMusica()"
+                    style="
+                    padding:10px 22px;
+                    font-size:16px;
+                    font-weight:bold;
+                    border-radius:10px;
+                    ">
+                    👤 Agregar plataforma
+                </button>
+
+            </div>
+
+            <div id="mensajeMusica"
+                 style="
+                 display:none;
+                 margin-top:12px;
+                 color:#7CFC00;
+                 font-weight:bold;
+                 font-size:16px;
+                 ">
+                ✅ Música guardada correctamente
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ===== FIN CONFIGURACION MUSICA ===== -->
+
+
+<!-- ===== AGREGAR PLATAFORMA MUSICA ===== -->
+
+<div id="popupAgregarPlataformaMusica"
+     style="
+     display:none;
+     position:fixed;
+     inset:0;
+     background:rgba(0,0,0,.75);
+     z-index:1200;
+     align-items:center;
+     justify-content:center;
+     padding:20px;
+     ">
+
+    <div style="
+        width:min(92%,450px);
+        background:#1d1d1d;
+        border:1px solid #555;
+        border-radius:20px;
+        padding:20px;
+        box-shadow:0 10px 35px rgba(0,0,0,.7);
+        ">
+
+        <div style="
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:15px;
+            ">
+
+            <h2 style="margin:0;color:#FFD700;">
+                🎵 Agregar plataforma
+            </h2>
+
+            <button type="button"
+                    onclick="cerrarAgregarPlataformaMusica()">
+                ✖
+            </button>
+
+        </div>
+
+        <p style="text-align:center;color:#ccc;line-height:1.5;">
+            ✏️ <strong>Escribí el nombre exacto de la aplicación</strong>
+            tal como aparece en tu dispositivo.
+            <br><br>
+
+            ⚠️ Vas a salir de Mi Espacio para comprobar la aplicación.
+            <br><br>
+
+            🖥️ <strong>En PC:</strong> cuando encuentres la página correcta,
+            copiá el enlace de la barra de direcciones y volvé a Mi Espacio.
+            <br><br>
+
+            📱 <strong>En celular:</strong> comprobá la aplicación en Google Play
+            o App Store y compartila con Mi Espacio.
+            <br><br>
+
+            📖 ¿Necesitás ayuda?
+            <br>
+            <button type="button"
+                    onclick="abrirInstructivoCompartirApp()"
+                    style="border:none;background:none;color:#FFD700;font-size:16px;font-weight:bold;cursor:pointer;padding:0;">
+                Ver instructivo
+            </button>
+            <br><br>
+
+            ❗ La plataforma solo se guardará cuando completes la comprobación.
+        </p>
+
+        <input
+            id="nombreAgregarPlataformaMusica"
+            type="text"
+            maxlength="100"
+            placeholder="Nombre exacto de la aplicación"
+            style="width:100%;box-sizing:border-box;padding:12px;font-size:16px;border-radius:10px;border:1px solid #666;margin-bottom:15px;">
+
+        <button
+            type="button"
+            onclick="validarNuevaPlataformaMusica()"
+            style="display:block;width:100%;margin:8px 0;padding:10px;font-size:16px;font-weight:bold;border-radius:10px;">
+            🔎 Validar plataforma
+        </button>
+
+        <button
+            type="button"
+            onclick="cerrarAgregarPlataformaMusica()"
+            style="display:block;width:100%;margin:8px 0;padding:10px;font-size:16px;font-weight:bold;border-radius:10px;">
+            Cancelar
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ===== POPUP INGRESAR LINK PLATAFORMA MUSICA ===== -->
+
+<div id="popupLinkPlataformaMusica"
+     style="
+     display:none;
+     position:fixed;
+     inset:0;
+     background:rgba(0,0,0,.75);
+     z-index:1300;
+     align-items:center;
+     justify-content:center;
+     padding:20px;
+     ">
+
+    <div style="
+        width:min(92%,450px);
+        background:#1d1d1d;
+        border:1px solid #555;
+        border-radius:20px;
+        padding:20px;
+        box-shadow:0 10px 35px rgba(0,0,0,.7);
+        ">
+
+        <h2 style="margin-top:0;text-align:center;color:#FFD700;">
+            🔗 Ingresar enlace
+        </h2>
+
+        <p style="text-align:center;color:#ccc;line-height:1.5;">
+            Pegá aquí el enlace de la plataforma que copiaste del navegador.
+        </p>
+
+        <input
+            id="urlAgregarPlataformaMusica"
+            type="url"
+            placeholder="https://..."
+            style="width:100%;box-sizing:border-box;padding:12px;font-size:16px;border-radius:10px;border:1px solid #666;margin-bottom:15px;">
+
+        <button
+            type="button"
+            onclick="guardarLinkPlataformaMusica()"
+            style="display:block;width:100%;margin:8px 0;padding:12px;font-size:16px;font-weight:bold;border-radius:10px;">
+            ✅ Guardar enlace
+        </button>
+
+        <button
+            type="button"
+            onclick="cerrarLinkPlataformaMusica()"
+            style="display:block;width:100%;margin:8px 0;padding:12px;font-size:16px;font-weight:bold;border-radius:10px;">
+            ↩️ Cancelar
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ===== POPUP CONFIRMAR PLATAFORMA MUSICA ===== -->
+
+<div id="popupConfirmarPlataformaMusica"
+     style="
+     display:none;
+     position:fixed;
+     inset:0;
+     background:rgba(0,0,0,.75);
+     z-index:1300;
+     align-items:center;
+     justify-content:center;
+     padding:20px;
+     ">
+
+    <div style="
+        width:min(92%,450px);
+        background:#1d1d1d;
+        border:1px solid #555;
+        border-radius:20px;
+        padding:20px;
+        box-shadow:0 10px 35px rgba(0,0,0,.7);
+        ">
+
+        <h2 style="margin-top:0;text-align:center;color:#FFD700;">
+            🎵 Confirmar plataforma
+        </h2>
+
+        <p id="mensajeConfirmarPlataformaMusica"
+           style="text-align:center;color:#ccc;line-height:1.5;">
+        </p>
+
+        <button
+            type="button"
+            onclick="confirmarPlataformaMusica()"
+            style="display:block;width:100%;margin:10px 0;padding:12px;font-size:16px;font-weight:bold;border-radius:10px;">
+            ✅ Sí, guardar
+        </button>
+
+        <button
+            type="button"
+            onclick="cancelarConfirmacionPlataformaMusica()"
+            style="display:block;width:100%;margin:10px 0;padding:12px;font-size:16px;font-weight:bold;border-radius:10px;">
+            ↩️ No, volver a intentar
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ===== FIN VENTANAS AGREGAR PLATAFORMA MUSICA ===== -->
 
 <!-- ===== AGREGAR PLATAFORMA CINE ===== -->
 
@@ -5984,9 +7055,6 @@ font-size:18px;
 </div>
 
 
-
-
-
 <div id="Musica" style="display:none">
 
 <button onclick="inicio()">⬅ Volver</button>
@@ -5995,56 +7063,110 @@ font-size:18px;
 🎵 Música
 </h2>
 
-<div class="grid" id="listaAlbumes">
+
+<div class="grid" id="opcionesMenuMusica">
+
+    <div class="card" onclick="mostrarOpcionMusica('plataformas')">
+        <div style="font-size:42px;">🎧</div>
+        <div>Plataformas</div>
+    </div>
+
+    <div class="card" onclick="mostrarOpcionMusica('decadas')">
+        <div style="font-size:42px;">📀</div>
+        <div>Décadas</div>
+    </div>
+
+    <div class="card" onclick="mostrarOpcionMusica('estilos')">
+        <div style="font-size:42px;">🎸</div>
+        <div>Estilos</div>
+    </div>
 
 </div>
 
-</div>
+<div id="contenidoPlataformasMusica" style="display:none;">
 
-<div id="album" style="display:none">
+       <div style="
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        padding:15px;
+    ">
 
-    <button onclick="volverMusica()">⬅ Volver</button>
+                <button onclick="
+            document.getElementById('contenidoPlataformasMusica').style.display='none';
+            document.getElementById('opcionesMenuMusica').style.display='grid';
+            document.getElementById('Musica').querySelector('button').style.display='inline-block';
+document.querySelector('#Musica h2').style.display='block';
+        ">
+            ⬅ Volver
+        </button>
 
-    <h2 style="text-align:center;color:#FFD700">
-        🎵 Lentos
-    </h2>
-
-    <div class="containerAlbum">
-
-        <!-- Lista de canciones -->
-        <div class="listaCanciones" id="listaCanciones">
-        </div>
-
-        <!-- Reproductor -->
-        <div class="reproductor">
-
-            <img
-                id="portadaAlbum"
-                src="Musica/Lentos/Exitos/lentos.jpg"
-                onerror="this.src='Img/logo.png'">
-
-            <h2 id="tituloCancion">
-                Selecciona una canción
-            </h2>
-
-            <audio id="audioPlayer" controls></audio>
-
-<div id="playerPersonal">
-
-    <button id="btnAnterior" onclick="anteriorCancion()">⏮</button>
-
-    <button id="btnPlay" onclick="playPause()">▶</button>
-
-    <button id="btnStop" onclick="detenerMusica()">■</button>
-
-    <button id="btnSiguiente" onclick="siguienteCancion()">⏭</button>
-
-</div>
-	    
-            
-        </div>
+        <button onclick="abrirConfiguracionMusica()">
+            ⚙ Configurar
+        </button>
 
     </div>
+
+    <h3 style="text-align:center;color:#FFD700;">
+        🎧 Plataformas de Música
+    </h3>
+
+    <div id="PlataformasMusicaSeleccionadas" class="grid">
+    </div>
+
+</div>
+
+<!-- ===== CONTENIDO DÉCADAS DE MÚSICA ===== -->
+<div id="contenidoDecadasMusica" style="display:none;">
+
+    <div style="
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        padding:15px;
+    ">
+        <button onclick="volverMenuMusica()">
+            ⬅ Volver
+        </button>
+
+        <button onclick="abrirConfiguracionDecadasMusica()">
+            ⚙ Configurar
+        </button>
+    </div>
+
+    <h3 style="text-align:center;color:#FFD700;">
+        📀 Décadas de Música
+    </h3>
+
+    <div id="DecadasMusicaSeleccionadas" class="grid"></div>
+
+</div>
+
+<!-- ===== CONTENIDO ESTILOS DE MÚSICA ===== -->
+<div id="contenidoEstilosMusica" style="display:none;">
+
+    <div style="
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        padding:15px;
+    ">
+        <button onclick="volverMenuMusica()">
+            ⬅ Volver
+        </button>
+
+        <button onclick="abrirConfiguracionEstilosMusica()">
+            ⚙ Configurar
+        </button>
+    </div>
+
+    <h3 style="text-align:center;color:#FFD700;">
+        🎸 Estilos de Música
+    </h3>
+
+    <div id="EstilosMusicaSeleccionados" class="grid"></div>
+
+</div>
 
 </div>
 
@@ -6064,7 +7186,8 @@ font-size:18px;
 
 <button id="btnMailto">💻 Programa de correo</button>
 
-<button id="btnCancelarSoporte">❌ Cancelar</button>
+<button id="btnCerrarSoporte">❌ Cerrar</button>
+
 
 </div>
 
@@ -6368,7 +7491,7 @@ font-size:18px;
     </button>
 
 </div>
-```
+
 
 </div>
 
@@ -6498,13 +7621,6 @@ function copiarDatoColaboracion(dato){
 
     <div>
 
-     <button
-id="btnMusica"
-onclick="playPause()"
-style="display:none;">
-⏸ Pausar música
-</button>
-
         <button onclick="cerrarPDF()">
             ✖ Cerrar
         </button>
@@ -6516,61 +7632,6 @@ style="display:none;">
 </div>
 
 <script>
-
-
-const albums = {
-
-    "Lentos": {
-
-        nombre:"Lentos",
-
-        portada:"Musica/Lentos/Exitos/lentos.jpg",
-
-        carpeta:"Musica/Lentos/Exitos/",
-
-        canciones:[
-"A million miles away",
-"Against all odds",
-"Alone (Acoustic)",
-"Angels",
-"Berlin-Take my breath away",
-"Better man",
-"Every Rose Has Its Thorn (Acoustic)",
-"Have you met Miss Jones",
-"Heart - All I wanna do is make love to you",
-"In the Air Tonight",
-"Love Of My Life",
-"Love Takes Time",
-"My Way [live]",
-"Something Beautiful",
-"Stillness of heart",
-"Sweet sixteen",
-"The Crying Game",
-"The way do the things you do",
-"These Are The Days Of Our Lives",
-"Who Wants To Live Forever",
-"Yesterday is gone"
-]
-
-
-    },
-
-    "Soda Stereo": {
-
-        nombre:"Soda Stereo",
-
-        portada:"Musica/Soda Stereo/Obras Cumbres/Obras Cumbres.jpg",
-
-        carpeta:"Musica/Soda Stereo/Obras Cumbres/",
-
-        canciones:[]
-
-    }
-
-};
-
-
-let albumActual = albums["Lentos"];
 
 const Libros=[
 {titulo:"El Hobbit"},
@@ -6607,12 +7668,6 @@ const vencimiento = "2026-11-20";
 // VARIABLES GENERALES
 //========================
 
-const audio = document.getElementById("audioPlayer");
-
-
-let estabaReproduciendo = false;
-
-let indiceActual = -1;
 
 let horasClima = null;
 
@@ -6639,39 +7694,6 @@ lista.innerHTML+=`
 <button onclick="abrirPDF('Libros/${l.titulo}.pdf','${l.titulo}')">📄 Leer PDF</button>
 </div>`;
 });
-
-function cargarAlbumes(){
-
-    const lista = document.getElementById("listaAlbumes");
-
-    lista.innerHTML = "";
-
-    for(const nombre in albums){
-
-        const album = albums[nombre];
-
-        lista.innerHTML += `
-
-        <div class="card">
-
-            <img src="${album.portada}"
-                 onerror="this.src='Img/logo.png'">
-
-            <h3>🎵 ${album.nombre}</h3>
-
-            <button onclick="abrirAlbum('${nombre}')">
-
-                Abrir álbum
-
-            </button>
-
-        </div>
-
-        `;
-
-    }
-
-}
 
 
 // ===== CONFIGURACION TIEMPOS ENTRENAMIENTO =====
@@ -10177,9 +11199,2970 @@ botonVolver.style.cssText = `
 
 pantalla.appendChild(botonVolver);
 
+}
 
+
+/* ========================
+   PLATAFORMAS DE MUSICA
+======================== */
+
+let configuracionMusica = [];
+
+
+fetch("https://raw.githubusercontent.com/pgaglian/Mi-Espacio-Datos/main/PlataformasMusica.json")
+    .then(function(res){
+        return res.json();
+    })
+
+
+.then(function(datos){
+    configuracionMusica = datos;
+    console.log("Plataformas de Música cargadas:", configuracionMusica);
+
+    cargarConfiguracionMusica();
+})
+
+
+    .catch(function(err){
+        console.warn("No se pudo cargar PlataformasMusica.json", err);
+    });
+
+// ========================
+// DÉCADAS Y ESTILOS DE MÚSICA
+// ========================
+
+let configuracionDecadasMusica = [];
+let configuracionEstilosMusica = [];
+
+// ========================
+// CARGAR DÉCADAS DESDE GITHUB
+// ========================
+
+fetch("https://raw.githubusercontent.com/pgaglian/Mi-Espacio-Datos/main/DecadasMusica.json")
+    .then(function(res){
+        return res.json();
+    })
+        .then(function(datos){
+        configuracionDecadasMusica = datos;
+        console.log("Décadas de Música cargadas:", configuracionDecadasMusica);
+
+        const popup = document.getElementById(
+            "popupConfiguracionDecadasMusica"
+        );
+
+        if(popup && popup.style.display === "flex"){
+            abrirConfiguracionDecadasMusica();
+        }
+    })
+
+    .catch(function(err){
+        console.warn("No se pudo cargar DecadasMusica.json", err);
+    });
+
+
+// ========================
+// CARGAR ESTILOS DESDE GITHUB
+// ========================
+
+fetch("https://raw.githubusercontent.com/pgaglian/Mi-Espacio-Datos/main/EstilosMusica.json")
+    .then(function(res){
+        return res.json();
+    })
+    .then(function(datos){
+        configuracionEstilosMusica = datos;
+        console.log("Estilos de Música cargados:", configuracionEstilosMusica);
+    })
+    .catch(function(err){
+        console.warn("No se pudo cargar EstilosMusica.json", err);
+    });
+
+// ========================
+// CARGAR CONFIGURACION DE PLATAFORMAS MUSICA
+// ========================
+
+function cargarConfiguracionMusica(){
+
+    const contenedor = document.getElementById(
+        "configuracionMusica"
+    );
+
+    const contenedorPersonalizadas = document.getElementById(
+        "plataformasMusicaPersonalizadasConfiguracion"
+    );
+
+    if(!contenedor || !contenedorPersonalizadas){
+        return;
+    }
+
+    contenedor.innerHTML = "";
+    contenedorPersonalizadas.innerHTML = "";
+
+    const seleccionadas = JSON.parse(
+        localStorage.getItem("PlataformasMusicaSeleccionadas")
+    ) || [];
+
+    const personalizadas = JSON.parse(
+        localStorage.getItem("PlataformasMusicaPersonalizadas")
+    ) || [];
+
+    const personalizadasSeleccionadas = JSON.parse(
+        localStorage.getItem("PlataformasMusicaPersonalizadasSeleccionadas")
+    ) || [];
+
+    configuracionMusica
+        .filter(function(plataforma){
+            return plataforma.activo !== false;
+        })
+        .forEach(function(plataforma){
+
+            const fila = document.createElement("label");
+
+            fila.style.display = "flex";
+            fila.style.alignItems = "center";
+            fila.style.gap = "10px";
+            fila.style.padding = "10px";
+            fila.style.background = "rgba(255,255,255,.05)";
+            fila.style.borderRadius = "10px";
+            fila.style.cursor = "pointer";
+
+            const checkbox = document.createElement("input");
+
+            checkbox.type = "checkbox";
+            checkbox.value = plataforma.id;
+            checkbox.checked = seleccionadas.includes(plataforma.id);
+
+            const imagen = document.createElement("img");
+
+            imagen.src =
+                "https://raw.githubusercontent.com/pgaglian/Mi-Espacio-Datos/main/Musicaimg/" +
+                plataforma.logo + ".png";
+
+            imagen.alt = "";
+            imagen.style.width = "36px";
+            imagen.style.height = "36px";
+            imagen.style.objectFit = "contain";
+
+            imagen.onerror = function(){
+                this.style.display = "none";
+            };
+
+            const nombre = document.createElement("span");
+
+            nombre.textContent = plataforma.nombre;
+            nombre.style.color = "#fff";
+
+            fila.appendChild(checkbox);
+            fila.appendChild(imagen);
+            fila.appendChild(nombre);
+
+            contenedor.appendChild(fila);
+
+        });
+
+    personalizadas.forEach(function(plataforma){
+
+        const fila = document.createElement("div");
+
+        fila.style.display = "flex";
+        fila.style.alignItems = "center";
+        fila.style.justifyContent = "space-between";
+        fila.style.gap = "10px";
+        fila.style.padding = "10px";
+        fila.style.background = "rgba(255,255,255,.05)";
+        fila.style.borderRadius = "10px";
+        fila.style.margin = "8px 0";
+
+        const label = document.createElement("label");
+
+        label.style.display = "flex";
+        label.style.alignItems = "center";
+        label.style.gap = "8px";
+        label.style.cursor = "pointer";
+        label.style.flex = "1";
+
+        const checkbox = document.createElement("input");
+
+        checkbox.type = "checkbox";
+        checkbox.value = plataforma.nombre;
+
+        checkbox.checked = personalizadasSeleccionadas.includes(
+            plataforma.nombre
+        );
+
+        label.appendChild(checkbox);
+
+        const icono = document.createElement("span");
+
+        icono.textContent = "🎵";
+
+        label.appendChild(icono);
+
+        const nombre = document.createElement("span");
+
+        nombre.textContent = plataforma.nombre;
+        nombre.style.color = "#fff";
+
+        label.appendChild(nombre);
+
+        fila.appendChild(label);
+
+        const botonEliminar = document.createElement("button");
+
+        botonEliminar.type = "button";
+        botonEliminar.textContent = "🗑️";
+
+        botonEliminar.onclick = function(){
+
+            eliminarPlataformaMusicaPersonalizada(
+                plataforma.nombre
+            );
+
+        };
+
+        fila.appendChild(botonEliminar);
+
+        contenedorPersonalizadas.appendChild(fila);
+
+    });
+}
+
+
+// ========================
+// MOSTRAR DÉCADAS DE MÚSICA
+// ========================
+
+function mostrarDecadasMusica(){
+
+    const contenedor = document.getElementById(
+        "DecadasMusicaSeleccionadas"
+    );
+
+    if(!contenedor){
+        return;
+    }
+
+    contenedor.innerHTML = "";
+
+    const seleccionadas = JSON.parse(
+        localStorage.getItem("DecadasMusicaSeleccionadas")
+    ) || [];
+
+    if(seleccionadas.length === 0){
+        contenedor.innerHTML =
+            '<p style="text-align:center;">' +
+            'Seleccioná las décadas que querés escuchar desde Configurar.' +
+            '</p>';
+        return;
+    }
+
+    configuracionDecadasMusica
+        .filter(function(decada){
+            return seleccionadas.includes(decada.id);
+        })
+        .forEach(function(decada){
+
+            const tarjeta = document.createElement("div");
+
+            tarjeta.className = "card";
+            tarjeta.style.cursor = "pointer";
+
+            tarjeta.onclick = function(){
+            abrirReproductorMusica(decada);
+        };
+
+            tarjeta.innerHTML = `
+                <div style="font-size:36px;">
+                    ${decada.emoji || "📀"}
+                </div>
+                <div style="font-weight:bold;">
+                    ${decada.nombre || decada.categoria || ""}
+                </div>
+                <div style="font-size:13px;margin-top:6px;">
+                    ${decada.descripcion || ""}
+                </div>
+            `;
+
+            contenedor.appendChild(tarjeta);
+
+        });
 
 }
+
+
+ // ========================
+ // MOSTRAR ESTILOS DE MÚSICA
+ // ========================
+
+function mostrarEstilosMusica(){
+
+    const contenedor = document.getElementById(
+        "EstilosMusicaSeleccionados"
+    );
+
+    if(!contenedor){
+        return;
+    }
+
+    contenedor.innerHTML = "";
+
+    const seleccionadas = JSON.parse(
+        localStorage.getItem("EstilosMusicaSeleccionados")
+    ) || [];
+
+    if(seleccionadas.length === 0){
+        contenedor.innerHTML =
+            '<p style="text-align:center;">' +
+            'Seleccioná los estilos que querés escuchar desde Configurar.' +
+            '</p>';
+        return;
+    }
+
+    configuracionEstilosMusica
+        .filter(function(estilo){
+            return seleccionadas.includes(estilo.id);
+        })
+        .forEach(function(estilo){
+
+            const tarjeta = document.createElement("div");
+
+            tarjeta.className = "card";
+            tarjeta.style.cursor = "pointer";
+
+            tarjeta.onclick = function(){
+                abrirReproductorMusica(estilo);
+            };
+
+            tarjeta.innerHTML = `
+                <div style="font-size:36px;">
+                    ${estilo.emoji || "🎸"}
+                </div>
+                <div style="font-weight:bold;">
+                    ${estilo.nombre || estilo.categoria || ""}
+                </div>
+                <div style="font-size:13px;margin-top:6px;">
+                    ${estilo.descripcion || ""}
+                </div>
+            `;
+
+            contenedor.appendChild(tarjeta);
+
+        });
+
+}
+
+
+/* =========================================
+   REPRODUCTOR DE MÚSICA
+   Reutilizable para Décadas y Estilos
+   Independiente del reproductor de Radios
+========================================= */
+
+function abrirReproductorMusica(itemMusica){
+
+    // =========================================
+    // CERRAR REPRODUCTOR ANTERIOR DE MÚSICA
+    // =========================================
+
+    if(window.temporizadorMusicaActivo){
+        clearTimeout(window.temporizadorMusicaActivo);
+        window.temporizadorMusicaActivo = null;
+    }
+
+    const anterior = document.getElementById("reproductorMusicaFijo");
+
+    if(anterior){
+        if(anterior.audio){
+            anterior.audio.__musicaCerrada = true;
+            anterior.audio.pause();
+            anterior.audio.removeAttribute("src");
+            anterior.audio.load();
+        }
+        anterior.remove();
+    }
+
+    const miniAnterior = document.querySelector(
+        'body > div[data-musica-mini="true"]'
+    );
+
+    if(miniAnterior){
+        miniAnterior.remove();
+    }
+
+    // =========================================
+    // VALIDAR ELEMENTO MUSICAL
+    // =========================================
+
+    if(!itemMusica){
+        console.warn("No se recibió una década o estilo musical.");
+        return;
+    }
+
+    // =========================================
+    // PREPARAR FUENTES DE AUDIO
+    // =========================================
+
+    const streams = [];
+
+    if(itemMusica.url_stream){
+        streams.push(itemMusica.url_stream);
+    }
+
+    if(Array.isArray(itemMusica.alternativas)){
+        itemMusica.alternativas.forEach(function(url){
+            if(url && !streams.includes(url)){
+                streams.push(url);
+            }
+        });
+    }
+
+    if(streams.length === 0){
+        console.warn("Este elemento musical no tiene fuentes de audio configuradas.");
+        return;
+    }
+
+    // =========================================
+    // ESTADO DEL REPRODUCTOR
+    // =========================================
+
+    let indiceStream = 0;
+    let intentos = 0;
+    let temporizadorReintento = null;
+    let animacionVU = null;
+    let cerrado = false;
+    let reproduccionSolicitada = true;
+    let numeroOperacionAudio = 0;
+
+    const maxIntentosPorStream = 3;
+
+    // =========================================
+    // CONTENEDOR PRINCIPAL
+    // =========================================
+
+    const reproductor = document.createElement("div");
+    reproductor.id = "reproductorMusicaFijo";
+
+    Object.assign(reproductor.style,{
+        position:"fixed",
+        bottom:"20px",
+        left:"50%",
+        transform:"translateX(-50%)",
+        zIndex:"99999",
+        width:"620px",
+        maxWidth:"95vw",
+        boxSizing:"border-box",
+        padding:"10px 16px 16px",
+        borderRadius:"20px",
+        border:"1px solid #39FF14",
+        background:"linear-gradient(180deg,#0d0f1d 0%,#05060b 100%)",
+        boxShadow:"0 15px 40px rgba(0,0,0,.9),0 0 20px rgba(57,255,20,.25)",
+        fontFamily:"'Segoe UI',Roboto,Helvetica,Arial,sans-serif",
+        color:"#fff"
+    });
+
+    // =========================================
+    // ASA DE ARRASTRE
+    // =========================================
+
+    const asa = document.createElement("div");
+
+    Object.assign(asa.style,{
+        width:"50px",
+        height:"18px",
+        margin:"0 auto 8px",
+        background:"rgba(255,255,255,.08)",
+        border:"1px solid rgba(0,240,255,.3)",
+        borderRadius:"10px",
+        display:"flex",
+        justifyContent:"center",
+        alignItems:"center",
+        cursor:"grab",
+        touchAction:"none"
+    });
+
+    asa.title = "Arrastrá para mover";
+    asa.innerHTML =
+        "<div style='width:18px;height:2px;background:#00f0ff;box-shadow:0 2px 0 #00f0ff'></div>";
+
+    reproductor.appendChild(asa);
+
+    // =========================================
+    // CUERPO
+    // =========================================
+
+    const cuerpo = document.createElement("div");
+
+    Object.assign(cuerpo.style,{
+        display:"flex",
+        flexDirection:"column",
+        gap:"12px"
+    });
+
+   
+    // =========================================
+    // PANEL SUPERIOR
+    // =========================================
+
+    const panel = document.createElement("div");
+
+    Object.assign(panel.style,{
+        display:"grid",
+        gridTemplateColumns:"minmax(0,1fr) auto minmax(0,1fr)",
+        alignItems:"center",
+        gap:"10px",
+        background:"rgba(10,15,30,.7)",
+        border:"1px solid #39FF14",
+        boxShadow:"0 0 8px rgba(57,255,20,.35)",  
+        padding:"10px 20px",
+        borderRadius:"14px",
+        width:"100%",
+        boxSizing:"border-box"
+    });
+
+
+    // =========================================
+    // IDENTIDAD MUSICAL
+    // =========================================
+
+    const boxInfo = document.createElement("div");
+
+    Object.assign(boxInfo.style,{
+        display:"flex",
+        alignItems:"center",
+        gap:"10px",
+        minWidth:"0",
+        flex:"1"
+    });
+
+    const logo = document.createElement("div");
+
+    Object.assign(logo.style,{
+        width:"46px",
+        height:"46px",
+        borderRadius:"10px",
+        background:"linear-gradient(135deg,#180036,#41006f)",
+        border:"1px solid #ff007f",
+        boxShadow:"0 0 10px rgba(255,0,127,.5)",
+        display:"flex",
+        flexDirection:"column",
+        justifyContent:"center",
+        alignItems:"center",
+        lineHeight:"1",
+        flexShrink:"0"
+    });
+
+    logo.innerHTML =
+        "<span style='font-weight:900;font-size:13px;color:#ff007f;text-shadow:0 0 5px #ff007f'>MÚSICA</span>" +
+        "<span style='font-size:9px;color:#fff;font-weight:bold;margin-top:4px'>24/7</span>";
+
+    const info = document.createElement("div");
+    info.style.minWidth = "0";
+
+    const nombre = document.createElement("div");
+
+    nombre.textContent =
+        itemMusica.nombre || itemMusica.categoria || "Música";
+
+    Object.assign(nombre.style,{
+        fontWeight:"bold",
+        fontSize:"14px",
+        color:"#00f0ff",
+        textShadow:"0 0 8px rgba(0,240,255,.6)",
+        whiteSpace:"nowrap",
+        overflow:"hidden",
+        textOverflow:"ellipsis"
+    });
+
+    const estado = document.createElement("div");
+
+    estado.textContent = "Preparando audio…";
+
+    Object.assign(estado.style,{
+        fontSize:"10px",
+        color:"#8fa0b5",
+        marginTop:"4px"
+    });
+
+    info.appendChild(nombre);
+    info.appendChild(estado);
+    boxInfo.appendChild(logo);
+    boxInfo.appendChild(info);
+
+    // =========================================
+    // ECUALIZADOR VISUAL
+    // =========================================
+
+    const zonaVU = document.createElement("div");
+
+    Object.assign(zonaVU.style,{
+        display:"flex",
+        alignItems:"flex-end",
+        justifyContent:"center",
+        gap:"3px",
+        height:"30px",
+        width:"120px",
+        margin:"0 5px",
+        padding:"3px 4px",
+        boxSizing:"border-box",
+        background:"linear-gradient(to bottom,#02070b,#000)",
+        border:"1px solid #39FF14",
+        borderBottom:"2px solid #39FF14",
+        boxShadow:"0 0 6px rgba(57,255,20,.3)",
+        borderRadius:"5px",
+        flexShrink:"0"
+    });
+
+    const barrasVU = [];
+
+    for(let i = 0; i < 20; i++){
+        const barra = document.createElement("div");
+
+        Object.assign(barra.style,{
+            flex:"1",
+            maxWidth:"5px",
+            height:"3px",
+            minHeight:"3px",
+            borderRadius:"2px",
+            background:"linear-gradient(to top,#00ff66 0%,#00f0ff 50%,#ff003c 100%)",
+            boxShadow:"0 0 4px rgba(0,240,255,.8)",
+            opacity:"0.35"
+        });
+
+        zonaVU.appendChild(barra);
+        barrasVU.push(barra);
+    }
+
+    if(window.innerWidth <= 600){
+        zonaVU.style.width = "65px";
+        zonaVU.style.gap = "1px";
+    }
+
+    // =========================================
+    // CONTROLES Y VOLUMEN
+    // =========================================
+
+    const controles = document.createElement("div");
+
+    Object.assign(controles.style,{
+        display:"flex",
+        alignItems:"center",
+        gap:"10px",
+        flexShrink:"0"
+    });
+
+    const btnPlay = document.createElement("button");
+
+    btnPlay.type = "button";
+    btnPlay.textContent = "▶";
+    btnPlay.title = "Reproducir";
+
+    Object.assign(btnPlay.style,{
+        width:"36px",
+        height:"36px",
+        padding:"0",
+        borderRadius:"50%",
+        border:"1px solid #00f0ff",
+        background:"radial-gradient(circle,#0a2540,#020b14)",
+        color:"#00f0ff",
+        cursor:"pointer",
+        display:"flex",
+        justifyContent:"center",
+        alignItems:"center",
+        boxShadow:"0 0 10px rgba(0,240,255,.4)",
+        fontSize:"12px",
+        flexShrink:"0"
+    });
+
+    const boxVolumen = document.createElement("div");
+
+    Object.assign(boxVolumen.style,{
+        display:"flex",
+        alignItems:"center",
+        gap:"5px"
+    });
+
+    const iconoVolumen = document.createElement("span");
+    iconoVolumen.textContent = "🔊";
+    iconoVolumen.style.fontSize = "11px";
+
+    const volumen = document.createElement("input");
+
+    volumen.type = "range";
+    volumen.min = "0";
+    volumen.max = "1";
+    volumen.step = "0.01";
+    volumen.value = "0.8";
+
+    Object.assign(volumen.style,{
+        width:window.innerWidth <= 600 ? "45px" : "65px",
+        accentColor:"#00f0ff"
+    });
+
+    boxVolumen.appendChild(iconoVolumen);
+    boxVolumen.appendChild(volumen);
+
+    controles.appendChild(btnPlay);
+    controles.appendChild(boxVolumen);
+
+    panel.appendChild(boxInfo);
+    panel.appendChild(zonaVU);
+    panel.appendChild(controles);
+
+    // =========================================
+    // BOTONES SUPERIORES
+    // =========================================
+
+    const controlesSuperiores = document.createElement("div");
+
+    Object.assign(controlesSuperiores.style,{
+        position:"absolute",
+        top:"6px",
+        right:"14px",
+        display:"flex",
+        alignItems:"center",
+        gap:"4px",
+        zIndex:"20"
+    });
+
+    function crearBotonSuperior(texto,color,titulo){
+        const boton = document.createElement("button");
+
+        boton.type = "button";
+        boton.textContent = texto;
+        boton.title = titulo;
+
+        Object.assign(boton.style,{
+            cursor:"pointer",
+            width:"26px",
+            height:"26px",
+            padding:"0",
+            borderRadius:"50%",
+            border:"1px solid " + color,
+            background:"rgba(0,240,255,.12)",
+            color:color,
+            fontWeight:"bold",
+            fontSize:"13px",
+            flexShrink:"0"
+        });
+
+        return boton;
+    }
+
+    const btnMinimizar = crearBotonSuperior(
+    "−","#39FF14","Minimizar reproductor"
+    );
+
+    const btnCerrar = crearBotonSuperior(
+    "✕","#39FF14","Cerrar reproductor"
+    );
+    controlesSuperiores.appendChild(btnMinimizar);
+    controlesSuperiores.appendChild(btnCerrar);
+
+    // =========================================
+    // PANEL INFERIOR CON PARLANTES
+    // Sin dial ni aguja
+    // =========================================
+
+    const panelInferior = document.createElement("div");
+
+    Object.assign(panelInferior.style,{
+        display:"grid",
+        gridTemplateColumns:"72px 1fr 72px",
+        gap:"14px",
+        alignItems:"center",
+        background:"#040508",
+        border:"1px solid rgba(255,255,255,.1)",
+        borderRadius:"14px",
+        padding:"10px 14px",
+        width:"100%",
+        boxSizing:"border-box"
+    });
+
+    function crearParlante(){
+        const parlante = document.createElement("div");
+
+        Object.assign(parlante.style,{
+           width:"58px",
+           height:"58px",
+           borderRadius:"8px",
+           border:"2px solid #39FF14",
+           background:"radial-gradient(circle,#39FF14 0%,#123d0b 30%,#031003 65%,#000 100%)",
+           boxShadow:"0 0 12px rgba(57,255,20,.5),inset 0 0 10px #000",
+           position:"relative",
+           margin:"auto"
+        });
+
+        const cono = document.createElement("div");
+
+        Object.assign(cono.style,{
+            position:"absolute",
+            left:"50%",
+            top:"50%",
+            transform:"translate(-50%,-50%)",
+            width:"32px",
+            height:"32px",
+            borderRadius:"50%",
+            border:"1px solid rgba(255,0,160,.45)",
+            boxShadow:"inset 0 0 7px #000"
+        });
+
+        const centro = document.createElement("div");
+
+        Object.assign(centro.style,{
+            position:"absolute",
+            left:"50%",
+            top:"50%",
+            transform:"translate(-50%,-50%)",
+            width:"8px",
+            height:"8px",
+            borderRadius:"50%",
+            background:"#ff00a0",
+            boxShadow:"0 0 8px #ff00a0"
+        });
+
+        parlante.appendChild(cono);
+        parlante.appendChild(centro);
+
+        return parlante;
+    }
+
+    const textoMusica = document.createElement("div");
+
+    textoMusica.textContent =
+        itemMusica.descripcion ||
+        itemMusica.nombre ||
+        itemMusica.categoria ||
+        "Música";
+
+    Object.assign(textoMusica.style,{
+        textAlign:"center",
+        color:"#8fa0b5",
+        fontSize:"12px",
+        padding:"8px",
+        overflowWrap:"anywhere"
+    });
+
+    panelInferior.appendChild(crearParlante());
+    panelInferior.appendChild(textoMusica);
+    panelInferior.appendChild(crearParlante());
+
+    cuerpo.appendChild(panel);
+    cuerpo.appendChild(panelInferior);
+
+    reproductor.appendChild(cuerpo);
+    reproductor.appendChild(controlesSuperiores);
+    document.body.appendChild(reproductor);
+
+    // =========================================
+    // AUDIO
+    // =========================================
+
+   const audio = new Audio();
+
+audio.controls = false;
+audio.autoplay = false;
+audio.preload = "none";
+audio.volume = 0.8;
+audio.crossOrigin = "anonymous";
+
+const contextoAudioMusica =
+    new (window.AudioContext || window.webkitAudioContext)();
+
+const analizadorAudioMusica =
+    contextoAudioMusica.createAnalyser();
+
+analizadorAudioMusica.fftSize = 64;
+
+const fuenteAudioMusica =
+    contextoAudioMusica.createMediaElementSource(audio);
+
+fuenteAudioMusica.connect(analizadorAudioMusica);
+analizadorAudioMusica.connect(contextoAudioMusica.destination);
+
+const datosVUMusica =
+    new Uint8Array(analizadorAudioMusica.frequencyBinCount);
+
+reproductor.audio = audio;
+
+    // =========================================
+    // BARRA MINIMIZADA
+    // =========================================
+
+    const barraMini = document.createElement("div");
+
+    barraMini.dataset.musicaMini = "true";
+
+    Object.assign(barraMini.style,{
+        position:"fixed",
+        left:"50%",
+        bottom:"12px",
+        transform:"translateX(-50%)",
+        width:"360px",
+        maxWidth:"92vw",
+        minHeight:"46px",
+        display:"none",
+        alignItems:"center",
+        gap:"8px",
+        padding:"6px 10px",
+        boxSizing:"border-box",
+        background:"#0d0f1d",
+        border:"1px solid #39FF14",
+        borderRadius:"14px",
+        boxShadow:"0 0 15px rgba(57,255,20,.35)", 
+        zIndex:"100000",
+        touchAction:"none"
+    });
+
+    const btnMiniPlay = document.createElement("button");
+
+    btnMiniPlay.type = "button";
+    btnMiniPlay.textContent = "▶";
+    btnMiniPlay.title = "Reproducir / Pausar";
+
+    Object.assign(btnMiniPlay.style,{
+        width:"32px",
+        height:"32px",
+        padding:"0",
+        borderRadius:"50%",
+        border:"1px solid #00f0ff",
+        background:"radial-gradient(circle,#0a2540,#020b14)",
+        color:"#00f0ff",
+        cursor:"pointer",
+        flexShrink:"0"
+    });
+
+    const textoMini = document.createElement("div");
+
+    textoMini.textContent =
+        itemMusica.nombre || itemMusica.categoria || "Música";
+
+    Object.assign(textoMini.style,{
+        color:"#fff",
+        fontSize:"12px",
+        fontWeight:"bold",
+        whiteSpace:"nowrap",
+        overflow:"hidden",
+        textOverflow:"ellipsis",
+        flex:"1"
+    });
+
+    const miniVU = document.createElement("div");
+
+    Object.assign(miniVU.style,{
+        display:"flex",
+        alignItems:"center",
+        gap:"2px",
+        height:"24px",
+        width:"35px",
+        overflow:"hidden"
+    });
+
+    const barrasMini = [];
+
+    for(let i = 0; i < 6; i++){
+        const barra = document.createElement("div");
+
+        Object.assign(barra.style,{
+            width:"4px",
+            height:"4px",
+            borderRadius:"2px",
+            background:"linear-gradient(180deg,#ff3300 0%,#00f0ff 45%,#00ff66 100%)"
+        });
+
+        miniVU.appendChild(barra);
+        barrasMini.push(barra);
+    }
+
+    const btnMiniRestaurar = document.createElement("button");
+    btnMiniRestaurar.type = "button";
+    btnMiniRestaurar.textContent = "⛶";
+    btnMiniRestaurar.title = "Restaurar";
+
+    const btnMiniCerrar = document.createElement("button");
+    btnMiniCerrar.type = "button";
+    btnMiniCerrar.textContent = "✕";
+    btnMiniCerrar.title = "Cerrar";
+
+    [btnMiniRestaurar,btnMiniCerrar].forEach(function(boton){
+        Object.assign(boton.style,{
+            width:"30px",
+            height:"30px",
+            padding:"0",
+            borderRadius:"50%",
+            border:"1px solid #39FF14",
+            background:"transparent",
+            color:"#39FF14",
+            cursor:"pointer",
+            flexShrink:"0"
+        });
+    });
+
+barraMini.appendChild(textoMini);
+barraMini.appendChild(miniVU);
+barraMini.appendChild(btnMiniPlay);
+barraMini.appendChild(btnMiniRestaurar);
+barraMini.appendChild(btnMiniCerrar);
+
+    document.body.appendChild(barraMini);
+
+    // =========================================
+    // ESTADO Y ANIMACIÓN
+    // =========================================
+
+    function actualizarBotones(){
+        const reproduciendo = !audio.paused && !audio.ended;
+
+        btnPlay.textContent = reproduciendo ? "❚❚" : "▶";
+        btnMiniPlay.textContent = reproduciendo ? "❚❚" : "▶";
+        btnPlay.title = reproduciendo ? "Pausar" : "Reproducir";
+        btnMiniPlay.title = reproduciendo ? "Pausar" : "Reproducir";
+    }
+function detenerVU(){
+        if(animacionVU !== null){
+            cancelAnimationFrame(animacionVU);
+            animacionVU = null;
+        }
+
+        barrasVU.forEach(function(barra){
+            barra.style.height = "3px";
+            barra.style.opacity = "0.35";
+        });
+
+        barrasMini.forEach(function(barra){
+            barra.style.height = "4px";
+        });
+    }
+function animarVU(){
+    animacionVU = null;
+
+    if(cerrado || audio.paused || audio.ended){
+        detenerVU();
+        return;
+    }
+
+    analizadorAudioMusica.getByteFrequencyData(datosVUMusica);
+
+    barrasVU.forEach(function(barra, index){
+        const indice = Math.min(
+            datosVUMusica.length - 1,
+            Math.floor(
+                index * (datosVUMusica.length * 0.65) /
+                Math.max(1, barrasVU.length - 1)
+            )
+        );
+
+        const nivel = datosVUMusica[indice] / 255;
+
+        barra.style.height =
+            (Math.max(0.08, nivel) * 24) + "px";
+
+        barra.style.opacity =
+            Math.max(0.45, nivel * 1.15).toString();
+    });
+
+    barrasMini.forEach(function(barra, index){
+        const indice = Math.min(
+            datosVUMusica.length - 1,
+            Math.floor(
+                index * (datosVUMusica.length * 0.65) /
+                Math.max(1, barrasMini.length - 1)
+            )
+        );
+
+        const nivel = datosVUMusica[indice] / 255;
+
+        barra.style.height =
+            (Math.max(0.15, nivel) * 24) + "px";
+    });
+
+    animacionVU = requestAnimationFrame(animarVU);
+}
+    function iniciarVU(){
+        if(animacionVU === null && !cerrado){
+            animacionVU = requestAnimationFrame(animarVU);
+        }
+    }
+
+    // =========================================
+    // REINTENTOS DE CONEXIÓN
+    // Lógica independiente de Radios
+    // =========================================
+
+    function limpiarReintento(){
+        if(temporizadorReintento !== null){
+            clearTimeout(temporizadorReintento);
+            temporizadorReintento = null;
+        }
+
+        if(window.temporizadorMusicaActivo){
+            clearTimeout(window.temporizadorMusicaActivo);
+            window.temporizadorMusicaActivo = null;
+        }
+    }
+
+    function programarReintento(){
+        if(
+            cerrado ||
+            !reproduccionSolicitada ||
+            temporizadorReintento !== null
+        ){
+            return;
+        }
+
+        if(intentos >= maxIntentosPorStream){
+            indiceStream++;
+            intentos = 0;
+        }
+
+        if(indiceStream >= streams.length){
+            estado.textContent = "No se pudo conectar. Tocá ▶ para volver a intentar.";
+            reproduccionSolicitada = false;
+            actualizarBotones();
+            detenerVU();
+            return;
+        }
+
+        estado.textContent =
+            indiceStream === 0
+                ? "Reintentando conexión…"
+                : "Probando fuente alternativa…";
+
+        const demora = intentos === 0 ? 1000 : 3000;
+
+        temporizadorReintento = setTimeout(function(){
+            temporizadorReintento = null;
+
+            if(window.temporizadorMusicaActivo === temporizadorReintento){
+                window.temporizadorMusicaActivo = null;
+            }
+
+            reproducirStream();
+        },demora);
+
+        window.temporizadorMusicaActivo = temporizadorReintento;
+    }
+
+    function reproducirStream(){
+        if(cerrado || !reproduccionSolicitada){
+            return;
+        }
+
+        limpiarReintento();
+
+        if(indiceStream >= streams.length){
+            estado.textContent = "No hay más fuentes disponibles. Tocá ▶ para reintentar.";
+            reproduccionSolicitada = false;
+            actualizarBotones();
+            detenerVU();
+            return;
+        }
+
+        const url = streams[indiceStream];
+        const operacionActual = ++numeroOperacionAudio;
+
+        intentos++;
+
+        estado.textContent =
+            "Conectando señal " + (indiceStream + 1) +
+            " de " + streams.length + "…";
+
+        audio.pause();
+        audio.src = url;
+        audio.load();
+
+        audio.play().then(function(){
+            if(
+                cerrado ||
+                operacionActual !== numeroOperacionAudio ||
+                !reproduccionSolicitada
+            ){
+                return;
+            }
+
+            limpiarReintento();
+            estado.textContent = "Reproduciendo";
+            actualizarBotones();
+            iniciarVU();
+
+        }).catch(function(error){
+            if(
+                cerrado ||
+                operacionActual !== numeroOperacionAudio ||
+                !reproduccionSolicitada
+            ){
+                return;
+            }
+
+            if(error && error.name === "NotAllowedError"){
+                estado.textContent = "Tocá ▶ para iniciar el audio.";
+                reproduccionSolicitada = false;
+                actualizarBotones();
+                detenerVU();
+                return;
+            }
+
+            programarReintento();
+        });
+    }
+
+    // =========================================
+    // EVENTOS DE AUDIO
+    // =========================================
+
+    audio.addEventListener("playing",function(){
+        if(cerrado){
+            return;
+        }
+
+        limpiarReintento();
+        estado.textContent = "Reproduciendo";
+        actualizarBotones();
+        iniciarVU();
+    });
+
+    audio.addEventListener("pause",function(){
+        actualizarBotones();
+        detenerVU();
+    });
+
+    audio.addEventListener("ended",function(){
+        if(reproduccionSolicitada && !cerrado){
+            programarReintento();
+        }else{
+            actualizarBotones();
+        }
+    });
+
+    audio.addEventListener("error",function(){
+        if(reproduccionSolicitada && !cerrado){
+            programarReintento();
+        }
+    });
+
+    audio.addEventListener("stalled",function(){
+        if(reproduccionSolicitada && audio.paused && !cerrado){
+            programarReintento();
+        }
+    });
+
+    audio.addEventListener("waiting",function(){
+        if(!audio.paused && !cerrado){
+            estado.textContent = "Esperando señal…";
+        }
+    });
+
+    // =========================================
+    // PLAY / PAUSE Y VOLUMEN
+    // =========================================
+
+    function alternarReproduccion(){
+        if(cerrado){
+            return;
+        }
+
+        if(!audio.paused){
+            reproduccionSolicitada = false;
+            numeroOperacionAudio++;
+            limpiarReintento();
+            audio.pause();
+            estado.textContent = "En pausa";
+            actualizarBotones();
+            detenerVU();
+            return;
+        }
+
+        reproduccionSolicitada = true;
+
+        if(
+            !audio.src ||
+            audio.ended ||
+            indiceStream >= streams.length
+        ){
+            indiceStream = 0;
+            intentos = 0;
+        }
+
+        reproducirStream();
+    }
+
+    btnPlay.onclick = alternarReproduccion;
+    btnMiniPlay.onclick = alternarReproduccion;
+
+    volumen.addEventListener("input",function(){
+        audio.volume = Number(volumen.value);
+    });
+
+        // =========================================
+    // MINIMIZAR / RESTAURAR
+    // =========================================
+
+    function minimizar(){
+
+        reproductor.dataset.minimizado = "true";
+
+        reproductor.dataset.displayOriginal =
+            reproductor.style.display || "block";
+
+        reproductor.style.display = "none";
+
+        barraMini.style.display = "flex";
+
+        btnMiniPlay.textContent =
+            audio.paused ? "▶" : "❚❚";
+
+    }
+
+    function restaurar(){
+
+        reproductor.dataset.minimizado = "false";
+
+        barraMini.style.display = "none";
+
+        reproductor.style.display =
+            reproductor.dataset.displayOriginal || "block";
+
+    }
+
+    btnMinimizar.onclick = minimizar;
+    btnMiniRestaurar.onclick = restaurar;
+
+    // =========================================
+    // ARRASTRE DEL REPRODUCTOR DE MÚSICA
+    // =========================================
+
+    let elementoArrastrado = null;
+    let inicioX = 0;
+    let inicioY = 0;
+    let posicionX = 0;
+    let posicionY = 0;
+
+    function iniciarArrastre(evento, elemento){
+        if(
+            evento.target.closest("button") ||
+            evento.target.closest("input") ||
+            evento.target.closest("audio")
+        ){
+            return;
+        }
+
+        evento.preventDefault();
+
+        elementoArrastrado = elemento;
+
+        const rect = elemento.getBoundingClientRect();
+
+        inicioX = evento.clientX;
+        inicioY = evento.clientY;
+        posicionX = rect.left;
+        posicionY = rect.top;
+
+        elemento.style.left = rect.left + "px";
+        elemento.style.top = rect.top + "px";
+        elemento.style.bottom = "auto";
+        elemento.style.transform = "none";
+    }
+
+    function moverArrastre(evento){
+        if(!elementoArrastrado){
+            return;
+        }
+
+        evento.preventDefault();
+
+        const maxX = Math.max(
+            0,
+            window.innerWidth - elementoArrastrado.offsetWidth
+        );
+
+        const maxY = Math.max(
+            0,
+            window.innerHeight - elementoArrastrado.offsetHeight
+        );
+
+        const nuevoX = Math.max(
+            0,
+            Math.min(
+                maxX,
+                posicionX + evento.clientX - inicioX
+            )
+        );
+
+        const nuevoY = Math.max(
+            0,
+            Math.min(
+                maxY,
+                posicionY + evento.clientY - inicioY
+            )
+        );
+
+        elementoArrastrado.style.left = nuevoX + "px";
+        elementoArrastrado.style.top = nuevoY + "px";
+    }
+
+    function finalizarArrastre(){
+        elementoArrastrado = null;
+    }
+
+    reproductor.style.touchAction = "none";
+
+    reproductor.addEventListener("pointerdown",function(evento){
+        // El asa conserva su propio arrastre.
+        if(
+            evento.target === asa ||
+            asa.contains(evento.target)
+        ){
+            return;
+        }
+
+        iniciarArrastre(evento,reproductor);
+    });
+
+    asa.addEventListener("pointerdown",function(evento){
+        iniciarArrastre(evento,reproductor);
+    });
+
+    barraMini.addEventListener("pointerdown",function(evento){
+        iniciarArrastre(evento,barraMini);
+    });
+
+    document.addEventListener("pointermove",moverArrastre);
+    document.addEventListener("pointerup",finalizarArrastre);
+    document.addEventListener("pointercancel",finalizarArrastre);
+    
+    // =========================================
+    // CERRAR REPRODUCTOR
+    // =========================================
+
+    function cerrarReproductor(){
+        if(cerrado){
+            return;
+        }
+
+        cerrado = true;
+        reproduccionSolicitada = false;
+        numeroOperacionAudio++;
+
+        limpiarReintento();
+        detenerVU();
+
+        audio.__musicaCerrada = true;
+        audio.pause();
+        audio.removeAttribute("src");
+        audio.load();
+
+        reproductor.remove();
+        barraMini.remove();
+
+        document.removeEventListener("pointermove",moverArrastre);
+        document.removeEventListener("pointerup",finalizarArrastre);
+        document.removeEventListener("pointercancel",finalizarArrastre);
+    }
+
+    btnCerrar.onclick = cerrarReproductor;
+    btnMiniCerrar.onclick = cerrarReproductor;
+
+    // =========================================
+    // INICIAR REPRODUCCIÓN
+    // =========================================
+
+    reproducirStream();
+}
+
+// ========================
+// CONFIGURACIÓN DE DÉCADAS
+// ========================
+
+function abrirConfiguracionDecadasMusica(){
+
+    let popup = document.getElementById(
+        "popupConfiguracionDecadasMusica"
+    );
+
+    if(!popup){
+        popup = document.createElement("div");
+        popup.id = "popupConfiguracionDecadasMusica";
+
+        popup.style.cssText =
+            "display:none;position:fixed;inset:0;" +
+            "background:rgba(0,0,0,.8);z-index:1200;" +
+            "align-items:center;justify-content:center;padding:20px;";
+
+        
+        popup.innerHTML = `
+            <div style="
+                width:min(92%,600px);
+                max-height:85vh;
+                overflow-y:auto;
+                background:#1d1d1d;
+                border:1px solid #555;
+                border-radius:20px;
+                padding:20px;
+                box-shadow:0 10px 35px rgba(0,0,0,.7);
+                color:white;
+            ">
+
+                <div style="
+                    display:flex;
+                    justify-content:space-between;
+                    align-items:center;
+                    margin-bottom:15px;
+                ">
+
+                    <h2 style="margin:0;color:#FFD700;">
+                        📀 Configurar Décadas
+                    </h2>
+
+                    <button type="button"
+                            onclick="cerrarConfiguracionDecadasMusica()">
+                        ✖
+                    </button>
+
+                </div>
+
+                <p style="
+                    text-align:center;
+                    color:#ccc;
+                ">
+                    Seleccioná las décadas que escuchás.
+                </p>
+
+                <div id="listaConfiguracionDecadasMusica"
+                     style="
+                     display:grid;
+                     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+                     gap:10px;
+                     max-height:45vh;
+                     overflow-y:auto;
+                     padding-right:5px;
+                     ">
+                </div>
+
+                <div style="
+                     display:flex;
+                     flex-direction:column;
+                     align-items:stretch;
+                     gap:12px;
+                     margin-top:20px;
+                    ">
+
+                    <button
+                        type="button"
+                        id="btnSeleccionarTodoDecadasMusica"
+                        onclick="alternarSeleccionDecadasMusica()"
+                        style="
+                        padding:10px 22px;
+                        font-size:16px;
+                        font-weight:bold;
+                        border-radius:10px;
+                        ">
+                        ☑ Seleccionar todo
+                    </button>
+
+                    <button
+                        type="button"
+                        onclick="guardarConfiguracionDecadasMusica()"
+                        style="
+                        padding:10px 22px;
+                        font-size:16px;
+                        font-weight:bold;
+                        border-radius:10px;
+                        ">
+                        💾 Guardar Décadas
+                    </button>
+
+                    <div id="mensajeDecadasMusica"
+                         style="
+                         display:none;
+                         margin-top:12px;
+                         color:#7CFC00;
+                         font-weight:bold;
+                         font-size:16px;
+                         ">
+                        ✅ Décadas guardadas correctamente
+                    </div>
+
+                </div>
+
+            </div>
+        `;
+
+        document.body.appendChild(popup);
+    }
+
+    const lista = document.getElementById(
+        "listaConfiguracionDecadasMusica"
+    );
+
+    lista.innerHTML = "";
+
+    const seleccionadas = JSON.parse(
+        localStorage.getItem("DecadasMusicaSeleccionadas")
+    ) || [];
+
+    configuracionDecadasMusica.forEach(function(decada){
+
+        const label = document.createElement("label");
+
+        label.style.cssText =
+            "display:flex;align-items:center;gap:10px;padding:10px;";
+
+        const checkbox = document.createElement("input");
+
+        checkbox.type = "checkbox";
+        checkbox.value = decada.id;
+        checkbox.checked = seleccionadas.includes(decada.id);
+
+        const nombre = document.createElement("span");
+
+        nombre.textContent =
+            (decada.emoji || "📀") + " " +
+            (decada.nombre || decada.categoria || "");
+
+        label.appendChild(checkbox);
+        label.appendChild(nombre);
+        lista.appendChild(label);
+    });
+
+        popup.style.display = "flex";
+}
+
+function alternarSeleccionDecadasMusica(){
+
+    const checkboxes = document.querySelectorAll(
+        "#listaConfiguracionDecadasMusica input[type='checkbox']"
+    );
+
+    const todasSeleccionadas = checkboxes.length > 0 &&
+        Array.from(checkboxes).every(function(checkbox){
+            return checkbox.checked;
+        });
+
+    checkboxes.forEach(function(checkbox){
+        checkbox.checked = !todasSeleccionadas;
+    });
+
+    const boton = document.getElementById(
+        "btnSeleccionarTodoDecadasMusica"
+    );
+
+    if(boton){
+        boton.textContent = todasSeleccionadas
+            ? "☑ Seleccionar todo"
+            : "☐ Deseleccionar todo";
+    }
+}
+
+
+function cerrarConfiguracionDecadasMusica(){
+
+    const popup = document.getElementById(
+        "popupConfiguracionDecadasMusica"
+    );
+
+    if(popup){
+        popup.style.display = "none";
+    }
+}
+
+function guardarConfiguracionDecadasMusica(){
+
+    const seleccionadas = [];
+
+    document.querySelectorAll(
+        "#listaConfiguracionDecadasMusica input[type='checkbox']:checked"
+    ).forEach(function(checkbox){
+        seleccionadas.push(checkbox.value);
+    });
+
+    localStorage.setItem(
+        "DecadasMusicaSeleccionadas",
+        JSON.stringify(seleccionadas)
+    );
+
+    const mensaje = document.getElementById(
+        "mensajeDecadasMusica"
+    );
+
+    if(mensaje){
+        mensaje.style.display = "block";
+    }
+
+    setTimeout(function(){
+
+        if(mensaje){
+            mensaje.style.display = "none";
+        }
+
+        cerrarConfiguracionDecadasMusica();
+        mostrarDecadasMusica();
+
+    }, 1000);
+}
+
+
+/* ========================
+   CONFIGURACIÓN DE ESTILOS
+======================== */
+
+function abrirConfiguracionEstilosMusica(){
+
+    let popup = document.getElementById(
+        "popupConfiguracionEstilosMusica"
+    );
+
+    if(!popup){
+        popup = document.createElement("div");
+        popup.id = "popupConfiguracionEstilosMusica";
+
+        popup.style.cssText =
+            "display:none;position:fixed;inset:0;" +
+            "background:rgba(0,0,0,.8);z-index:1200;" +
+            "align-items:center;justify-content:center;padding:20px;";
+
+        popup.innerHTML = `
+            <div style="
+                width:min(92%,600px);
+                max-height:85vh;
+                overflow-y:auto;
+                background:#1d1d1d;
+                border:1px solid #555;
+                border-radius:20px;
+                padding:20px;
+                box-shadow:0 10px 35px rgba(0,0,0,.7);
+                color:white;
+            ">
+
+                <div style="
+                    display:flex;
+                    justify-content:space-between;
+                    align-items:center;
+                    margin-bottom:15px;
+                ">
+                    <h2 style="margin:0;color:#FFD700;">
+                        🎸 Configurar Estilos
+                    </h2>
+
+                    <button type="button"
+                        onclick="cerrarConfiguracionEstilosMusica()">
+                        ✖
+                    </button>
+                </div>
+
+                <p style="text-align:center;color:#ccc;">
+                    Seleccioná los estilos que escuchás.
+                </p>
+
+                <div id="listaConfiguracionEstilosMusica"
+                    style="
+                    display:grid;
+                    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+                    gap:10px;
+                    max-height:45vh;
+                    overflow-y:auto;
+                    padding-right:5px;
+                    ">
+                </div>
+
+                <div style="
+                    display:flex;
+                    flex-direction:column;
+                    gap:12px;
+                    margin-top:20px;
+                ">
+                    <button type="button"
+                        id="btnSeleccionarTodoEstilosMusica"
+                        onclick="alternarSeleccionEstilosMusica()"
+                        style="
+                        padding:10px 22px;
+                        font-size:16px;
+                        font-weight:bold;
+                        border-radius:10px;
+                        ">
+                        ☑ Seleccionar todo
+                    </button>
+
+                    <button type="button"
+                        onclick="guardarConfiguracionEstilosMusica()"
+                        style="
+                        padding:10px 22px;
+                        font-size:16px;
+                        font-weight:bold;
+                        border-radius:10px;
+                        ">
+                        💾 Guardar Estilos
+                    </button>
+
+                    <div id="mensajeEstilosMusica"
+                        style="
+                        display:none;
+                        margin-top:12px;
+                        color:#7CFC00;
+                        font-weight:bold;
+                        font-size:16px;
+                        ">
+                        ✅ Estilos guardados correctamente
+                    </div>
+                </div>
+            </div>
+        `;
+
+        document.body.appendChild(popup);
+    }
+
+    const lista = document.getElementById(
+        "listaConfiguracionEstilosMusica"
+    );
+
+    lista.innerHTML = "";
+
+    const seleccionadas = JSON.parse(
+        localStorage.getItem("EstilosMusicaSeleccionados")
+    ) || [];
+
+    configuracionEstilosMusica.forEach(function(estilo){
+
+        const label = document.createElement("label");
+
+        label.style.cssText =
+            "display:flex;align-items:center;gap:10px;padding:10px;";
+
+        const checkbox = document.createElement("input");
+
+        checkbox.type = "checkbox";
+        checkbox.value = estilo.id;
+        checkbox.checked = seleccionadas.includes(estilo.id);
+
+        const nombre = document.createElement("span");
+
+        nombre.textContent =
+            (estilo.emoji || "🎸") + " " +
+            (estilo.nombre || estilo.categoria || "");
+
+        label.appendChild(checkbox);
+        label.appendChild(nombre);
+        lista.appendChild(label);
+    });
+
+    popup.style.display = "flex";
+}
+
+
+function alternarSeleccionEstilosMusica(){
+
+    const checkboxes = document.querySelectorAll(
+        "#listaConfiguracionEstilosMusica input[type='checkbox']"
+    );
+
+    const todasSeleccionadas = checkboxes.length > 0 &&
+        Array.from(checkboxes).every(function(checkbox){
+            return checkbox.checked;
+        });
+
+    checkboxes.forEach(function(checkbox){
+        checkbox.checked = !todasSeleccionadas;
+    });
+
+    const boton = document.getElementById(
+        "btnSeleccionarTodoEstilosMusica"
+    );
+
+    if(boton){
+        boton.textContent = todasSeleccionadas
+            ? "☑ Seleccionar todo"
+            : "☐ Deseleccionar todo";
+    }
+}
+
+
+function cerrarConfiguracionEstilosMusica(){
+
+    const popup = document.getElementById(
+        "popupConfiguracionEstilosMusica"
+    );
+
+    if(popup){
+        popup.style.display = "none";
+    }
+}
+
+
+function guardarConfiguracionEstilosMusica(){
+
+    const seleccionadas = [];
+
+    document.querySelectorAll(
+        "#listaConfiguracionEstilosMusica input[type='checkbox']:checked"
+    ).forEach(function(checkbox){
+        seleccionadas.push(checkbox.value);
+    });
+
+    localStorage.setItem(
+        "EstilosMusicaSeleccionados",
+        JSON.stringify(seleccionadas)
+    );
+
+    const mensaje = document.getElementById(
+        "mensajeEstilosMusica"
+    );
+
+    if(mensaje){
+        mensaje.style.display = "block";
+    }
+
+    setTimeout(function(){
+
+        if(mensaje){
+            mensaje.style.display = "none";
+        }
+
+        cerrarConfiguracionEstilosMusica();
+
+        mostrarEstilosMusica();
+
+    }, 1000);
+}
+
+// ========================
+// CONFIGURACION DE MUSICA
+// ========================
+
+function abrirConfiguracionMusica(){
+
+    const popup = document.getElementById(
+        "popupConfiguracionMusica"
+    );
+
+    if(!popup){
+        return;
+    }
+
+    cargarConfiguracionMusica();
+
+    const seleccionadas = JSON.parse(
+        localStorage.getItem("PlataformasMusicaSeleccionadas")
+    ) || [];
+
+    document.querySelectorAll(
+        "#configuracionMusica input[type='checkbox']"
+    ).forEach(function(checkbox){
+
+        checkbox.checked = seleccionadas.includes(
+            checkbox.value
+        );
+
+    });
+
+    const personalizadasSeleccionadas = JSON.parse(
+        localStorage.getItem("PlataformasMusicaPersonalizadasSeleccionadas")
+    ) || [];
+
+    document.querySelectorAll(
+        "#plataformasMusicaPersonalizadasConfiguracion input[type='checkbox']"
+    ).forEach(function(checkbox){
+
+        checkbox.checked = personalizadasSeleccionadas.includes(
+            checkbox.value
+        );
+
+    });
+
+    popup.style.display = "flex";
+
+}
+
+
+// ========================
+// CERRAR CONFIGURACION DE MUSICA
+// ========================
+
+function cerrarConfiguracionMusica(){
+
+    const popup = document.getElementById(
+        "popupConfiguracionMusica"
+    );
+
+    if(!popup){
+        return;
+    }
+
+    popup.style.display = "none";
+
+}
+
+
+// ========================
+// GUARDAR CONFIGURACION DE MUSICA
+// ========================
+
+function guardarConfiguracionMusica(){
+
+    const seleccionadas = [];
+
+    document.querySelectorAll(
+        "#configuracionMusica input[type='checkbox']"
+    ).forEach(function(checkbox){
+
+        if(checkbox.checked){
+            seleccionadas.push(checkbox.value);
+        }
+
+    });
+
+    const personalizadasSeleccionadas = [];
+
+    document.querySelectorAll(
+        "#plataformasMusicaPersonalizadasConfiguracion input[type='checkbox']"
+    ).forEach(function(checkbox){
+
+        if(checkbox.checked){
+            personalizadasSeleccionadas.push(checkbox.value);
+        }
+
+    });
+
+    localStorage.setItem(
+        "PlataformasMusicaSeleccionadas",
+        JSON.stringify(seleccionadas)
+    );
+
+    localStorage.setItem(
+        "PlataformasMusicaPersonalizadasSeleccionadas",
+        JSON.stringify(personalizadasSeleccionadas)
+    );
+
+    const mensaje = document.getElementById(
+        "mensajeMusica"
+    );
+
+    if(mensaje){
+        mensaje.style.display = "block";
+    }
+
+    mostrarPlataformasMusicaSeleccionadas();
+
+    setTimeout(function(){
+
+        if(mensaje){
+            mensaje.style.display = "none";
+        }
+
+        cerrarConfiguracionMusica();
+
+    },1000);
+
+}
+
+
+// ========================
+// MOSTRAR PLATAFORMAS MUSICA SELECCIONADAS
+// ========================
+
+function mostrarPlataformasMusicaSeleccionadas(){
+
+    const contenedor = document.getElementById(
+        "PlataformasMusicaSeleccionadas"
+    );
+
+    if(!contenedor){
+        return;
+    }
+
+    const seleccionadas = JSON.parse(
+        localStorage.getItem("PlataformasMusicaSeleccionadas")
+    ) || [];
+
+    const personalizadasSeleccionadas = JSON.parse(
+        localStorage.getItem("PlataformasMusicaPersonalizadasSeleccionadas")
+    ) || [];
+
+    const personalizadas = JSON.parse(
+        localStorage.getItem("PlataformasMusicaPersonalizadas")
+    ) || [];
+
+    contenedor.innerHTML = "";
+
+    seleccionadas.forEach(function(id){
+
+        const plataforma = configuracionMusica.find(function(item){
+            return item.id === id;
+        });
+
+        if(!plataforma){
+            return;
+        }
+
+        crearTarjetaPlataformaMusica(
+            contenedor,
+            plataforma
+        );
+
+    });
+
+    personalizadas.forEach(function(plataforma){
+
+        if(!personalizadasSeleccionadas.includes(plataforma.nombre)){
+            return;
+        }
+
+        crearTarjetaPlataformaMusica(
+            contenedor,
+            {
+                nombre: plataforma.nombre,
+                logo: "",
+                sitioOficial: plataforma.url,
+                android: plataforma.url,
+                ios: plataforma.url
+            },
+            true
+        );
+
+    });
+
+}
+
+
+// ========================
+// CREAR TARJETA DE MUSICA
+// ========================
+
+function crearTarjetaPlataformaMusica(
+    contenedor,
+    plataforma,
+    personalizada
+){
+
+    const tarjeta = document.createElement("div");
+
+    tarjeta.className = "card";
+
+    tarjeta.style.padding = "12px";
+    tarjeta.style.borderRadius = "16px";
+
+    const boton = document.createElement("button");
+
+    boton.type = "button";
+
+    boton.onclick = function(){
+
+        abrirPlataformaMusica(plataforma);
+
+    };
+
+    boton.style.width = "100%";
+    boton.style.background = "none";
+    boton.style.border = "none";
+    boton.style.color = "inherit";
+    boton.style.font = "inherit";
+    boton.style.cursor = "pointer";
+    boton.style.display = "flex";
+    boton.style.alignItems = "center";
+    boton.style.justifyContent = "center";
+    boton.style.gap = "10px";
+
+    if(plataforma.logo && !personalizada){
+
+        const imagen = document.createElement("img");
+
+        imagen.alt = plataforma.nombre;
+        imagen.style.width = "38px";
+        imagen.style.height = "38px";
+        imagen.style.objectFit = "contain";
+        imagen.style.borderRadius = "8px";
+
+        imagen.src =
+            "https://raw.githubusercontent.com/pgaglian/Mi-Espacio-Datos/main/Musicaimg/" +
+            plataforma.logo + ".png";
+
+        imagen.onerror = function(){
+            this.style.display = "none";
+        };
+
+        boton.appendChild(imagen);
+
+    }else{
+
+        const respaldo = document.createElement("span");
+
+        respaldo.textContent = "🎵";
+        respaldo.style.fontSize = "38px";
+
+        boton.appendChild(respaldo);
+
+    }
+
+    const nombre = document.createElement("span");
+
+    nombre.textContent = plataforma.nombre;
+    nombre.style.fontWeight = "bold";
+    nombre.style.fontSize = "16px";
+
+    boton.appendChild(nombre);
+
+    tarjeta.appendChild(boton);
+
+    contenedor.appendChild(tarjeta);
+
+}
+
+
+// ========================
+// SALIDA A PLATAFORMA MUSICA
+// ========================
+
+function abrirPlataformaMusica(datosPlataforma){
+
+    if(!datosPlataforma){
+        return;
+    }
+
+    const userAgent =
+        navigator.userAgent ||
+        navigator.vendor ||
+        window.opera;
+
+    let destino = datosPlataforma.sitioOficial;
+
+    if(/android/i.test(userAgent)){
+
+        if(datosPlataforma.android){
+            destino = datosPlataforma.android;
+        }
+
+    }else if(
+        /iPad|iPhone|iPod/i.test(userAgent) ||
+        (
+            navigator.platform === "MacIntel" &&
+            navigator.maxTouchPoints > 1
+        )
+    ){
+
+        if(datosPlataforma.ios){
+            destino = datosPlataforma.ios;
+        }
+
+    }
+
+    if(!destino){
+        return;
+    }
+
+    const fondo = document.createElement("div");
+
+    fondo.id = "popupSalidaMusica";
+
+    fondo.style.position = "fixed";
+    fondo.style.top = "0";
+    fondo.style.left = "0";
+    fondo.style.width = "100%";
+    fondo.style.height = "100%";
+    fondo.style.background = "rgba(0,0,0,0.75)";
+    fondo.style.display = "flex";
+    fondo.style.alignItems = "center";
+    fondo.style.justifyContent = "center";
+    fondo.style.zIndex = "99999";
+    fondo.style.padding = "20px";
+    fondo.style.boxSizing = "border-box";
+
+    const ventana = document.createElement("div");
+
+    ventana.className = "card";
+    ventana.style.width = "min(92%,450px)";
+    ventana.style.padding = "25px";
+    ventana.style.borderRadius = "20px";
+    ventana.style.textAlign = "center";
+
+    ventana.innerHTML = `
+        <div style="font-size:36px;margin-bottom:10px;">
+            🎵
+        </div>
+
+        <h3>Estás saliendo de Mi Espacio</h3>
+
+        <p>
+            Vas a salir de Mi Espacio para ingresar a
+            <strong></strong>.
+        </p>
+
+        <p style="font-size:13px;line-height:19px;opacity:.85;">
+            Mi Espacio no administra tu cuenta,
+            contraseña, suscripción, pagos ni
+            las condiciones del servicio.
+        </p>
+
+        <p style="font-size:13px;line-height:19px;opacity:.85;">
+            Es responsabilidad del usuario verificar
+            que esté accediendo al sitio o aplicación
+            oficial del proveedor antes de ingresar
+            datos personales o realizar cualquier operación.
+        </p>
+
+        <div style="display:flex;justify-content:center;gap:12px;margin-top:20px;flex-wrap:wrap;">
+            <button type="button" id="cancelarSalidaMusica"
+                style="padding:11px 18px;border:none;border-radius:10px;cursor:pointer;font-weight:bold;">
+                Cancelar
+            </button>
+
+            <button type="button" id="continuarSalidaMusica"
+                style="padding:11px 18px;background:#FFD700;color:#000;border:none;border-radius:10px;cursor:pointer;font-weight:bold;">
+                Continuar →
+            </button>
+        </div>
+    `;
+
+    ventana.querySelector("p strong").textContent =
+        datosPlataforma.nombre;
+
+    fondo.appendChild(ventana);
+    document.body.appendChild(fondo);
+
+    document.getElementById("cancelarSalidaMusica").onclick =
+        function(){
+            fondo.remove();
+        };
+
+    document.getElementById("continuarSalidaMusica").onclick =
+        function(){
+            fondo.remove();
+
+            window.open(
+                destino,
+                "_blank",
+                "noopener,noreferrer"
+            );
+        };
+
+}
+
+
+function mostrarOpcionMusica(opcion){
+
+    const menu = document.getElementById("opcionesMenuMusica");
+    const pantallaMusica = document.getElementById("Musica");
+
+    const plataformas = document.getElementById("contenidoPlataformasMusica");
+    const decadas = document.getElementById("contenidoDecadasMusica");
+    const estilos = document.getElementById("contenidoEstilosMusica");
+
+    if(!menu || !pantallaMusica){
+        return;
+    }
+
+    // Ocultar todos los contenidos
+    if(plataformas) plataformas.style.display = "none";
+    if(decadas) decadas.style.display = "none";
+    if(estilos) estilos.style.display = "none";
+
+    // Mostrar la opción elegida
+    if(opcion === "plataformas" && plataformas){
+        plataformas.style.display = "block";
+        mostrarPlataformasMusicaSeleccionadas();
+    }
+    else if(opcion === "decadas" && decadas){
+    decadas.style.display = "block";
+    mostrarDecadasMusica();
+    }
+
+   else if(opcion === "estilos" && estilos){
+    estilos.style.display = "block";
+    mostrarEstilosMusica();
+}
+
+    else{
+        return;
+    }
+
+    menu.style.display = "none";
+
+    // Ocultar título y Volver principal de Música
+    const titulo = pantallaMusica.querySelector("h2");
+    const volverPrincipal = pantallaMusica.querySelector("button");
+
+    if(titulo) titulo.style.display = "none";
+    if(volverPrincipal) volverPrincipal.style.display = "none";
+}
+
+
+// Volver desde Décadas o Estilos al menú de Música
+function volverMenuMusica(){
+
+    const menu = document.getElementById("opcionesMenuMusica");
+    const pantallaMusica = document.getElementById("Musica");
+
+    const decadas = document.getElementById("contenidoDecadasMusica");
+    const estilos = document.getElementById("contenidoEstilosMusica");
+
+    if(decadas) decadas.style.display = "none";
+    if(estilos) estilos.style.display = "none";
+
+    if(menu) menu.style.display = "grid";
+
+    if(pantallaMusica){
+        const titulo = pantallaMusica.querySelector("h2");
+        const volverPrincipal = pantallaMusica.querySelector("button");
+
+        if(titulo) titulo.style.display = "block";
+        if(volverPrincipal) volverPrincipal.style.display = "inline-block";
+    }
+}
+
+// ========================
+// AGREGAR PLATAFORMA MUSICA
+// ========================
+
+
+function abrirAgregarPlataformaMusica(){
+
+    const popup =
+        document.getElementById(
+            "popupAgregarPlataformaMusica"
+        );
+
+    if(!popup){
+        return;
+    }
+
+    popup.style.display = "flex";
+
+    const textoAgregarPlataforma =
+        document.querySelector(
+            "#popupAgregarPlataformaMusica p"
+        );
+
+    if(textoAgregarPlataforma){
+
+        if(!esMovil){
+
+            textoAgregarPlataforma.innerHTML =
+                "✏️ <strong>Escribí el nombre exacto de la aplicación</strong>" +
+                " tal como aparece en tu dispositivo." +
+                "<br><br>" +
+
+                "⚠️ Vas a salir de Mi Espacio para comprobar la aplicación." +
+                "<br><br>" +
+
+                "🖥️ <strong>En PC:</strong> cuando encuentres la página correcta," +
+                " copiá el enlace de la barra de direcciones." +
+                "<br><br>" +
+
+                "↩️ Después volvé a Mi Espacio y pegá el enlace cuando te lo solicitemos." +
+                "<br><br>" +
+
+                "❗ <strong>Si no copiás el enlace, no podremos guardar la plataforma.</strong>";
+
+        }else{
+
+            textoAgregarPlataforma.innerHTML =
+                "✏️ <strong>Escribí el nombre exacto de la aplicación</strong>" +
+                " tal como aparece en tu dispositivo." +
+                "<br><br>" +
+
+                "⚠️ Vas a salir de Mi Espacio para comprobar" +
+                " la aplicación en Google Play o App Store y poder compartirla con Mi Espacio." +
+                "<br><br>" +
+
+                "📖 <strong>¿No sabés cómo compartirla?</strong>" +
+                "<br>" +
+                "👉 <button type='button' onclick='abrirInstructivoCompartirApp()' " +
+                "style='border:none;background:none;color:#FFD700;font-size:16px;font-weight:bold;cursor:pointer;padding:0;'>" +
+                "Ver instructivo</button>" +
+                "<br><br>" +
+
+                "↩️ <strong>Después volvé a Mi Espacio para confirmar.</strong>" +
+                "<br><br>" +
+
+                "❗ <strong>Si no volvés a Mi Espacio, la aplicación no se guardará.</strong>" +
+                "<br><br>" +
+
+                "🔐 <strong>Esta comprobación se hace una sola vez.</strong>" +
+                "<br><br>" +
+
+                "😎 <strong>¿Alguna duda?</strong>" +
+                "<br>" +
+
+                "Enviános un correo a 🛠️ <strong>Soporte:</strong> " +
+
+                "<span onclick=\"document.getElementById('btnSoporte').click();\" " +
+                "style='color:#FFD700;font-weight:bold;cursor:pointer;text-decoration:underline;'>" +
+                "✉️ Enviar consulta</span>" +
+
+                " y la revisamos. 🛠️🔧";
+
+        }
+
+    }
+
+    const nombreRecibido =
+        localStorage.getItem(
+            "appCompartidaTitulo"
+        ) || "";
+
+    const nombrePlataforma =
+        nombreRecibido.replace(
+            /^[ÉE]chale un vistazo a\s+/i,
+            ""
+        );
+
+    const campo =
+        document.getElementById(
+            "nombreAgregarPlataformaMusica"
+        );
+
+    if(campo && nombrePlataforma){
+
+        campo.value = nombrePlataforma;
+
+    }
+
+}
+
+
+function cerrarAgregarPlataformaMusica(){
+
+    const popup = document.getElementById(
+        "popupAgregarPlataformaMusica"
+    );
+
+    if(popup){
+        popup.style.display = "none";
+    }
+
+}
+
+
+// ========================
+// VALIDAR PLATAFORMA MUSICA
+// ========================
+
+function validarNuevaPlataformaMusica(){
+
+    const campo = document.getElementById(
+        "nombreAgregarPlataformaMusica"
+    );
+
+    if(!campo){
+        return;
+    }
+
+    const nombre = campo.value.trim();
+
+    if(!nombre){
+        campo.focus();
+        return;
+    }
+
+    localStorage.setItem(
+        "nombrePlataformaMusicaPendiente",
+        nombre
+    );
+
+    localStorage.setItem(
+    "moduloPlataformaPendiente",
+    "musica"
+);
+
+    localStorage.setItem(
+        "validacionPlataformaMusicaActiva",
+        "true"
+    );
+
+    let url;
+
+    if(esAndroid){
+
+        url = "https://play.google.com/store/search?q=" +
+            encodeURIComponent(nombre) + "&c=apps";
+
+    }else if(esAppleMobile){
+
+        url = "https://apps.apple.com/us/search?term=" +
+            encodeURIComponent(nombre);
+
+    }else{
+
+        url = "https://www.google.com/search?q=" +
+            encodeURIComponent(nombre);
+
+    }
+
+    window.open(url,"_blank");
+
+}
+
+
+// ========================
+// INGRESAR ENLACE MUSICA
+// ========================
+
+function abrirLinkPlataformaMusica(){
+
+    const popup = document.getElementById(
+        "popupLinkPlataformaMusica"
+    );
+
+    const campo = document.getElementById(
+        "urlAgregarPlataformaMusica"
+    );
+
+    if(campo){
+        campo.value = "";
+    }
+
+    if(popup){
+        popup.style.display = "flex";
+    }
+
+}
+
+
+function cerrarLinkPlataformaMusica(){
+
+    const popup = document.getElementById(
+        "popupLinkPlataformaMusica"
+    );
+
+    if(popup){
+        popup.style.display = "none";
+    }
+
+}
+
+
+// ========================
+// GUARDAR PLATAFORMA PERSONALIZADA MUSICA
+// ========================
+
+function guardarNuevaPlataformaMusica(nombre,url){
+
+    nombre = (nombre || "").trim();
+    url = (url || "").trim();
+
+    if(!nombre){
+        return false;
+    }
+
+    const personalizadas = JSON.parse(
+        localStorage.getItem("PlataformasMusicaPersonalizadas")
+    ) || [];
+
+    const repetida = personalizadas.some(function(plataforma){
+        return plataforma.nombre.toLowerCase() ===
+            nombre.toLowerCase();
+    });
+
+    const mensaje = document.getElementById(
+        "mensajeConfirmarPlataformaMusica"
+    );
+
+    if(repetida){
+
+        if(mensaje){
+            mensaje.style.color = "#FF4444";
+            mensaje.textContent =
+                "Esta plataforma ya está guardada.";
+        }
+
+        return false;
+
+    }
+
+    if(personalizadas.length >= 10){
+
+        if(mensaje){
+            mensaje.style.color = "#FF4444";
+            mensaje.textContent =
+                "Alcanzaste el máximo de 10 plataformas personalizadas.";
+        }
+
+        return false;
+
+    }
+
+    personalizadas.push({
+        nombre: nombre,
+        url: url
+    });
+
+    localStorage.setItem(
+        "PlataformasMusicaPersonalizadas",
+        JSON.stringify(personalizadas)
+    );
+
+    const seleccionadas = JSON.parse(
+        localStorage.getItem(
+            "PlataformasMusicaPersonalizadasSeleccionadas"
+        )
+    ) || [];
+
+    if(!seleccionadas.includes(nombre)){
+        seleccionadas.push(nombre);
+    }
+
+   
+    cargarConfiguracionMusica();
+    mostrarPlataformasMusicaSeleccionadas();
+
+    return true;
+
+}
+
+
+// ========================
+// GUARDAR ENLACE MUSICA
+// ========================
+
+function guardarLinkPlataformaMusica(){
+
+    const campoNombre = document.getElementById(
+        "nombreAgregarPlataformaMusica"
+    );
+
+    const campoUrl = document.getElementById(
+        "urlAgregarPlataformaMusica"
+    );
+
+    if(!campoNombre || !campoUrl){
+        return;
+    }
+
+    const nombre = campoNombre.value.trim();
+    const url = campoUrl.value.trim();
+
+    if(!nombre || !url){
+        campoUrl.focus();
+        return;
+    }
+
+    try{
+
+        const direccion = new URL(url);
+
+        if(direccion.protocol !== "https:" &&
+           direccion.protocol !== "http:"){
+            campoUrl.focus();
+            return;
+        }
+
+    }catch(error){
+
+        campoUrl.focus();
+        return;
+
+    }
+
+    if(!guardarNuevaPlataformaMusica(nombre,url)){
+        return;
+    }
+
+    localStorage.removeItem(
+        "nombrePlataformaMusicaPendiente"
+    );
+
+    localStorage.removeItem(
+        "validacionPlataformaMusicaActiva"
+    );
+
+    cerrarLinkPlataformaMusica();
+    cerrarAgregarPlataformaMusica();
+    abrirConfiguracionMusica();
+
+}
+
+
+// ========================
+// CONFIRMAR PLATAFORMA MUSICA
+// ========================
+
+function confirmarPlataformaMusica(){
+
+    const nombre = localStorage.getItem(
+        "nombrePlataformaMusicaPendiente"
+    ) || "";
+
+    const url = localStorage.getItem(
+        "appCompartidaUrl"
+    ) || "";
+
+    if(!nombre){
+        return;
+    }
+
+    if(!guardarNuevaPlataformaMusica(nombre,url)){
+        return;
+    }
+
+    localStorage.removeItem(
+        "nombrePlataformaMusicaPendiente"
+    );
+
+    localStorage.removeItem(
+        "validacionPlataformaMusicaActiva"
+    );
+
+    localStorage.removeItem("moduloPlataformaPendiente");
+
+    localStorage.removeItem("appCompartidaTitulo");
+    localStorage.removeItem("appCompartidaTexto");
+    localStorage.removeItem("appCompartidaUrl");
+
+    const popup = document.getElementById(
+        "popupConfirmarPlataformaMusica"
+    );
+
+    if(popup){
+        popup.style.display = "none";
+    }
+
+    cerrarAgregarPlataformaMusica();
+    abrirConfiguracionMusica();
+
+}
+
+
+// ========================
+// CANCELAR CONFIRMACION MUSICA
+// ========================
+
+function cancelarConfirmacionPlataformaMusica(){
+
+    localStorage.removeItem(
+        "nombrePlataformaMusicaPendiente"
+    );
+
+    localStorage.removeItem(
+        "validacionPlataformaMusicaActiva"
+    );
+
+    localStorage.removeItem("moduloPlataformaPendiente");
+
+    localStorage.removeItem("appCompartidaTitulo");
+    localStorage.removeItem("appCompartidaTexto");
+    localStorage.removeItem("appCompartidaUrl");
+
+    const popup = document.getElementById(
+        "popupConfirmarPlataformaMusica"
+    );
+
+    if(popup){
+        popup.style.display = "none";
+    }
+
+    cerrarAgregarPlataformaMusica();
+
+}
+
+
+// ========================
+// ELIMINAR PLATAFORMA PERSONALIZADA MUSICA
+// ========================
+
+function eliminarPlataformaMusicaPersonalizada(nombre){
+
+    const personalizadas =
+        JSON.parse(
+            localStorage.getItem(
+                "PlataformasMusicaPersonalizadas"
+            )
+        ) || [];
+
+    const nuevasPersonalizadas =
+        personalizadas.filter(
+            function(plataforma){
+                return plataforma.nombre !== nombre;
+            }
+        );
+
+    localStorage.setItem(
+        "PlataformasMusicaPersonalizadas",
+        JSON.stringify(nuevasPersonalizadas)
+    );
+
+    const seleccionadas =
+        JSON.parse(
+            localStorage.getItem(
+                "PlataformasMusicaPersonalizadasSeleccionadas"
+            )
+        ) || [];
+
+    const nuevasSeleccionadas =
+        seleccionadas.filter(
+            function(plataforma){
+                return plataforma !== nombre;
+            }
+        );
+
+    localStorage.setItem(
+        "PlataformasMusicaPersonalizadasSeleccionadas",
+        JSON.stringify(nuevasSeleccionadas)
+    );
+
+    cargarConfiguracionMusica();
+    mostrarPlataformasMusicaSeleccionadas();
+
+}
+
+// ========================
+// REGRESO DE VALIDACION MUSICA
+// ========================
+
+document.addEventListener("visibilitychange",function(){
+
+    if(document.visibilityState !== "visible"){
+        return;
+    }
+
+    const nombre = localStorage.getItem(
+        "nombrePlataformaMusicaPendiente"
+    );
+
+    const activa = localStorage.getItem(
+        "validacionPlataformaMusicaActiva"
+    );
+
+    if(!nombre || activa !== "true"){
+        return;
+    }
+
+    const popupAgregar = document.getElementById(
+        "popupAgregarPlataformaMusica"
+    );
+
+    if(!esMovil){
+
+        if(popupAgregar &&
+           popupAgregar.style.display === "flex"){
+
+            abrirLinkPlataformaMusica();
+
+        }
+
+        return;
+
+    }
+
+    const popupConfirmar = document.getElementById(
+        "popupConfirmarPlataformaMusica"
+    );
+
+    const mensaje = document.getElementById(
+        "mensajeConfirmarPlataformaMusica"
+    );
+
+    if(mensaje){
+
+        mensaje.style.color = "#ccc";
+        mensaje.textContent =
+            "¿Querés guardar la plataforma \"" +
+            nombre +
+            "\" que acabás de comprobar?";
+
+    }
+
+    if(popupConfirmar){
+        popupConfirmar.style.display = "flex";
+    }
+
+});
+
+
 
 // ========================
 // CARGAR PLATAFORMAS CINE DESDE GITHUB
@@ -10373,31 +14356,6 @@ fila.appendChild(checkbox);
         }
     );
 
-// INDICADOR DE SCROLL - MÁS UTILIZADAS
-const indicadorScrollOficial =
-    document.createElement("div");
-
-indicadorScrollOficial.textContent = "👇";
-
-indicadorScrollOficial.style.position = "absolute";
-indicadorScrollOficial.style.bottom = "2px";
-indicadorScrollOficial.style.left = "50%";
-indicadorScrollOficial.style.transform =
-    "translateX(-50%)";
-indicadorScrollOficial.style.fontSize = "22px";
-indicadorScrollOficial.style.pointerEvents = "none";
-indicadorScrollOficial.style.display = "none";
-
-if(
-    contenedor.scrollHeight >
-    contenedor.clientHeight
-){
-    indicadorScrollOficial.style.display = "block";
-}
-
-contenedor.appendChild(
-    indicadorScrollOficial
-);
 
 
 // ========================
@@ -10612,8 +14570,353 @@ function eliminarPlataformaCinePersonalizada(nombre){
     );
 
 cargarConfiguracionCine();
+}
+ 
+// ===== PERFILES DE JUEGOS =====
+
+function cargarNombresPerfilesJuego(){
+
+    const nombresGuardados = JSON.parse(
+        localStorage.getItem("nombresPerfilesJuego") || "null"
+    );
+
+    const nombresPorDefecto = [
+        "Perfil1",
+        "Perfil2",
+        "Perfil3",
+        "Perfil4"
+    ];
+
+    
+
+    for(let i = 1; i <= 4; i++){
+
+        const elemento = document.getElementById(
+            "nombrePerfilJuego" + i
+        );
+
+        if(elemento){
+
+            const nombre = nombresGuardados &&
+                nombresGuardados[i - 1]
+                ? nombresGuardados[i - 1]
+                : nombresPorDefecto[i - 1];
+
+            const emoji = elemento.textContent.trim().split(" ")[0];
+
+            elemento.textContent = emoji + " " + nombre;
+        }
+    }
+}
+
+
+let numeroPerfilJuegoPendiente = null;
+
+function cerrarAvisoPerfilJuego(){
+
+    const popup = document.getElementById(
+        "popupAvisoPerfilJuego"
+    );
+
+    if(popup){
+        popup.style.display = "none";
+    }
+
+    const numero = numeroPerfilJuegoPendiente;
+    numeroPerfilJuegoPendiente = null;
+
+    if(numero !== null){
+        editarNombrePerfilJuego(numero);
+    }
+}
+
+function restaurarNombrePerfilJuego(){
+
+    const numero = numeroPerfilJuegoPendiente;
+
+    if(numero === null) return;
+
+    const nombres = JSON.parse(
+        localStorage.getItem("nombresPerfilesJuego") || "null"
+    ) || [
+        "Perfil1",
+        "Perfil2",
+        "Perfil3",
+        "Perfil4"
+    ];
+
+    nombres[numero - 1] = "Perfil" + numero;
+
+    localStorage.setItem(
+        "nombresPerfilesJuego",
+        JSON.stringify(nombres)
+    );
+
+    const popup = document.getElementById(
+        "popupAvisoPerfilJuego"
+    );
+
+    if(popup){
+        popup.style.display = "none";
+    }
+
+    numeroPerfilJuegoPendiente = null;
+
+    cargarNombresPerfilesJuego();
+}
+
+function cerrarEditarNombrePerfilJuego(){
+
+    const popup = document.getElementById(
+        "popupEditarNombrePerfilJuego"
+    );
+
+    if(popup){
+        popup.style.display = "none";
+    }
+
+    numeroPerfilJuegoPendiente = null;
+}
+
+function guardarNombrePerfilJuego(){
+
+    const numero = numeroPerfilJuegoPendiente;
+
+    if(numero === null) return;
+
+    const input = document.getElementById(
+        "inputNombrePerfilJuego"
+    );
+
+    if(!input) return;
+
+    const nombreLimpio = input.value.trim().slice(0, 10);
+
+    if(nombreLimpio === ""){
+
+        const popupEdicion = document.getElementById(
+            "popupEditarNombrePerfilJuego"
+        );
+
+        if(popupEdicion){
+            popupEdicion.style.display = "none";
+        }
+
+        const popupAviso = document.getElementById(
+            "popupAvisoPerfilJuego"
+        );
+
+        if(popupAviso){
+            popupAviso.style.display = "flex";
+        }
+
+        return;
+    }
+
+    const nombres = JSON.parse(
+        localStorage.getItem("nombresPerfilesJuego") || "null"
+    ) || [
+        "Perfil1",
+        "Perfil2",
+        "Perfil3",
+        "Perfil4"
+    ];
+
+    // Evitar nombres repetidos entre perfiles
+
+    const nombreDuplicado = nombres.some(function(nombre, indice){
+
+        return indice !== numero - 1 &&
+            nombre.trim().toLowerCase() === nombreLimpio.toLowerCase();
+
+    });
+
+if(nombreDuplicado){
+
+    const mensajeVerde = document.getElementById(
+        "mensajeNombrePerfilJuego"
+    );
+
+    if(mensajeVerde){
+        mensajeVerde.style.display = "none";
+    }
+
+    const mensajeError = document.getElementById(
+        "mensajeErrorNombrePerfilJuego"
+    );
+
+    if(mensajeError){
+        mensajeError.textContent =
+            "Ese nombre ya existe en otro perfil. Elegí uno diferente.";
+
+        mensajeError.style.display = "block";
+    }
+
+    return;
+}
+
+const mensajeError = document.getElementById(
+    "mensajeErrorNombrePerfilJuego"
+);
+
+if(mensajeError){
+    mensajeError.textContent = "";
+    mensajeError.style.display = "none";
+}
+    nombres[numero - 1] = nombreLimpio;
+
+    localStorage.setItem(
+        "nombresPerfilesJuego",
+        JSON.stringify(nombres)
+    );
+
+    const popup = document.getElementById(
+        "popupEditarNombrePerfilJuego"
+    );
+
+    const mensaje = document.getElementById(
+        "mensajeNombrePerfilJuego"
+    );
+
+    cargarNombresPerfilesJuego();
+
+    if(mensaje){
+        mensaje.style.display = "block";
+    }
+
+    if(popup){
+        popup.style.display = "flex";
+    }
+
+    setTimeout(function(){
+
+        if(mensaje){
+            mensaje.style.display = "none";
+        }
+
+        if(popup){
+            popup.style.display = "none";
+        }
+
+        numeroPerfilJuegoPendiente = null;
+
+    }, 1000);
+}
+
+function editarNombrePerfilJuego(numero){
+
+    const elemento = document.getElementById(
+        "nombrePerfilJuego" + numero
+    );
+
+    if(!elemento) return;
+
+    const nombresGuardados = JSON.parse(
+        localStorage.getItem("nombresPerfilesJuego") || "null"
+    );
+
+    const nombreActual = nombresGuardados &&
+        nombresGuardados[numero - 1]
+        ? nombresGuardados[numero - 1]
+        : "Perfil" + numero;
+
+    numeroPerfilJuegoPendiente = numero;
+
+    const input = document.getElementById(
+        "inputNombrePerfilJuego"
+    );
+
+    if(!input) return;
+
+    input.value = nombreActual;
+
+    const mensajeError = document.getElementById(
+    "mensajeErrorNombrePerfilJuego"
+);
+
+if(mensajeError){
+    mensajeError.textContent = "";
+    mensajeError.style.display = "none";
+}
+
+    const popup = document.getElementById(
+        "popupEditarNombrePerfilJuego"
+    );
+
+    if(popup){
+        popup.style.display = "flex";
+        input.focus();
+    }
+}
+
+let numeroPerfilJuegoActual = null;
+
+function abrirPerfilJuego(numero){
+
+    numeroPerfilJuegoActual = numero;
+
+    const perfiles = document.getElementById("Juegos");
+    const pantalla = document.getElementById("pantallaPerfilJuego");
+    const titulo = document.getElementById("tituloPerfilJuego");
+    const lista = document.getElementById("listaJuegosPerfilSeleccionado");
+
+    if(!perfiles || !pantalla || !titulo || !lista){
+        return;
+    }
+
+    const nombrePerfil = document.getElementById("nombrePerfilJuego" + numero);
+
+    titulo.textContent = nombrePerfil
+        ? "🎮 " + nombrePerfil.textContent.trim()
+        : "🎮 Perfil" + numero;
+
+    lista.innerHTML = "";
+
+    perfiles.style.display = "none";
+    pantalla.style.display = "block";
+}
+
+function volverPerfilesJuego(){
+
+    const pantalla = document.getElementById("pantallaPerfilJuego");
+    const perfiles = document.getElementById("Juegos");
+
+    if(pantalla){
+        pantalla.style.display = "none";
+    }
+
+    if(perfiles){
+        perfiles.style.display = "block";
+    }
+
+ 
+    cargarNombresPerfilesJuego();
+}
+
+
+// ===== ABRIR Y CERRAR CONFIGURACION JUEGOS DEL PERFIL =====
+
+function abrirConfiguracionPerfilJuego(){
+
+    const popup = document.getElementById("popupConfiguracionPerfilJuego");
+
+    if(popup){
+        popup.style.display = "flex";
+    }
 
 }
+
+function cerrarConfiguracionPerfilJuego(){
+
+    const popup = document.getElementById("popupConfiguracionPerfilJuego");
+
+    if(popup){
+        popup.style.display = "none";
+    }
+
+}
+
+// ===== FIN CONFIGURACION JUEGOS DEL PERFIL =====
 
 
 function mostrar(id){
@@ -10644,8 +14947,6 @@ document.getElementById("btnVolverAndroid").style.display="none";
 
     document.getElementById("Calendario").style.display="none";
 
-    document.getElementById("album").style.display="none";
-
     document.getElementById("Clima").style.display="none";
 
     document.getElementById("Bancos").style.display="none";
@@ -10658,13 +14959,23 @@ document.getElementById("btnVolverAndroid").style.display="none";
 
     document.getElementById("Cine").style.display="none";
 
+    document.getElementById("Juegos").style.display="none";
+
 // Mostrar módulo elegido
 
 document.getElementById(id).style.display="block";
 
+if(id=="Juegos"){ cargarNombresPerfilesJuego(); }
+
 if(id=="Cine"){
 
     mostrarPlataformasCineSeleccionadas();
+
+}
+
+if(id=="Musica"){
+
+    mostrarPlataformasMusicaSeleccionadas();
 
 }
 
@@ -10718,11 +15029,6 @@ if(id=="Clima"){
 
 }
 
-if(id=="Musica"){
-
-    cargarAlbumes();
-
-}
 
     // Registrar la pantalla actual en el historial
     history.pushState({ pantalla: id }, "", "#" + id);
@@ -10737,12 +15043,12 @@ function inicio(){
     document.getElementById("Musica").style.display="none";
     document.getElementById("Calendario").style.display="none";
     document.getElementById("Clima").style.display="none";
-    document.getElementById("album").style.display="none";
     document.getElementById("Bancos").style.display="none";
    document.getElementById("Billeteras").style.display="none";
    document.getElementById("Radios").style.display="none";
    document.getElementById("Entrenamiento").style.display="none";
    document.getElementById("Cine").style.display="none";
+   document.getElementById("Juegos").style.display="none";
    
 
 
@@ -10805,9 +15111,7 @@ function abrirPDF(pdf,titulo){
     document.getElementById("tituloPdf").textContent = titulo;
     document.getElementById("pdfFrame").src = pdf;
     document.getElementById("viewer").style.display = "flex";
-
-    actualizarUIReproductor();
-
+   
 }
 
 function cerrarPDF(){
@@ -10817,246 +15121,8 @@ function cerrarPDF(){
 
 }
 
-function actualizarUIReproductor(){
 
-    const btnPlay = document.getElementById("btnPlay");
-    const btnPdf = document.getElementById("btnMusica");
 
-    if(audio.src == ""){
-
-        btnPlay.innerText = "▶";
-        btnPdf.style.display = "none";
-        return;
-
-    }
-
-    btnPdf.style.display = "inline-block";
-
-    if(audio.paused){
-
-        btnPlay.innerText = "▶";
-        btnPdf.innerText = "▶ Reanudar música";
-
-    }else{
-
-        btnPlay.innerText = "⏸";
-        btnPdf.innerText = "⏸ Pausar música";
-
-    }
-
-}
-
-//=====================================
-// REPRODUCTOR DE MÚSICA
-//=====================================
-
-function detenerMusica(){
-
-    audio.pause();
-    audio.currentTime = 0;
-
-    estabaReproduciendo = false;
-
-    actualizarUIReproductor();
-
-}
-
-function playPause(){
-
-    const boton = document.getElementById("btnPlay");
-    const botonPdf = document.getElementById("btnMusica");
-
-    if(audio.src == ""){
-        return;
-    }
-
-    if(audio.paused){
-
-        audio.play();
-
-        estabaReproduciendo = true;
-
-        actualizarUIReproductor();
-
-    }else{
-
-        audio.pause();
-
-        estabaReproduciendo = false;
-
-        actualizarUIReproductor();
-
-    }
-
-}
-
-function siguienteCancion(){
-
-    if(indiceActual < albumActual.canciones.length - 1){
-
-        indiceActual++;
-
-        reproducirCancion(albumActual.canciones[indiceActual]);
-
-    }
-
-}
-
-function anteriorCancion(){
-
-    if(indiceActual > 0){
-
-        indiceActual--;
-
-        reproducirCancion(albumActual.canciones[indiceActual]);
-
-    }
-
-}
-
-function abrirAlbum(nombreAlbum){
-    albumActual = albums[nombreAlbum];
-
-    document.getElementById("Musica").style.display = "none";
-    document.getElementById("album").style.display = "block";
-
-    // Cambiar datos del álbum actual
-    document.querySelector("#album h2").innerText = "🎵 " + albumActual.nombre;
-
-    document.getElementById("portadaAlbum").src = albumActual.portada;
-
-    const lista = document.getElementById("listaCanciones");
-    lista.innerHTML = "";
-
-    albumActual.canciones.forEach(function(cancion, indice){
-
-        lista.innerHTML += `
-        <div
-            class="cancion"
-            id="cancion-${cancion}"
-            onclick="reproducirCancion('${cancion}')">
-            ${indice + 1}. 🎵 ${cancion}
-        </div>`;
-
-    });
-
-
-    // Primera vez que se abre el álbum
-
-    if(indiceActual == -1){
-
-        estabaReproduciendo = true;
-
-        reproducirCancion(albumActual.canciones[0]);
-
-        return;
-
-    }
-
-
-    // Restaurar canción seleccionada
-
-    const nombre = albumActual.canciones[indiceActual];
-
-    document.getElementById("tituloCancion").innerText = nombre;
-
-
-    const item = document.getElementById("cancion-" + nombre);
-
-    if(item){
-
-        item.style.background = "#FFD700";
-        item.style.color = "#000";
-
-    }
-
-
-    actualizarUIReproductor();
-
-}
-
-function volverMusica(){
-
-    document.getElementById("album").style.display="none";
-    document.getElementById("Musica").style.display="block";
-
-}
-
-
-function reproducirCancion(nombre){
-
-    document.getElementById("tituloCancion").innerText = nombre;
-
-
-    // Buscar índice dentro del álbum actual
-
-    indiceActual = albumActual.canciones.indexOf(nombre);
-
-
-    // Limpiar selección anterior
-
-    document.querySelectorAll(".cancion").forEach(function(c){
-
-        c.style.background = "#222";
-        c.style.color = "#fff";
-
-    });
-
-
-    // Marcar canción actual
-
-    const elemento = document.getElementById("cancion-" + nombre);
-
-    if(elemento){
-
-        elemento.style.background = "#FFD700";
-        elemento.style.color = "#000";
-
-    }
-
-
-    // Nueva ruta dinámica
-
-    audio.src =
-        albumActual.carpeta +
-        encodeURIComponent(nombre) +
-        ".mp3";
-
-
-    audio.load();
-
-
-    if(estabaReproduciendo){
-
-        audio.play();
-
-    }
-
-
-    actualizarUIReproductor();
-
-
-    audio.onpause = function(){
-
-        actualizarUIReproductor();
-
-    };
-
-
-    audio.onplay = function(){
-
-        actualizarUIReproductor();
-
-    };
-
-
-    audio.onended = function(){
-
-        siguienteCancion();
-
-    };
-
-}
 //========================
 // SALUDO DINÁMICO
 //========================
@@ -11410,7 +15476,6 @@ function mostrarMenuAndroid(seccion, registrarHistorial = true){
 document.getElementById("Libros").style.display="none";
 document.getElementById("Musica").style.display="none";
 document.getElementById("Calendario").style.display="none";
-document.getElementById("album").style.display="none";
 document.getElementById("Clima").style.display="none";
 document.getElementById("Bancos").style.display="none";
 document.getElementById("Billeteras").style.display="none";
@@ -11434,7 +15499,6 @@ document.getElementById("Entrenamiento").style.display="none";
 document.getElementById("Libros").style.display="none";
 document.getElementById("Musica").style.display="none";
 document.getElementById("Calendario").style.display="none";
-document.getElementById("album").style.display="none";
 document.getElementById("Clima").style.display="none";
 document.getElementById("Bancos").style.display="none";
 document.getElementById("Billeteras").style.display="none";
@@ -11911,8 +15975,17 @@ function abrirLinkPlataformaCine(){
             "urlAgregarPlataformaCine"
         );
 
-    if(campo){
+        if(campo){
         campo.value = "";
+    }
+
+    const aviso =
+        document.getElementById(
+            "avisoLinkPlataformaCine"
+        );
+
+    if(aviso){
+        aviso.remove();
     }
 
     popup.style.display = "flex";
@@ -11968,6 +16041,7 @@ function guardarLinkPlataformaCine(){
             )
         ) || [];
 
+    
     const existe =
         guardadas.some(function(plataforma){
 
@@ -11976,9 +16050,49 @@ function guardarLinkPlataformaCine(){
 
         });
 
-    if(existe){
-        return;
+    let aviso =
+        document.getElementById(
+            "avisoLinkPlataformaCine"
+        );
+
+    if(!aviso){
+
+        aviso = document.createElement("p");
+        aviso.id = "avisoLinkPlataformaCine";
+        aviso.style.textAlign = "center";
+        aviso.style.color = "#FF4444";
+        aviso.style.lineHeight = "1.5";
+
+        campoUrl.parentNode.insertBefore(
+            aviso,
+            campoUrl.nextSibling
+        );
+
     }
+
+    aviso.style.display = "none";
+    aviso.textContent = "";
+
+    if(existe){
+
+        aviso.textContent =
+            "⚠ Esa plataforma ya está guardada.";
+
+        aviso.style.display = "block";
+        return;
+
+    }
+
+    if(guardadas.length >= 10){
+
+        aviso.textContent =
+            "⚠ Alcanzaste el máximo de 10 plataformas personalizadas. Eliminá una para agregar otra.";
+
+        aviso.style.display = "block";
+        return;
+
+    }
+
 
     guardadas.push({
 
@@ -12084,6 +16198,11 @@ function validarNuevaPlataformaCine(){
     );
 
     localStorage.setItem(
+    "moduloPlataformaPendiente",
+    "cine"
+    );
+
+    localStorage.setItem(
         "validacionPlataformaCineActiva",
         "true"
     );
@@ -12152,7 +16271,19 @@ document.addEventListener(
 
 if(!esMovil){
 
-    abrirLinkPlataformaCine();
+    const popupAgregar =
+        document.getElementById(
+            "popupAgregarPlataformaCine"
+        );
+
+    if(
+        popupAgregar &&
+        popupAgregar.style.display === "flex"
+    ){
+
+        abrirLinkPlataformaCine();
+
+    }
 
     return;
 
@@ -12215,6 +16346,9 @@ function cancelarConfirmacionPlataformaCine(){
     localStorage.removeItem(
         "validacionPlataformaCineActiva"
     );
+
+    localStorage.removeItem(
+        "moduloPlataformaPendiente");
 
     localStorage.removeItem(
         "nombrePlataformaCinePendiente"
@@ -12303,9 +16437,28 @@ function guardarNuevaPlataformaCine(){
 
         });
 
-    if(existe){
+   
+    if(existe || guardadas.length >= 10){
+
+        const mensajeConfirmacion =
+            document.getElementById(
+                "mensajeConfirmarPlataformaCine"
+            );
+
+        if(mensajeConfirmacion){
+
+            mensajeConfirmacion.innerHTML = existe
+                ? "⚠ Esa plataforma ya está guardada."
+                : "⚠ Alcanzaste el máximo de 10 plataformas personalizadas. Eliminá una para agregar otra.";
+
+            mensajeConfirmacion.style.color =
+                "#FF4444";
+
+        }
+
         return;
     }
+
 
  const urlRecibida =
     localStorage.getItem(
@@ -12347,6 +16500,10 @@ setTimeout(function(){
 
     localStorage.removeItem(
         "validacionPlataformaCineActiva"
+    );
+
+    localStorage.removeItem(
+        "moduloPlataformaPendiente"
     );
 
     localStorage.removeItem(
@@ -12651,6 +16808,23 @@ function abrirInstructivoCompartirApp(){
     });
 
 }
+
+// ========================
+// CERRAR INSTRUCTIVO COMPARTIR APP
+// ========================
+
+function cerrarInstructivoCompartirApp(){
+
+    const popup = document.getElementById(
+        "popupInstructivoCompartirApp"
+    );
+
+    if(popup){
+        popup.style.display = "none";
+    }
+
+}
+
 
 // ========================
 // CERRAR CONFIGURACION DE BILLETERAS
@@ -13356,7 +17530,7 @@ if(window.innerWidth <= 600){
     zonaVU.style.margin =
         "0 5px";
 
-zonaVU.style.transform =
+    zonaVU.style.transform =
     "translateX(18px)";
 
     zonaVU.style.padding =
@@ -16459,6 +20633,250 @@ function abrirBilletera(nombreBilletera){
 
 }
 
+
+// ========================
+// SALIDA A BANCO
+// ========================
+
+function abrirBanco(nombreBanco){
+
+    const datosBanco =
+        configuracionBancos.find(function(banco){
+
+            return banco.nombre === nombreBanco;
+
+        });
+
+    if(!datosBanco){
+        return;
+    }
+
+    // ========================
+    // DETECTAR DISPOSITIVO
+    // ========================
+
+    const userAgent =
+        navigator.userAgent ||
+        navigator.vendor ||
+        window.opera;
+
+    let destino =
+        datosBanco.sitioOficial;
+
+    // Android
+    if(/android/i.test(userAgent)){
+
+        if(datosBanco.android){
+
+            destino =
+                datosBanco.android;
+
+        }
+
+    }
+
+    // iPhone / iPad
+    else if(
+        /iPad|iPhone|iPod/i.test(userAgent) ||
+        (
+            navigator.platform === "MacIntel" &&
+            navigator.maxTouchPoints > 1
+        )
+    ){
+
+        if(datosBanco.ios){
+
+            destino =
+                datosBanco.ios;
+
+        }
+
+    }
+
+    // PC
+    else{
+
+        destino =
+            datosBanco.sitioOficial;
+
+    }
+
+    // ========================
+    // POPUP LEGAL
+    // ========================
+
+    const fondo =
+        document.createElement("div");
+
+    fondo.id =
+        "popupSalidaBanco";
+
+    fondo.style.position =
+        "fixed";
+
+    fondo.style.top =
+        "0";
+
+    fondo.style.left =
+        "0";
+
+    fondo.style.width =
+        "100%";
+
+    fondo.style.height =
+        "100%";
+
+    fondo.style.background =
+        "rgba(0,0,0,0.75)";
+
+    fondo.style.display =
+        "flex";
+
+    fondo.style.alignItems =
+        "center";
+
+    fondo.style.justifyContent =
+        "center";
+
+    fondo.style.zIndex =
+        "99999";
+
+    fondo.style.padding =
+        "20px";
+
+    fondo.style.boxSizing =
+        "border-box";
+
+    const ventana =
+        document.createElement("div");
+
+    ventana.className =
+        "card";
+
+    ventana.style.width =
+        "min(92%,450px)";
+
+    ventana.style.padding =
+        "25px";
+
+    ventana.style.borderRadius =
+        "20px";
+
+    ventana.style.textAlign =
+        "center";
+
+    ventana.innerHTML = `
+
+        <div style="
+            font-size:36px;
+            margin-bottom:10px;
+        ">
+            🏦
+        </div>
+
+        <h3>
+            Estás saliendo de Mi Espacio
+        </h3>
+
+        <p>
+            Vas a salir de Mi Espacio para ingresar a
+            <strong>${datosBanco.nombre}</strong>.
+        </p>
+
+        <p style="
+            font-size:13px;
+            line-height:19px;
+            opacity:.85;
+        ">
+            Mi Espacio no administra tu cuenta,
+            contraseña, pagos ni las condiciones
+            del servicio.
+        </p>
+
+        <p style="
+            font-size:13px;
+            line-height:19px;
+            opacity:.85;
+        ">
+            Es responsabilidad del usuario verificar
+            que esté accediendo al sitio o aplicación
+            oficial del proveedor antes de ingresar
+            datos personales o realizar cualquier operación.
+        </p>
+
+        <div style="
+            display:flex;
+            justify-content:center;
+            gap:12px;
+            margin-top:20px;
+            flex-wrap:wrap;
+        ">
+
+            <button
+                type="button"
+                id="cancelarSalidaBanco"
+                style="
+                padding:11px 18px;
+                border:none;
+                border-radius:10px;
+                cursor:pointer;
+                font-weight:bold;
+                "
+            >
+                Cancelar
+            </button>
+
+            <button
+                type="button"
+                id="continuarSalidaBanco"
+                style="
+                padding:11px 18px;
+                background:#FFD700;
+                color:#000;
+                border:none;
+                border-radius:10px;
+                cursor:pointer;
+                font-weight:bold;
+                "
+            >
+                Continuar →
+            </button>
+
+        </div>
+
+    `;
+
+    fondo.appendChild(ventana);
+
+    document.body.appendChild(fondo);
+
+    document
+        .getElementById("cancelarSalidaBanco")
+        .onclick =
+        function(){
+
+            fondo.remove();
+
+        };
+
+    document
+        .getElementById("continuarSalidaBanco")
+        .onclick =
+        function(){
+
+            fondo.remove();
+
+            window.open(
+                destino,
+                "_blank",
+                "noopener,noreferrer"
+            );
+
+        };
+
+}
+
+
 // =================================
 // MOSTRAR PROMOCIONES DE UN BANCO
 // =================================
@@ -16487,55 +20905,9 @@ function mostrarPromocionesBanco(nombreBanco){
 
     /* ===== TITULO ===== */
 
-    if(titulo){
-
+        if(titulo){
         titulo.innerHTML = "";
-
-        titulo.style.display = "flex";
-        titulo.style.alignItems = "center";
-        titulo.style.justifyContent = "center";
-        titulo.style.gap = "10px";
-
-        if(datosBanco && datosBanco.logo){
-
-            const imagen =
-                document.createElement("img");
-
-            imagen.src =
-                "https://raw.githubusercontent.com/pgaglian/Mi-Espacio-Datos/main/Bancosimg/" +
-                datosBanco.logo;
-
-            imagen.alt =
-                nombreBanco;
-
-            imagen.style.width = "42px";
-            imagen.style.height = "42px";
-            imagen.style.objectFit = "contain";
-            imagen.style.borderRadius = "8px";
-
-            titulo.appendChild(imagen);
-
-        }else{
-
-            const respaldo =
-                document.createElement("span");
-
-            respaldo.textContent = "🏦";
-
-            titulo.appendChild(respaldo);
-
-        }
-
-        const texto =
-            document.createElement("span");
-
-        texto.textContent =
-            "🔥 Promociones para vos";
-
-        titulo.appendChild(texto);
-
     }
-
 
     /* ===== CARGANDO ===== */
 
@@ -16623,12 +20995,45 @@ function mostrarPromocionesBanco(nombreBanco){
         tarjeta.style.textAlign = "center";
 
 
-        tarjeta.innerHTML = `
+                tarjeta.innerHTML = `
 
-            <h3>
-                🏦 Promociones de ${nombreBanco}
-            </h3>
+        ${datosBanco && datosBanco.logo ? `
+            <img
+                src="https://raw.githubusercontent.com/pgaglian/Mi-Espacio-Datos/main/Bancosimg/${datosBanco.logo}"
+                alt="${datosBanco.nombre}"
+                style="
+                width:60px;
+                height:60px;
+                object-fit:contain;
+                border-radius:12px;
+                margin-bottom:12px;
+                "
+            >
+        ` : ""}
 
+        <button
+            type="button"
+            onclick="abrirBanco('${nombreBanco.replace(/'/g, "\\'")}')"
+            style="
+            width:100%;
+            margin-bottom:15px;
+            padding:11px 18px;
+            background:#FFD700;
+            color:#000;
+            border:none;
+            border-radius:10px;
+            font-weight:bold;
+            cursor:pointer;
+            "
+        >
+            🔐 Acceder a ${nombreBanco}
+        </button>
+
+        <h3>
+            🏦 Promociones de ${nombreBanco}
+        </h3>
+            
+       
             <p>
                 Consultá las promociones y beneficios
                 disponibles en el sitio oficial.
@@ -16703,6 +21108,7 @@ function mostrarPromocionesBanco(nombreBanco){
     });
 
 }
+
 function confirmarSalidaPromocion(nombreBanco, url){
 
     const fondo =
@@ -18169,14 +22575,25 @@ if(ordenGuardado){
 
     }).filter(Boolean);
 
+    const tarjetasInicio =
+        document.querySelectorAll("#acciones .card");
+
+    tarjetasInicio.forEach(function(tarjeta){
+
+        if(!tarjetas.includes(tarjeta)){
+
+            tarjetas.push(tarjeta);
+
+        }
+
+    });
 
 }else{
 
     tarjetas =
-    document.querySelectorAll("#acciones .card");
+        document.querySelectorAll("#acciones .card");
 
 }
-
 
   let estadosGuardados =
 JSON.parse(localStorage.getItem("estadoAcciones"));
@@ -18289,20 +22706,33 @@ document.getElementById("listaConfiguracionAmbientes");
     const ordenGuardado =
     JSON.parse(localStorage.getItem("ordenConfiguracionAmbientes"));
 
-    if(ordenGuardado){
+if(ordenGuardado){
 
-        tarjetas = ordenGuardado.map(function(id){
+    tarjetas = ordenGuardado.map(function(id){
 
-            return document.getElementById(id);
+        return document.getElementById(id);
 
-        }).filter(Boolean);
+    }).filter(Boolean);
 
-    }else{
-
-        tarjetas =
+    const tarjetasInicio =
         document.querySelectorAll("#menu .card");
 
-    }
+    tarjetasInicio.forEach(function(tarjeta){
+
+        if(!tarjetas.includes(tarjeta)){
+
+            tarjetas.push(tarjeta);
+
+        }
+
+    });
+
+}else{
+
+    tarjetas =
+        document.querySelectorAll("#menu .card");
+
+}
 
     let estadosGuardados =
     JSON.parse(localStorage.getItem("estadoAmbientes"));
@@ -19169,11 +23599,14 @@ document.getElementById("btnColaboracion").onclick = function(){
 
 };
 
-document.getElementById("btnCancelarSoporte").onclick = function(){
+
+
+document.getElementById("btnCerrarSoporte").onclick = function(){
 
     document.getElementById("popupSoporte").style.display = "none";
 
 };
+
 
 
 document.getElementById("btnCancelarOpinion").onclick = function(){
@@ -19252,6 +23685,7 @@ Escriba aquí su consulta.
 
     }
 
+  
     window.open(
 
         "https://mail.google.com/mail/?view=cm&fs=1" +
@@ -21810,27 +26244,63 @@ function recibirAppCompartida(){
     url
 );
 
-localStorage.setItem(
-    "nombrePlataformaCinePendiente",
+const moduloDestino =
+    localStorage.getItem(
+        "moduloPlataformaPendiente"
+    ) || "cine";
+
+const nombreCompartido =
     titulo.replace(
         /^[ÉE]chale un vistazo a\s+/i,
         ""
-    )
-);
+    );
 
-localStorage.setItem(
-    "validacionPlataformaCineActiva",
-    "true"
-);
+if(moduloDestino === "musica"){
+
+    const nombreMusica =
+        localStorage.getItem(
+            "nombrePlataformaMusicaPendiente"
+        ) || nombreCompartido;
+
+    localStorage.setItem(
+        "nombrePlataformaMusicaPendiente",
+        nombreMusica
+    );
+
+    localStorage.setItem(
+        "validacionPlataformaMusicaActiva",
+        "true"
+    );
+
+}else{
+
+    localStorage.setItem(
+        "nombrePlataformaCinePendiente",
+        nombreCompartido
+    );
+
+    localStorage.setItem(
+        "validacionPlataformaCineActiva",
+        "true"
+    );
+
+}
+
+const esMusica =
+    moduloDestino === "musica";
 
 const popupConfirmacion =
     document.getElementById(
-        "popupConfirmarPlataformaCine"
+        esMusica
+            ? "popupConfirmarPlataformaMusica"
+            : "popupConfirmarPlataformaCine"
     );
 
 const mensajeConfirmacion =
     document.getElementById(
-        "mensajeConfirmarPlataformaCine"
+        esMusica
+            ? "mensajeConfirmarPlataformaMusica"
+            : "mensajeConfirmarPlataformaCine"
     );
 
 if(
@@ -21839,24 +26309,26 @@ if(
 ){
 
     mensajeConfirmacion.innerHTML =
-        "¿La aplicación que compartiste desde Google Play es la correcta?";
+        esMusica
+            ? "¿Querés guardar la plataforma de Música que compartiste?"
+            : "¿La aplicación que compartiste desde Google Play es la correcta?";
 
-    mensajeConfirmacion.style.color =
-        "";
+    mensajeConfirmacion.style.color = "";
 
-    popupConfirmacion.style.display =
-        "flex";
+    popupConfirmacion.style.display = "flex";
 
 }
 
 const campo =
     document.getElementById(
-        "nombreAgregarPlataformaCine"
+        moduloDestino === "musica"
+            ? "nombreAgregarPlataformaMusica"
+            : "nombreAgregarPlataformaCine"
     );
 
 if(campo && titulo){
 
-    campo.value = titulo;
+    campo.value = nombreCompartido;
 
 }
 
@@ -21903,6 +26375,105 @@ window.addEventListener(
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
+
+
+<!-- ACCESO FLOTANTE MI ESPACIO IA -->
+<button
+    type="button"
+    id="btnMiEspacioIA"
+    aria-label="Abrir Mi Espacio IA"
+    title="Mi Espacio IA">
+    <img
+        src="https://raw.githubusercontent.com/pgaglian/Mi-Espacio-Datos/main/IAimg/rana-mi-espacio-ia.png"
+        alt="Ranita de Mi Espacio IA">
+</button>
+
+
+<div id="panelMiEspacioIA">
+
+    <h2>🐸 Mi Espacio IA</h2>
+
+    <p class="iaSubtitulo">
+        ¿Qué te gustaría hacer?
+    </p>
+
+</div>
+
+
+<script>
+(function () {
+
+    const botonFlotanteIA =
+        document.getElementById("btnMiEspacioIA");
+
+    const panelMiEspacioIA =
+        document.getElementById("panelMiEspacioIA");
+
+    if (!botonFlotanteIA || !panelMiEspacioIA) {
+        return;
+    }
+
+    // Mantener la ranita flotando sobre la página.
+    document.body.appendChild(botonFlotanteIA);
+    document.body.appendChild(panelMiEspacioIA);
+
+    let temporizadorIA = null;
+    let esperandoSegundoToque = false;
+
+    botonFlotanteIA.addEventListener("click", function () {
+
+        // Si el panel está abierto, no hacer nada.
+        if (panelMiEspacioIA.style.display === "block") {
+            return;
+        }
+
+        // SEGUNDO TOQUE: abrir el panel.
+        if (esperandoSegundoToque) {
+
+            clearTimeout(temporizadorIA);
+            temporizadorIA = null;
+            esperandoSegundoToque = false;
+
+            botonFlotanteIA.classList.remove("agrandada");
+
+            panelMiEspacioIA.style.setProperty(
+                "display", "block", "important"
+            );
+
+            panelMiEspacioIA.style.setProperty(
+                "visibility", "visible", "important"
+            );
+
+            panelMiEspacioIA.style.setProperty(
+                "opacity", "1", "important"
+            );
+
+            panelMiEspacioIA.style.setProperty(
+                "z-index", "1000001", "important"
+            );
+
+            return;
+        }
+
+        // PRIMER TOQUE: agrandar la ranita.
+        esperandoSegundoToque = true;
+        botonFlotanteIA.classList.add("agrandada");
+
+        temporizadorIA = setTimeout(function () {
+
+            // Si no hubo segundo toque, volver al tamaño normal.
+            botonFlotanteIA.classList.remove("agrandada");
+
+            esperandoSegundoToque = false;
+            temporizadorIA = null;
+
+        }, 3000);
+
+    });
+
+})();
+</script>
+
 
 </body>
 </html>
